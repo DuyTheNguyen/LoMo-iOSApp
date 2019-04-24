@@ -13,5 +13,5 @@ struct User {
     let email: String
     let password: String
     let displayName: String
-    let photoURL: String
+    let photoURL: String?
 }
