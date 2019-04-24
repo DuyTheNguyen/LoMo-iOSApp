@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AC705C3227061B400EDD8B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC705C2227061B400EDD8B3 /* User.swift */; };
 		6AEEE39B226326C600027C88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEEE39A226326C600027C88 /* AppDelegate.swift */; };
-		6AEEE39D226326C600027C88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEEE39C226326C600027C88 /* ViewController.swift */; };
+		6AEEE39D226326C600027C88 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEEE39C226326C600027C88 /* LoginViewController.swift */; };
 		6AEEE3A0226326C600027C88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEEE39E226326C600027C88 /* Main.storyboard */; };
 		6AEEE3A2226326C700027C88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AEEE3A1226326C700027C88 /* Assets.xcassets */; };
 		6AEEE3A5226326C700027C88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AEEE3A3226326C700027C88 /* LaunchScreen.storyboard */; };
@@ -22,6 +23,13 @@
 		6AEEE3D52263271400027C88 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3D42263271400027C88 /* GoogleAppMeasurement.framework */; };
 		6AEEE3D72263271800027C88 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3D62263271800027C88 /* GoogleUtilities.framework */; };
 		6AEEE3D92263271C00027C88 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3D82263271C00027C88 /* nanopb.framework */; };
+		6AEEE3DD2263291000027C88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AEEE3DC2263290F00027C88 /* GoogleService-Info.plist */; };
+		6AEEE3DF22632CB900027C88 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3DE22632CB900027C88 /* FirebaseDatabase.framework */; };
+		6AEEE3E122632CC200027C88 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E022632CC200027C88 /* leveldb-library.framework */; };
+		6AEEE3E322632F6B00027C88 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E222632F6B00027C88 /* FirebaseAuth.framework */; };
+		6AEEE3E722632FCD00027C88 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E622632FCD00027C88 /* FirebaseStorage.framework */; };
+		6AEEE3E922632FD800027C88 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E822632FD800027C88 /* GTMSessionFetcher.framework */; };
+		6AEEE3EB2263342A00027C88 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6AC705C2227061B400EDD8B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6AEEE397226326C600027C88 /* dporject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dporject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AEEE39A226326C600027C88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6AEEE39C226326C600027C88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6AEEE39C226326C600027C88 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6AEEE39F226326C600027C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AEEE3A1226326C700027C88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AEEE3A4226326C700027C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +74,13 @@
 		6AEEE3D82263271C00027C88 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		6AEEE3DA2263272E00027C88 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		6AEEE3DB2263273C00027C88 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		6AEEE3DC2263290F00027C88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6AEEE3DE22632CB900027C88 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
+		6AEEE3E022632CC200027C88 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "leveldb-library.framework"; sourceTree = "<group>"; };
+		6AEEE3E222632F6B00027C88 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = "<group>"; };
+		6AEEE3E622632FCD00027C88 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = "<group>"; };
+		6AEEE3E822632FD800027C88 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = "../../../../../../Downloads/Firebase 2/Storage/GTMSessionFetcher.framework"; sourceTree = "<group>"; };
+		6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,14 +88,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AEEE3DF22632CB900027C88 /* FirebaseDatabase.framework in Frameworks */,
+				6AEEE3CF2263270500027C88 /* FirebaseCore.framework in Frameworks */,
 				6AEEE3CD2263270000027C88 /* FirebaseAnalytics.framework in Frameworks */,
 				6AEEE3D12263270C00027C88 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				6AEEE3D92263271C00027C88 /* nanopb.framework in Frameworks */,
 				6AEEE3D52263271400027C88 /* GoogleAppMeasurement.framework in Frameworks */,
+				6AEEE3E322632F6B00027C88 /* FirebaseAuth.framework in Frameworks */,
 				6AEEE3D32263271000027C88 /* FirebaseInstanceID.framework in Frameworks */,
 				6AEEE3CB226326FC00027C88 /* FIRAnalyticsConnector.framework in Frameworks */,
-				6AEEE3CF2263270500027C88 /* FirebaseCore.framework in Frameworks */,
 				6AEEE3D72263271800027C88 /* GoogleUtilities.framework in Frameworks */,
+				6AEEE3E122632CC200027C88 /* leveldb-library.framework in Frameworks */,
+				6AEEE3E922632FD800027C88 /* GTMSessionFetcher.framework in Frameworks */,
+				6AEEE3EB2263342A00027C88 /* GTMSessionFetcher.framework in Frameworks */,
+				6AEEE3E722632FCD00027C88 /* FirebaseStorage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +122,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6AC705BF22705DE800EDD8B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6AC705C2227061B400EDD8B3 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6AC705C122705DFB00EDD8B3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		6AEEE38E226326C600027C88 = {
 			isa = PBXGroup;
 			children = (
@@ -124,11 +161,14 @@
 		6AEEE399226326C600027C88 /* dporject */ = {
 			isa = PBXGroup;
 			children = (
+				6AC705C122705DFB00EDD8B3 /* Controllers */,
+				6AC705BF22705DE800EDD8B3 /* Models */,
 				6AEEE39A226326C600027C88 /* AppDelegate.swift */,
-				6AEEE39C226326C600027C88 /* ViewController.swift */,
+				6AEEE39C226326C600027C88 /* LoginViewController.swift */,
 				6AEEE39E226326C600027C88 /* Main.storyboard */,
 				6AEEE3A1226326C700027C88 /* Assets.xcassets */,
 				6AEEE3A3226326C700027C88 /* LaunchScreen.storyboard */,
+				6AEEE3DC2263290F00027C88 /* GoogleService-Info.plist */,
 				6AEEE3A6226326C700027C88 /* Info.plist */,
 			);
 			path = dporject;
@@ -163,8 +203,14 @@
 		6AEEE3C9226326ED00027C88 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				6AEEE3E822632FD800027C88 /* GTMSessionFetcher.framework */,
+				6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */,
+				6AEEE3E622632FCD00027C88 /* FirebaseStorage.framework */,
+				6AEEE3E022632CC200027C88 /* leveldb-library.framework */,
 				6AEEE3DB2263273C00027C88 /* module.modulemap */,
 				6AEEE3DA2263272E00027C88 /* Firebase.h */,
+				6AEEE3E222632F6B00027C88 /* FirebaseAuth.framework */,
+				6AEEE3DE22632CB900027C88 /* FirebaseDatabase.framework */,
 				6AEEE3D82263271C00027C88 /* nanopb.framework */,
 				6AEEE3D62263271800027C88 /* GoogleUtilities.framework */,
 				6AEEE3D42263271400027C88 /* GoogleAppMeasurement.framework */,
@@ -282,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AEEE3A5226326C700027C88 /* LaunchScreen.storyboard in Resources */,
+				6AEEE3DD2263291000027C88 /* GoogleService-Info.plist in Resources */,
 				6AEEE3A2226326C700027C88 /* Assets.xcassets in Resources */,
 				6AEEE3A0226326C600027C88 /* Main.storyboard in Resources */,
 			);
@@ -308,8 +355,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AEEE39D226326C600027C88 /* ViewController.swift in Sources */,
+				6AEEE39D226326C600027C88 /* LoginViewController.swift in Sources */,
 				6AEEE39B226326C600027C88 /* AppDelegate.swift in Sources */,
+				6AC705C3227061B400EDD8B3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,8 +546,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swinburne.duynguyen.ios.dporject;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swinburne.duynguyen.ios.dproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -520,8 +568,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.swinburne.duynguyen.ios.dporject;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swinburne.duynguyen.ios.dproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
