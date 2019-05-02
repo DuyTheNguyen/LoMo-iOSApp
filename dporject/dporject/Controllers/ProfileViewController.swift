@@ -7,13 +7,33 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
+    private let userAuthenticationController = UserAuthenticationController()
+    
+    fileprivate var user = User()
+    
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        userAuthenticationController.delegate = self
+        userAuthenticationController.authenticationListener()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        emailLabel.text = user.email
+        userIdLabel.text = user.uid
     }
     
 
@@ -26,5 +46,18 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+         handleControllerTransitionWith(identifier: "SignInViewController")
+    }
+    
+    
+    
+}
 
+//Create extension to conform Delegate
+extension ProfileViewController: UserAuthenticationControllerDelegate{
+    func didReceiveUser(user: User) {
+        self.user = user
+    }
+    
 }
