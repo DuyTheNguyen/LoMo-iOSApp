@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A675F772283E491001F0F11 /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A675F762283E491001F0F11 /* GenreViewController.swift */; };
 		6AC705C3227061B400EDD8B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC705C2227061B400EDD8B3 /* User.swift */; };
 		6AC705C5227063A500EDD8B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC705C4227063A500EDD8B3 /* SignUpViewController.swift */; };
 		6AC705C722707B6000EDD8B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC705C622707B6000EDD8B3 /* HomeViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A675F762283E491001F0F11 /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
 		6AC705C2227061B400EDD8B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6AC705C4227063A500EDD8B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6AC705C622707B6000EDD8B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				6AC705C622707B6000EDD8B3 /* HomeViewController.swift */,
 				6AC705C822707B7200EDD8B3 /* ProfileViewController.swift */,
 				6AEFF027227AD83200ED2FA6 /* UserAuthenticationController.swift */,
+				6A675F762283E491001F0F11 /* GenreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				6AC705C722707B6000EDD8B3 /* HomeViewController.swift in Sources */,
 				6AC705CC227089AC00EDD8B3 /* Extension.swift in Sources */,
 				6AEEE39D226326C600027C88 /* SignInViewController.swift in Sources */,
+				6A675F772283E491001F0F11 /* GenreViewController.swift in Sources */,
 				6AEEE39B226326C600027C88 /* AppDelegate.swift in Sources */,
 				6AC705C5227063A500EDD8B3 /* SignUpViewController.swift in Sources */,
 				6AC705C3227061B400EDD8B3 /* User.swift in Sources */,
