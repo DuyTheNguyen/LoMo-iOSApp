@@ -8,8 +8,8 @@
 
 import Foundation
 import FirebaseAuth
-class UserAuthenticationController{
-    weak var delegate: UserAuthenticationControllerDelegate?
+class UserAuthenticationNetwrokController{
+    weak var delegate: UserAuthenticationNetworkControllerDelegate?
     
     func authenticationListener(){
         Auth.auth().addStateDidChangeListener { (auth, user1) in

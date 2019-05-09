@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol UserAuthenticationControllerDelegate: class {
+protocol UserAuthenticationNetworkControllerDelegate: class {
     func didReceiveUser(user: User)
 }
