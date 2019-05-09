@@ -16,10 +16,9 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.a
         
-        print(Auth.auth().currentUser?.email ?? "NOOOO")
-        print(Auth.auth().currentUser?.uid ?? "NOOO")
+        
     }
     
 
