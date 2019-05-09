@@ -13,6 +13,8 @@ class DatabaseNetworkController{
     
     private var rootReference: DatabaseReference!
     
+    weak var delegate: DatabaseNetworkControllerDelegate?
+    
     init(){
         rootReference = Database.database().reference()
     }
@@ -24,10 +26,37 @@ class DatabaseNetworkController{
             return
         }
         
-        rootReference.child(path).observeSingleEvent(of: .value) { (snapshot) in
-            if let val = snapshot.value as? [String: Any]{
-                
+        
+        
+        rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            if let values = snapshot.value as? [String:AnyObject] {
+                var movies = [Movie]()
+                for (_,value) in values{
+                    let movie = Movie(id: value["id"] as? String,
+                                      name: value["name"] as? String,
+                                      rating: value["rating"] as? String,
+                                      year: value["year"] as? String,
+                                      image: value["image"] as? String,
+                                      genre: value["description"] as? String,
+                                      description: value["genre"] as? String,
+                                      director: value["director"] as? String)
+                    movies.append(movie)
+                }
+                self.delegate?.didReceivedDictionaryOfMovies(movies: movies)
+            }else{
+                print("Cannot get values")
             }
+            
+            
+            
+            
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
         
     }

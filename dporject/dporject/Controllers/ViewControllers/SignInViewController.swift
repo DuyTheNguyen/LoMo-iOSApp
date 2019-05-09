@@ -56,8 +56,7 @@ class SignInViewController: UIViewController {
         
         dataRef.child("someid/name").setValue("hahaha")
         */
-        
-        
+       
         
     }
 
@@ -69,6 +68,10 @@ class SignInViewController: UIViewController {
             self.emailLabel.text = dataSnapShot.value as? String
         }
          */
+        
+        emailText.text = "duy@gmail.com"
+        passwordText.text = "duy123"
+        
     }
     
 }
