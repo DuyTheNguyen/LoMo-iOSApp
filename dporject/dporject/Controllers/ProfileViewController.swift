@@ -13,8 +13,13 @@ class ProfileViewController: UIViewController {
 
     private let userAuthenticationController = UserAuthenticationController()
     
-    fileprivate var user = User()
-    
+    fileprivate var user = User(){
+        didSet{
+            emailLabel.text = user.email
+            userIdLabel.text = user.uid
+        }
+    }
+        
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
@@ -26,14 +31,15 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         userAuthenticationController.delegate = self
         userAuthenticationController.authenticationListener()
+        
+        print(Auth.auth().currentUser?.email ?? "NOOOO")
+        print(Auth.auth().currentUser?.uid ?? "NOOO")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        emailLabel.text = user.email
-        userIdLabel.text = user.uid
+       
     }
     
 

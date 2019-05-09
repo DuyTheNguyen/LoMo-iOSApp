@@ -13,6 +13,7 @@ class UserAuthenticationController{
     
     func authenticationListener(){
         Auth.auth().addStateDidChangeListener { (auth, user1) in
+            
             guard let user = user1 else{
                 //TODO: handle logout
                 return
