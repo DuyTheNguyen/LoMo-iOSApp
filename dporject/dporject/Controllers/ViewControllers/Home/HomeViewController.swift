@@ -13,21 +13,19 @@ import FirebaseDatabase
 class HomeViewController: UIViewController {
     
     private let databaseNetworkController = DatabaseNetworkController()
+  
+    @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate var movies = [Movie](){
         didSet{
-            print("HOME CONTROLLER")
-            print(movies)
+            self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
 
-    @IBAction func signOutButtonTapped(_ sender: Any) {
-        handleControllerTransitionWith(identifier: "SignInViewController")
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.a
-        print(Database.database().reference().child("popular"))
         
         databaseNetworkController.delegate = self
         databaseNetworkController.getDictionaryWith(path: "popular")
@@ -48,6 +46,25 @@ class HomeViewController: UIViewController {
     }
     */
 
+}
+
+//Create extesnsion to conform Collection View
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotMoviesCell", for: indexPath) as! HotMoviesCollectionViewCell
+        
+        let hotMovie = movies[indexPath.row]
+        
+        hotMovieCell.displayContent(imageString: hotMovie.image!, movieName: hotMovie.name!)
+        
+        return hotMovieCell
+    }
+    
+    
 }
 
 //Create extension to conform Delegate
