@@ -46,6 +46,8 @@ class DatabaseNetworkController{
                 self.delegate?.didReceivedDictionaryOfMovies(movies: movies)
             }else{
                 print("Cannot get values")
+                print("Value exist? : \(snapshot.exists())")
+                print("Path: \(rootReference.child(path))")
             }
             
             
