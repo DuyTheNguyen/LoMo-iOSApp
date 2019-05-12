@@ -10,9 +10,12 @@ import UIKit
 
 class GenreViewController: UIViewController {
 
+    private let listOfGenre: [String] = ["Action", "Comedy", "Romance", "Sci-fi"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -28,3 +31,22 @@ class GenreViewController: UIViewController {
     */
 
 }
+
+//Create extension to conform Collection View
+extension GenreViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listOfGenre.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
+        
+        let genre = listOfGenre[indexPath.row]
+        
+        genreCell.bind(name: genre)
+        return genreCell
+    }
+    
+    
+}
+
