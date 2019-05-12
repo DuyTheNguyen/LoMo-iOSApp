@@ -28,14 +28,20 @@ class GenreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Set the label can be tapped
         allMovieLabel.loadCustomisedLabel()
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(allMoviesLabelOnTapped))
+        allMovieLabel.isUserInteractionEnabled = true
+        allMovieLabel.addGestureRecognizer(gesture)
         
         databaseNetworkController.delegate = self
         databaseNetworkController.getListOfObjectsFrom(path: "genre", withDataType: "Genre")
         // Do any additional setup after loading the view.
     }
     
-
+    @objc func allMoviesLabelOnTapped(){
+        print("Tapped")
+    }
     
     // MARK: - Navigation
 
