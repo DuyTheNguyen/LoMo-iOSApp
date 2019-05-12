@@ -31,12 +31,12 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.a
         
         databaseNetworkController.delegate = self
-        databaseNetworkController.getDictionaryWith(path: "popular")
+        databaseNetworkController.getListOfMoviesFrom(path: "popular")
         
     }
     
     @IBAction func testButton(_ sender: Any) {
-        databaseNetworkController.getDictionaryWith(path: "popular")
+        databaseNetworkController.getListOfMoviesFrom(path: "popular")
     }
     
     

@@ -20,7 +20,7 @@ class DatabaseNetworkController{
     }
     
     
-    func getDictionaryWith(path:String){
+    func getListOfMoviesFrom(path:String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return

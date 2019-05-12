@@ -465,6 +465,7 @@
                     </view>
                     <connections>
                         <outlet property="moviesCollectionView" destination="xb9-1j-oGq" id="MfC-qL-8Sk"/>
+                        <segue destination="DEx-tu-9fc" kind="show" identifier="movieListToMovie" id="LGP-He-rsj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5l-aK-Dhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -510,4 +511,7 @@
             <point key="canvasLocation" x="2236" y="-994"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LGP-He-rsj"/>
+    </inferredMetricsTieBreakers>
 </document>
