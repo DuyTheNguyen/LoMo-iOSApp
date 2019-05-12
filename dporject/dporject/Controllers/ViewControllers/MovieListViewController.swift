@@ -44,7 +44,13 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieListCollectionViewCell
+        
+        let movie = listOfMovie[indexPath.row]
+        
+        movieCell.bind(movie: movie)
+        
+        return movieCell
     }
     
     
