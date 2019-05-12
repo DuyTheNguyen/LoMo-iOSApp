@@ -12,11 +12,15 @@ class MovieListViewController: UIViewController {
 
     var genre: String!
     
-    
-    
+    fileprivate var listOfMovie = [Movie](){
+        didSet{
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(genre)
+        self.title = genre
+     
         // Do any additional setup after loading the view.
     }
     
@@ -31,4 +35,17 @@ class MovieListViewController: UIViewController {
     }
     */
 
+}
+
+//Create extension to conform Collection View
+extension MovieListViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listOfMovie.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
+    
 }
