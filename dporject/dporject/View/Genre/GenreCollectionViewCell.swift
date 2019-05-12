@@ -11,8 +11,20 @@ import UIKit
 class GenreCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var genreImageView: UIImageView!
+    
+   
+    
     
     func bind(genre: Genre){
+        self.loadCustomisedCell()
+        
         nameLabel.text = genre.name
+        nameLabel.layer.opacity = 1
+        
+        genreImageView.load(imageString: genre.image ?? "")
+        genreImageView.layer.opacity = 0.6
+       
+       
     }
 }

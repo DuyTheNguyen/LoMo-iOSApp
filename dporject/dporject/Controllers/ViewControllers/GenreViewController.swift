@@ -17,6 +17,9 @@ class GenreViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var allMovieLabel: UILabel!
+
+    
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
     private let databaseNetworkController = DatabaseNetworkController()
@@ -25,6 +28,7 @@ class GenreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        allMovieLabel.loadCustomisedLabel()
         
         databaseNetworkController.delegate = self
         databaseNetworkController.getListOfObjectsFrom(path: "genre", withDataType: "Genre")
