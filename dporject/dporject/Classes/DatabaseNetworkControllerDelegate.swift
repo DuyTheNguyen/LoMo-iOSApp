@@ -8,6 +8,19 @@
 
 import Foundation
 protocol DatabaseNetworkControllerDelegate: class{
-    func didReceivedDictionaryOfMovies(movies : [Movie])
+    func didReceivedListOfMovies(movies : [Movie])
+    func didReceivedListOfGenres(genres: [Genre])
 }
 
+//Make methods for this delegate be optional
+
+extension DatabaseNetworkControllerDelegate{
+    func didReceivedListOfMovies(movies: [Movie]){
+        
+    }
+    
+    func didReceivedListOfGenres(genres: [Genre]){
+        
+    }
+
+}

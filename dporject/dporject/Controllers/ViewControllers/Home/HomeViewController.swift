@@ -31,12 +31,12 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.a
         
         databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfMoviesFrom(path: "popular")
+        databaseNetworkController.getListOfMoviesFrom(path: "popular",  withDataType: "Movie")
         
     }
     
     @IBAction func testButton(_ sender: Any) {
-        databaseNetworkController.getListOfMoviesFrom(path: "popular")
+        databaseNetworkController.getListOfMoviesFrom(path: "popular", withDataType: "Movie")
     }
     
     
@@ -79,7 +79,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 //Create extension to conform Delegate
 extension HomeViewController: DatabaseNetworkControllerDelegate{
-    func didReceivedDictionaryOfMovies(movies: [Movie]) {
+    func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovies = movies
     }
 }

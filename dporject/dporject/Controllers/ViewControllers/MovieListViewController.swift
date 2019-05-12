@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController {
     
         databaseNetworkController.delegate = self
         //get list of movies based on path
-        databaseNetworkController.getListOfMoviesFrom(path: "genremovies/\(genre ?? "")")
+        databaseNetworkController.getListOfMoviesFrom(path: "genremovies/\(genre ?? "")", withDataType: "Movie")
      
         // Do any additional setup after loading the view.
     }
@@ -80,7 +80,7 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
 //Create extension to comform delegate
 
 extension MovieListViewController: DatabaseNetworkControllerDelegate{
-    func didReceivedDictionaryOfMovies(movies: [Movie]) {
+    func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovie = movies
     }
     
