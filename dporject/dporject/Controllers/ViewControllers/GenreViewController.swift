@@ -10,14 +10,24 @@ import UIKit
 
 class GenreViewController: UIViewController {
 
-    private let listOfGenre: [String] = ["Action", "Comedy", "Romance", "Sci-fi"]
+    private var listOfGenre = [Genre](){
+        didSet{
+            print(listOfGenre)
+            self.genreCollectionView.reloadData()
+        }
+    }
     
-    fileprivate var selectedGenre: String? = nil
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    
+    private let databaseNetworkController = DatabaseNetworkController()
+    
+    fileprivate var selectedGenre: Genre!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        databaseNetworkController.delegate = self
+        databaseNetworkController.getListOfObjectsFrom(path: "genre", withDataType: "Genre")
         // Do any additional setup after loading the view.
     }
     
@@ -48,7 +58,7 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         let genre = listOfGenre[indexPath.row]
         
-        genreCell.bind(name: genre)
+        genreCell.bind(genre: genre)
         return genreCell
     }
     
@@ -58,5 +68,12 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
         performSegue(withIdentifier: "genreToMovieList", sender: nil)
     }
     
+}
+
+//Create extension to conform delegate
+extension GenreViewController: DatabaseNetworkControllerDelegate{
+    func didReceivedListOfGenres(genres: [Genre]) {
+        self.listOfGenre = genres
+    }
 }
 

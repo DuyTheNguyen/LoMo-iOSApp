@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    fileprivate var selectedMovie: Movie? = nil
+    fileprivate var selectedMovie: Movie!
 
    
     override func viewDidLoad() {
@@ -31,12 +31,12 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.a
         
         databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfMoviesFrom(path: "popular",  withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: "popular",  withDataType: "Movie")
         
     }
     
     @IBAction func testButton(_ sender: Any) {
-        databaseNetworkController.getListOfMoviesFrom(path: "popular", withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: "popular", withDataType: "Movie")
     }
     
     

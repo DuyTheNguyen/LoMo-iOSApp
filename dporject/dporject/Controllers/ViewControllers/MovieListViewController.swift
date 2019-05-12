@@ -10,7 +10,7 @@ import UIKit
 
 class MovieListViewController: UIViewController {
 
-    var genre: String!
+    var genre: Genre!
     
     var selectedMovie: Movie!
     
@@ -27,11 +27,11 @@ class MovieListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = genre
+        self.title = genre.name
     
         databaseNetworkController.delegate = self
         //get list of movies based on path
-        databaseNetworkController.getListOfMoviesFrom(path: "genremovies/\(genre ?? "")", withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: "genremovies/\(genre.name ?? "")", withDataType: "Movie")
      
         // Do any additional setup after loading the view.
     }

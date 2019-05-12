@@ -12,7 +12,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    func bind(name: String){
-        nameLabel.text = name
+    func bind(genre: Genre){
+        nameLabel.text = genre.name
     }
 }

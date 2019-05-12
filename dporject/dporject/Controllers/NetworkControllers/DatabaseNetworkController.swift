@@ -20,7 +20,7 @@ class DatabaseNetworkController{
     }
     
     
-    func getListOfMoviesFrom(path:String, withDataType: String){
+    func getListOfObjectsFrom(path:String, withDataType: String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
@@ -53,7 +53,7 @@ class DatabaseNetworkController{
                                           image: value["image"] as? String)
                         genres.append(genre)
                     }
-                    
+                    self.delegate?.didReceivedListOfGenres(genres: genres)
                 default:
                     print("Something went wrong in the switch case")
                     print("Path: \(rootReference.child(path))")

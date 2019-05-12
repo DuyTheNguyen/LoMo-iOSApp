@@ -402,6 +402,7 @@
                     <navigationItem key="navigationItem" id="VVq-hT-1bZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="genreCollectionView" destination="MOu-qm-8gR" id="z49-6A-u5P"/>
                         <segue destination="jxZ-By-1wQ" kind="show" identifier="genreToMovieList" id="kZF-dA-Uoe"/>
                     </connections>
                 </viewController>
