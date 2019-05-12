@@ -72,6 +72,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMovie = listOfMovies[indexPath.row]
+        performSegue(withIdentifier: "homeToMovie", sender: nil)
     }
 }
 

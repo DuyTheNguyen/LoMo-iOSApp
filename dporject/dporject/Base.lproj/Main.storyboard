@@ -309,7 +309,7 @@
                     <navigationItem key="navigationItem" id="2He-BX-SqN"/>
                     <connections>
                         <outlet property="collectionView" destination="H3T-Cy-Iy7" id="L4R-jr-vjQ"/>
-                        <segue destination="DEx-tu-9fc" kind="show" identifier="goToMoviePage" id="Ftl-VD-ggp"/>
+                        <segue destination="DEx-tu-9fc" kind="show" identifier="homeToMovie" id="Ftl-VD-ggp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPr-wv-t0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -392,6 +392,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="qGV-tW-5V1" id="lP2-Eb-jIz"/>
+                                    <outlet property="delegate" destination="qGV-tW-5V1" id="2mu-AH-PaW"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -400,10 +401,28 @@
                     </view>
                     <navigationItem key="navigationItem" id="VVq-hT-1bZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="jxZ-By-1wQ" kind="show" identifier="genreToMovieList" id="kZF-dA-Uoe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqn-Zm-Uh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1989.8550724637682" y="-969.64285714285711"/>
+        </scene>
+        <!--Movie List View Controller-->
+        <scene sceneID="YTx-oE-cCX">
+            <objects>
+                <viewController id="jxZ-By-1wQ" customClass="MovieListViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R1Y-Ut-nU4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HhK-AC-uF0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5l-aK-Dhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2768" y="-968"/>
         </scene>
         <!--Home-->
         <scene sceneID="UCS-P0-J7D">

@@ -12,6 +12,8 @@ class GenreViewController: UIViewController {
 
     private let listOfGenre: [String] = ["Action", "Comedy", "Romance", "Sci-fi"]
     
+    fileprivate var selectedGenre: String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,15 +22,18 @@ class GenreViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let movieListViewController = segue.destination as? MovieListViewController{
+            movieListViewController.genre = selectedGenre
+        }
     }
-    */
+ 
 
 }
 
@@ -47,6 +52,11 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
         return genreCell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedGenre = listOfGenre[indexPath.row]
+        performSegue(withIdentifier: "genreToMovieList", sender: nil)
+    }
     
 }
 
