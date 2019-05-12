@@ -12,7 +12,6 @@ class GenreViewController: UIViewController {
 
     private var listOfGenre = [Genre](){
         didSet{
-            print(listOfGenre)
             self.genreCollectionView.reloadData()
         }
     }
@@ -40,7 +39,8 @@ class GenreViewController: UIViewController {
     }
     
     @objc func allMoviesLabelOnTapped(){
-        print("Tapped")
+        selectedGenre = Genre(name: "All", image: "")
+        performSegue(withIdentifier: "genreToMovieList", sender: nil)
     }
     
     // MARK: - Navigation
