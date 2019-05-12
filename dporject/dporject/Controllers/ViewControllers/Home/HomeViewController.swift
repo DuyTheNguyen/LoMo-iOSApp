@@ -21,6 +21,8 @@ class HomeViewController: UIViewController {
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
+    
+    fileprivate var selectedMovie: Movie? = nil
 
    
     override func viewDidLoad() {
@@ -36,15 +38,19 @@ class HomeViewController: UIViewController {
         databaseNetworkController.getDictionaryWith(path: "popular")
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let movieViewController = segue.destination as? MovieViewController{
+            //Pass the movie to movie view controller
+            movieViewController.movie = selectedMovie
+        }
     }
-    */
+    
 
 }
 
@@ -64,7 +70,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return hotMovieCell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedMovie = movies[indexPath.row]
+        performSegue(withIdentifier: "goToMoviePage", sender: nil)
+        print("Select: \(indexPath.row)")
+    }
 }
 
 //Create extension to conform Delegate

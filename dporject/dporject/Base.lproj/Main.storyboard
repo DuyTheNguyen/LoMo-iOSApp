@@ -299,6 +299,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="G6i-LC-tsl" id="7c2-H2-yuE"/>
+                                    <outlet property="delegate" destination="G6i-LC-tsl" id="pGV-7p-ump"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -308,11 +309,27 @@
                     <navigationItem key="navigationItem" id="2He-BX-SqN"/>
                     <connections>
                         <outlet property="collectionView" destination="H3T-Cy-Iy7" id="L4R-jr-vjQ"/>
+                        <segue destination="DEx-tu-9fc" kind="show" identifier="goToMoviePage" id="Ftl-VD-ggp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPr-wv-t0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3175.36231884058" y="-243.08035714285714"/>
+        </scene>
+        <!--Movie View Controller-->
+        <scene sceneID="p3e-12-alR">
+            <objects>
+                <viewController id="DEx-tu-9fc" customClass="MovieViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bo0-F1-Rbg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="x8d-b6-5Ty"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4125" y="-419"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qS9-bD-6dE">
