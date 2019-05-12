@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
   
     @IBOutlet weak var collectionView: UICollectionView!
     
-    fileprivate var movies = [Movie](){
+    fileprivate var listOfMovies = [Movie](){
         didSet{
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
@@ -57,29 +57,27 @@ class HomeViewController: UIViewController {
 //Create extesnsion to conform Collection View
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return listOfMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotMoviesCell", for: indexPath) as! HotMoviesCollectionViewCell
         
-        let hotMovie = movies[indexPath.row]
+        let hotMovie = listOfMovies[indexPath.row]
         
-        hotMovieCell.displayContent(imageString: hotMovie.image!, movieName: hotMovie.name!)
+        hotMovieCell.bind(movie: hotMovie)
         
         return hotMovieCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedMovie = movies[indexPath.row]
-        performSegue(withIdentifier: "goToMoviePage", sender: nil)
-        print("Select: \(indexPath.row)")
+        selectedMovie = listOfMovies[indexPath.row]
     }
 }
 
 //Create extension to conform Delegate
 extension HomeViewController: DatabaseNetworkControllerDelegate{
     func didReceivedDictionaryOfMovies(movies: [Movie]) {
-        self.movies = movies
+        self.listOfMovies = movies
     }
 }

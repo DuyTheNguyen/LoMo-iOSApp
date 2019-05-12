@@ -10,12 +10,13 @@ import UIKit
 
 class HotMoviesCollectionViewCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     
-    func displayContent(imageString: String, movieName: String){
-        movieNameLabel.text = movieName
+    func bind(movie: Movie){
+        movieNameLabel.text = movie.name
         
-        imageView.load(imageString: imageString)
+        imageView.load(imageString: movie.image!)
     }
 }
