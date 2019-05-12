@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController {
     
         databaseNetworkController.delegate = self
         //get list of movies based on path
-        databaseNetworkController.getListOfMoviesFrom(path: "genre/\(genre ?? "")")
+        databaseNetworkController.getListOfMoviesFrom(path: "genremovies/\(genre ?? "")")
      
         // Do any additional setup after loading the view.
     }
