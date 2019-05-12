@@ -463,6 +463,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HhK-AC-uF0"/>
                     </view>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="xb9-1j-oGq" id="MfC-qL-8Sk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5l-aK-Dhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -26,8 +26,7 @@ class DatabaseNetworkController{
             return
         }
         
-        
-        
+        //Get the list of movies
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             
             

@@ -12,14 +12,24 @@ class MovieListViewController: UIViewController {
 
     var genre: String!
     
+    private let databaseNetworkController = DatabaseNetworkController()
+    
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    
+    
     fileprivate var listOfMovie = [Movie](){
         didSet{
-            
+            //Refresh collection view whenever listOfMovie has new value
+            self.moviesCollectionView.reloadData()
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = genre
+    
+        databaseNetworkController.delegate = self
+        //get list of movies based on path
+        databaseNetworkController.getDictionaryWith(path: "genre/\(genre ?? "")")
      
         // Do any additional setup after loading the view.
     }
@@ -55,3 +65,15 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
     
     
 }
+
+
+//Create extension to comform delegate
+
+extension MovieListViewController: DatabaseNetworkControllerDelegate{
+    func didReceivedDictionaryOfMovies(movies: [Movie]) {
+        self.listOfMovie = movies
+    }
+    
+}
+
+

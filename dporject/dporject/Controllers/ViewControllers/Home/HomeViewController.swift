@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
     
     fileprivate var listOfMovies = [Movie](){
         didSet{
-            self.collectionView.reloadSections(IndexSet(integer: 0))
+            //self.collectionView.reloadSections(IndexSet(integer: 0))
+            self.collectionView.reloadData()
         }
     }
     
