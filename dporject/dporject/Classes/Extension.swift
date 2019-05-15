@@ -20,6 +20,42 @@ extension UIViewController{
     }
 }
 
+
+
+
+
+
+/************************************************
+ *************** Begin: UIView ******************
+ ************************************************/
+
+//Rounded Bottom Corners
+extension UIView{
+    func roundedCorner (corners:UIRectCorner, radius: CGFloat){
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+}
+
+/************************************************
+ *************** End: UIView ********************
+ ************************************************/
+
+
+
+
+
+
+
+
+
+
+/*************************************************
+ *************** Begin: UIImageView **************
+ *************************************************/
+
 //Allow load image from URL
 extension UIImageView {
     func load(imageString: String) {
@@ -38,6 +74,24 @@ extension UIImageView {
     }
 }
 
+/*************************************************
+ *************** End: UIImageView ****************
+ *************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/**********************************************************
+ *************** Begin: UICollectionViewCell **************
+ **********************************************************/
+
 //Create cell with shadow and radius
 extension UICollectionViewCell{
     func loadCustomisedCell(){
@@ -55,6 +109,24 @@ extension UICollectionViewCell{
     }
 }
 
+/********************************************************
+ *************** End: UICollectionViewCell **************
+ ********************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/************************************************
+ *************** Begin: UILabel *****************
+ ************************************************/
+
 //Create label with shawdow and radius
 extension UILabel{
     func loadCustomisedLabel(){
@@ -71,3 +143,7 @@ extension UILabel{
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
     }
 }
+
+/************************************************
+ *************** End: UILabel *******************
+ ************************************************/

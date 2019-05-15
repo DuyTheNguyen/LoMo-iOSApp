@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MovieViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     fileprivate var currentUser = User(){
         didSet{
@@ -45,6 +47,11 @@ class MovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
         guard let movie = movie else{
             fatalError("Could not load movie")
         }
@@ -55,6 +62,9 @@ class MovieViewController: UIViewController {
         ratingLabel.text = movie.rating
         descriptionLabel.text = movie.description
         
+        movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
+        
+        mapView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
     }
 
     /*
