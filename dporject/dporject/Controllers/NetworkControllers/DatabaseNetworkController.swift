@@ -19,7 +19,7 @@ class DatabaseNetworkController{
         rootReference = Database.database().reference()
     }
     
-    
+    //Add comments
     func addComment(movieId: String, comment: Comment){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
@@ -41,13 +41,14 @@ class DatabaseNetworkController{
        
     }
     
+    //Get genres, movies and comment
     func getListOfObjectsFrom(path:String, withDataType: String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
         }
         
-        //Get the list of movies
+        //Get the list of object
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             
             
