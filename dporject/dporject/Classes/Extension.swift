@@ -183,3 +183,15 @@ extension UILabel{
 
 
 
+
+
+extension Date {
+    func currentTimeMillis() -> Int64 {
+        return Int64(self.timeIntervalSince1970 * 1000)
+    }
+    func getCurrentDateInString()-> String{
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return format.string(from: self)
+    }
+}

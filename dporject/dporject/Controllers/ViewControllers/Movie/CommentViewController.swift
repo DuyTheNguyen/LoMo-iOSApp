@@ -42,7 +42,11 @@ class CommentViewController: UIViewController {
             return
         }
         
-        print(currentUser)
+        let comment = Comment( name: currentUser?.displayName ?? (currentUser?.email)!,
+                               image: currentUser?.photoURL ?? "",
+                               content: commentTextView.text,
+                               timestamp: Date().getCurrentDateInString())
+        print(comment)
         
     }
     /*
