@@ -45,7 +45,7 @@ class MovieListViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let movieViewController = segue.destination as? MovieViewController{
-            movieViewController.movie = selectedMovie
+            movieViewController.selectedMovie = selectedMovie
         }
     }
     

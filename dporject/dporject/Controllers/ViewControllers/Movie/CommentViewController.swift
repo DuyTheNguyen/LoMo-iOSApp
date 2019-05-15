@@ -16,7 +16,8 @@ class CommentViewController: UIViewController {
     private let userAuthentiationNetworkController = UserAuthenticationNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
     
-    private var currentUser: User? = nil
+    private var currentUser: User!
+    var selectedMovie: Movie!
     private var isCommentAdded: Bool = false
     
     override func viewDidLoad() {
@@ -46,6 +47,10 @@ class CommentViewController: UIViewController {
             return
         }
         
+        guard let movie = selectedMovie else{
+            fatalError("CommentViewController: no movie")
+        }
+        
         let comment = Comment( commentId: "",
                                userId: (currentUser?.uid)!,
                                userName: currentUser?.displayName ?? (currentUser?.email)!,
@@ -53,7 +58,7 @@ class CommentViewController: UIViewController {
                                content: commentTextView.text,
                                timestamp: Date().getCurrentDateInString())
         
-        databaseNetworkController.addComment(movieId: "001", comment: comment)
+        databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
         
         if isCommentAdded {
              dismiss(animated: true, completion: nil)

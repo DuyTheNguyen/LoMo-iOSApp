@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if let movieViewController = segue.destination as? MovieViewController{
             //Pass the movie to movie view controller
-            movieViewController.movie = selectedMovie
+            movieViewController.selectedMovie = selectedMovie
         }
     }
     

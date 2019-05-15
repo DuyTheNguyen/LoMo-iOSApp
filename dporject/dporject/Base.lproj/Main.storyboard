@@ -453,7 +453,8 @@
                                                 </constraints>
                                                 <state key="normal" title="Add"/>
                                                 <connections>
-                                                    <segue destination="Cym-in-IjV" kind="presentation" id="KHP-01-pnA"/>
+                                                    <action selector="addButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="c7y-x9-aJE"/>
+                                                    <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="KHP-01-pnA"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storyline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-ed-4Mk">

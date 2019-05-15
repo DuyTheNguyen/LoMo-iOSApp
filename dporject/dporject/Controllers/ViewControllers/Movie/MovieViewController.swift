@@ -11,7 +11,7 @@ import MapKit
 
 class MovieViewController: UIViewController {
     
-    var movie: Movie? = nil
+    var selectedMovie: Movie!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImageView: UIImageView!
@@ -21,14 +21,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    fileprivate var currentUser = User(){
-        didSet{
-            print(currentUser)
-        }
-    }
-        
-    
-    
+    private var currentUser: User!
     private let userAuthenticationNetworkController = UserAuthenticationNetworkController();
 
     override func viewDidLoad() {
@@ -52,10 +45,10 @@ class MovieViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         
-        guard let movie = movie else{
+        guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
-        print(movie)
+        
         movieImageView.load(imageString: movie.image!)
         movieNameLabel.text = movie.name
         yearLabel.text = movie.year
@@ -67,15 +60,23 @@ class MovieViewController: UIViewController {
         mapView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
     }
 
-    /*
+    
+    @IBAction func addButtonOnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "movieToComment", sender: nil)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let commentViewController = segue.destination as? CommentViewController{
+            guard let movie = selectedMovie else {
+                fatalError("MovieViewController: cannot load movie" )
+            }
+            commentViewController.selectedMovie = movie
+        }
     }
-    */
+ 
 
 }
 
