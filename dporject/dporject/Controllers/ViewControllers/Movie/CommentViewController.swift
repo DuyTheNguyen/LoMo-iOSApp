@@ -42,7 +42,8 @@ class CommentViewController: UIViewController {
             return
         }
         
-        let comment = Comment( name: currentUser?.displayName ?? (currentUser?.email)!,
+        let comment = Comment( userId: (currentUser?.uid)!,
+                               userName: currentUser?.displayName ?? (currentUser?.email)!,
                                image: currentUser?.photoURL ?? "",
                                content: commentTextView.text,
                                timestamp: Date().getCurrentDateInString())

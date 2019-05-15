@@ -9,7 +9,8 @@
 import Foundation
 
 struct Comment: Decodable{
-    let name: String
+    let userId: String
+    let userName: String
     let image: String
     let content: String
     let timestamp: String
