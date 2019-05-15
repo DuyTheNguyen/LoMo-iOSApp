@@ -11,17 +11,26 @@ import UIKit
 class MovieViewController: UIViewController {
     
     var movie: Movie? = nil
+    
+    fileprivate var currentUser = User(){
+        didSet{
+            print(currentUser)
+        }
+    }
+        
+    
+    
+    private let userAuthenticationNetworkController = UserAuthenticationNetworkController();
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        userAuthenticationNetworkController.delegate = self
+        userAuthenticationNetworkController.authenticationListener()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         print("\(movie?.name)")
     }
 
@@ -35,4 +44,11 @@ class MovieViewController: UIViewController {
     }
     */
 
+}
+
+//Create extension to conform UserAuthenticationNetwork
+extension MovieViewController: UserAuthenticationNetworkControllerDelegate{
+    func didReceiveUser(user: User) {
+        currentUser = user
+    }
 }

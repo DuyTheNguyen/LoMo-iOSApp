@@ -11,12 +11,12 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
-    private let userAuthenticationController = UserAuthenticationNetwrokController()
+    private let userAuthenticationController = UserAuthenticationNetworkController()
     
-    fileprivate var user = User(){
+    fileprivate var currrentUser = User(){
         didSet{
-            emailLabel.text = user.email
-            userIdLabel.text = user.uid
+            emailLabel.text = currrentUser.email
+            userIdLabel.text = currrentUser.uid
         }
     }
         
@@ -27,19 +27,13 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         userAuthenticationController.delegate = self
         userAuthenticationController.authenticationListener()
-        
-        print(Auth.auth().currentUser?.email ?? "NOOOO")
-        print(Auth.auth().currentUser?.uid ?? "NOOO")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-       
     }
     
 
@@ -55,15 +49,12 @@ class ProfileViewController: UIViewController {
     @IBAction func signOutButtonTapped(_ sender: Any) {
          handleControllerTransitionWith(identifier: "SignInViewController")
     }
-    
-    
-    
 }
 
 //Create extension to conform Delegate
 extension ProfileViewController: UserAuthenticationNetworkControllerDelegate{
     func didReceiveUser(user: User) {
-        self.user = user
+        self.currrentUser = user
     }
     
 }
