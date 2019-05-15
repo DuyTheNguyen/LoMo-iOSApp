@@ -20,6 +20,27 @@ class DatabaseNetworkController{
     }
     
     
+    func addComment(movieId: String, comment: Comment){
+        guard let rootReference = rootReference else{
+            print("Something went wrong with root reference")
+            self.delegate?.isCommentAdded(isIt: false)
+            return
+        }
+        
+        let commentRef = rootReference.child("comments/\(movieId)").childByAutoId()
+        commentRef.setValue([
+            "commentId" : commentRef.key,
+            "userId": comment.userId,
+            "userName": comment.userName,
+            "image" : comment.image,
+            "timestamp" : comment.timestamp,
+            "content": comment.content
+        ])
+        
+        self.delegate?.isCommentAdded(isIt: true)
+       
+    }
+    
     func getListOfObjectsFrom(path:String, withDataType: String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")

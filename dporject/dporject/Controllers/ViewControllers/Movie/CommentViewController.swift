@@ -14,8 +14,10 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var commentModal: UIView!
     
     private let userAuthentiationNetworkController = UserAuthenticationNetworkController()
+    private let databaseNetworkController = DatabaseNetworkController()
     
     private var currentUser: User? = nil
+    private var isCommentAdded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class CommentViewController: UIViewController {
         
         userAuthentiationNetworkController.delegate = self
         userAuthentiationNetworkController.authenticationListener()
+        
+        databaseNetworkController.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -42,12 +46,20 @@ class CommentViewController: UIViewController {
             return
         }
         
-        let comment = Comment( userId: (currentUser?.uid)!,
+        let comment = Comment( commentId: "",
+                               userId: (currentUser?.uid)!,
                                userName: currentUser?.displayName ?? (currentUser?.email)!,
                                image: currentUser?.photoURL ?? "",
                                content: commentTextView.text,
                                timestamp: Date().getCurrentDateInString())
-        print(comment)
+        
+        databaseNetworkController.addComment(movieId: "001", comment: comment)
+        
+        if isCommentAdded {
+             dismiss(animated: true, completion: nil)
+        }else{
+            print("CommentViewController: Could not add comment")
+        }
         
     }
     /*
@@ -68,6 +80,10 @@ extension CommentViewController: UserAuthenticationNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         self.currentUser = user
     }
-    
-    
+}
+
+extension CommentViewController: DatabaseNetworkControllerDelegate{
+    func isCommentAdded(isIt: Bool){
+        self.isCommentAdded = isIt
+    }
 }
