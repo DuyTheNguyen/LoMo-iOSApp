@@ -14,6 +14,10 @@ class MovieViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieNameLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     fileprivate var currentUser = User(){
         didSet{
@@ -40,7 +44,17 @@ class MovieViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("\(movie?.name)")
+        
+        guard let movie = movie else{
+            fatalError("Could not load movie")
+        }
+        print(movie)
+        movieImageView.load(imageString: movie.image!)
+        movieNameLabel.text = movie.name
+        yearLabel.text = movie.year
+        ratingLabel.text = movie.rating
+        descriptionLabel.text = movie.description
+        
     }
 
     /*

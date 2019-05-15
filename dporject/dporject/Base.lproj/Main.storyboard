@@ -532,7 +532,11 @@
                     </view>
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="cob-Ex-Eo1" id="jAd-Fz-Ue8"/>
                         <outlet property="movieImageView" destination="u4D-cJ-vDS" id="RWE-dx-f9V"/>
+                        <outlet property="movieNameLabel" destination="Owb-Cv-kRQ" id="g33-zO-yBO"/>
+                        <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
+                        <outlet property="yearLabel" destination="Fgj-9d-FB5" id="9Zz-cj-dmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
