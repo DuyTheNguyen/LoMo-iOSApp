@@ -40,8 +40,8 @@ class DatabaseNetworkController{
                                           rating: value["rating"] as? String,
                                           year: value["year"] as? String,
                                           image: value["image"] as? String,
-                                          genre: value["description"] as? String,
-                                          description: value["genre"] as? String,
+                                          genre: value["genre"] as? String,
+                                          description: value["description"] as? String,
                                           director: value["director"] as? String)
                         movies.append(movie)
                     }
