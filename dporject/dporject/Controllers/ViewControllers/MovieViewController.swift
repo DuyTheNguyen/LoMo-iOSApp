@@ -12,6 +12,9 @@ class MovieViewController: UIViewController {
     
     var movie: Movie? = nil
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var movieImageView: UIImageView!
+    
     fileprivate var currentUser = User(){
         didSet{
             print(currentUser)
@@ -26,6 +29,12 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         userAuthenticationNetworkController.delegate = self
         userAuthenticationNetworkController.authenticationListener()
+        
+        //let contentWidth = scrollView.bounds.width
+        //let contentHeight = scrollView.bounds.height * 3
+        
+        //scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
+        
         // Do any additional setup after loading the view.
     }
     
