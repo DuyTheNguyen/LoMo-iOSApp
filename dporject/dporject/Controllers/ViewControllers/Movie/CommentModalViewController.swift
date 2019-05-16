@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentViewController: UIViewController {
+class CommentModalViewController: UIViewController {
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentModal: UIView!
@@ -41,6 +41,8 @@ class CommentViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    //add comment to the database
     @IBAction func confirmButtonOnTapped(_ sender: Any) {
         guard commentTextView.text != "" else{
             print("Empty content")
@@ -81,13 +83,13 @@ class CommentViewController: UIViewController {
 
 
 //Create extension to conform Delegate
-extension CommentViewController: UserAuthenticationNetworkControllerDelegate{
+extension CommentModalViewController: UserAuthenticationNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         self.currentUser = user
     }
 }
 
-extension CommentViewController: DatabaseNetworkControllerDelegate{
+extension CommentModalViewController: DatabaseNetworkControllerDelegate{
     func isCommentAdded(isIt: Bool){
         self.isCommentAdded = isIt
     }

@@ -436,7 +436,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UiM-pi-B17">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommentCell" id="UiM-pi-B17">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -536,6 +536,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
+                        <outlet property="commentCollectionView" destination="kjg-AJ-icW" id="KQF-6r-drW"/>
                         <outlet property="descriptionLabel" destination="cob-Ex-Eo1" id="jAd-Fz-Ue8"/>
                         <outlet property="mapView" destination="HKY-nK-AVX" id="AdD-IJ-CGk"/>
                         <outlet property="movieImageView" destination="u4D-cJ-vDS" id="RWE-dx-f9V"/>
@@ -548,10 +549,10 @@
             </objects>
             <point key="canvasLocation" x="5902.898550724638" y="-601.33928571428567"/>
         </scene>
-        <!--Comment View Controller-->
+        <!--Comment Modal View Controller-->
         <scene sceneID="ajB-pt-DaZ">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Cym-in-IjV" customClass="CommentViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Cym-in-IjV" customClass="CommentModalViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kOe-uM-C6l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -863,6 +864,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LGP-He-rsj"/>
+        <segue reference="Ftl-VD-ggp"/>
     </inferredMetricsTieBreakers>
 </document>

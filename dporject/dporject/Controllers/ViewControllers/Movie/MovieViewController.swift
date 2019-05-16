@@ -20,19 +20,25 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var commentCollectionView: UICollectionView!
     
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserAuthenticationNetworkController();
+    fileprivate var listOfComments = [Movie](){
+        didSet{
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         userAuthenticationNetworkController.delegate = self
         userAuthenticationNetworkController.authenticationListener()
         
-        //let contentWidth = scrollView.bounds.width
-        //let contentHeight = scrollView.bounds.height * 3
+        commentCollectionView.delegate = self
+        commentCollectionView.dataSource = self
         
-        //scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
+
         
         // Do any additional setup after loading the view.
     }
@@ -69,7 +75,7 @@ class MovieViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        if let commentViewController = segue.destination as? CommentViewController{
+        if let commentViewController = segue.destination as? CommentModalViewController{
             guard let movie = selectedMovie else {
                 fatalError("MovieViewController: cannot load movie" )
             }
@@ -79,6 +85,20 @@ class MovieViewController: UIViewController {
  
 
 }
+
+//Create extension to conform Collection View
+extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listOfComments.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+    }
+    
+    
+}
+
 
 //Create extension to conform UserAuthenticationNetwork
 extension MovieViewController: UserAuthenticationNetworkControllerDelegate{
