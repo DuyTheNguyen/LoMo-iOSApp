@@ -12,4 +12,5 @@ import UIKit
 enum Icons{
     static let USER_MALE =  #imageLiteral(resourceName: "icons8-user_male_circle")
     static let EDIT_ADD = #imageLiteral(resourceName: "icons8-edit_file")
+    static let ADD = #imageLiteral(resourceName: "icons8-plus")
 }

@@ -22,6 +22,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentTitleLabel: UILabel!
+    @IBOutlet weak var floattingAddButton: UIButton!
     
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserAuthenticationNetworkController()
@@ -67,6 +68,8 @@ class MovieViewController: UIViewController {
             fatalError("Could not load movie")
         }
         
+        floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
+        
         movieImageView.load(imageString: movie.image!)
         movieNameLabel.text = movie.name
         yearLabel.text = movie.year
@@ -82,6 +85,9 @@ class MovieViewController: UIViewController {
         databaseNetworkController.removeObserveDatabase(path: "comments/\(selectedMovie.id!)")
     }
     
+    @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "movieToComment", sender: nil)
+    }
     @IBAction func addButtonOnTapped(_ sender: Any) {
         performSegue(withIdentifier: "movieToComment", sender: nil)
     }
