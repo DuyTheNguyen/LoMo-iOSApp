@@ -328,7 +328,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-Xy-tqN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2008"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1924"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u4D-cJ-vDS">
                                                 <rect key="frame" x="0.0" y="-90" width="414" height="677"/>
@@ -429,10 +429,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-AJ-icW">
-                                                <rect key="frame" x="20" y="1394" width="374" height="332"/>
+                                                <rect key="frame" x="20" y="1394" width="374" height="489"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="332" id="3bq-p5-4m9"/>
+                                                    <constraint firstAttribute="height" constant="489" id="3bq-p5-4m9"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r83-3x-EZo">
                                                     <size key="itemSize" width="370" height="180"/>
@@ -501,17 +501,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdC-QE-9fL">
-                                                <rect key="frame" x="178" y="1763" width="52" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="52" id="tdP-GT-RyS"/>
-                                                </constraints>
-                                                <state key="normal" title="Add"/>
-                                                <connections>
-                                                    <action selector="addButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="c7y-x9-aJE"/>
-                                                    <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="KHP-01-pnA"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-Jk-vJP">
                                                 <rect key="frame" x="324" y="547" width="65" height="65"/>
                                                 <constraints>
@@ -539,10 +528,9 @@
                                             <constraint firstItem="c3a-cW-xbV" firstAttribute="leading" secondItem="Pm8-FL-Lu5" secondAttribute="leading" id="H3l-S1-uDw"/>
                                             <constraint firstItem="tZ3-Xj-9QL" firstAttribute="leading" secondItem="mhq-ed-4Mk" secondAttribute="leading" id="JMY-hC-Eva"/>
                                             <constraint firstItem="u4D-cJ-vDS" firstAttribute="top" secondItem="GTc-Xy-tqN" secondAttribute="top" constant="-90" id="Jii-eF-fUF"/>
-                                            <constraint firstItem="cdC-QE-9fL" firstAttribute="leading" secondItem="GTc-Xy-tqN" secondAttribute="leading" constant="178" id="LFu-GY-pef"/>
                                             <constraint firstItem="HKY-nK-AVX" firstAttribute="leading" secondItem="Pq1-Ty-uCe" secondAttribute="leading" id="LOQ-gU-iUQ"/>
                                             <constraint firstItem="Svz-NW-YDv" firstAttribute="top" secondItem="Fgj-9d-FB5" secondAttribute="bottom" constant="2" id="NRN-t8-OGi"/>
-                                            <constraint firstAttribute="bottom" secondItem="cdC-QE-9fL" secondAttribute="bottom" constant="215" id="NnT-Kj-nYJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="kjg-AJ-icW" secondAttribute="bottom" constant="41" id="OjX-aW-CmW"/>
                                             <constraint firstItem="mhq-ed-4Mk" firstAttribute="leading" secondItem="cob-Ex-Eo1" secondAttribute="leading" id="PwM-ky-iDe"/>
                                             <constraint firstItem="Owb-Cv-kRQ" firstAttribute="leading" secondItem="Fgj-9d-FB5" secondAttribute="leading" id="RWk-3C-GRc"/>
                                             <constraint firstItem="c3a-cW-xbV" firstAttribute="trailing" secondItem="Pm8-FL-Lu5" secondAttribute="trailing" id="SBT-oV-2q2"/>
@@ -562,7 +550,6 @@
                                             <constraint firstItem="cob-Ex-Eo1" firstAttribute="top" secondItem="mhq-ed-4Mk" secondAttribute="bottom" constant="8" id="r6L-bv-6Pk"/>
                                             <constraint firstItem="cob-Ex-Eo1" firstAttribute="leading" secondItem="Yih-CO-uID" secondAttribute="leading" id="t4q-wW-8pt"/>
                                             <constraint firstItem="HKY-nK-AVX" firstAttribute="trailing" secondItem="Pq1-Ty-uCe" secondAttribute="trailing" id="uKN-h0-UHz"/>
-                                            <constraint firstItem="cdC-QE-9fL" firstAttribute="top" secondItem="kjg-AJ-icW" secondAttribute="bottom" constant="37" id="uVH-mr-QTl"/>
                                             <constraint firstItem="Owb-Cv-kRQ" firstAttribute="trailing" secondItem="Fgj-9d-FB5" secondAttribute="trailing" id="v96-0h-0hh"/>
                                             <constraint firstAttribute="trailing" secondItem="u4D-cJ-vDS" secondAttribute="trailing" id="vUv-k2-ZTq"/>
                                             <constraint firstItem="Pq1-Ty-uCe" firstAttribute="top" secondItem="Pm8-FL-Lu5" secondAttribute="bottom" constant="8" symbolic="YES" id="wYc-aC-g90"/>

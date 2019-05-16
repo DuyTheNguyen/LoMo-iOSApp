@@ -88,9 +88,8 @@ class MovieViewController: UIViewController {
     @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
         performSegue(withIdentifier: "movieToComment", sender: nil)
     }
-    @IBAction func addButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "movieToComment", sender: nil)
-    }
+  
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
