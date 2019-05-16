@@ -18,5 +18,7 @@ class HotMoviesCollectionViewCell: UICollectionViewCell {
         movieNameLabel.text = movie.name
         
         imageView.load(imageString: movie.image!)
+        imageView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
+        
     }
 }

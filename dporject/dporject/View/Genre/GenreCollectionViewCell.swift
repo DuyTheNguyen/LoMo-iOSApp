@@ -17,7 +17,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
     
     
     func bind(genre: Genre){
-        self.loadCustomisedCell()
+        self.loadCustomisedCell(widthCornerRadius: 15)
         
         nameLabel.text = genre.name
         nameLabel.layer.opacity = 1

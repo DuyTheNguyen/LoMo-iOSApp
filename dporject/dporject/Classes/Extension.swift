@@ -127,8 +127,8 @@ extension UIImageView {
 
 //Create cell with shadow and radius
 extension UICollectionViewCell{
-    func loadCustomisedCell(){
-        self.contentView.layer.cornerRadius = 15.0
+    func loadCustomisedCell(widthCornerRadius: CGFloat){
+        self.contentView.layer.cornerRadius = widthCornerRadius
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
         self.contentView.layer.masksToBounds = true;
