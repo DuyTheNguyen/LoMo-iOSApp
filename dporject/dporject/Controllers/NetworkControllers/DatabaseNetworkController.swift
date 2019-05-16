@@ -57,13 +57,19 @@ class DatabaseNetworkController{
                 let comment = Comment(snapshot: value)
                 comments.append(comment)
             }
-            
+            self.delegate?.watchListOfComments(comments: comments)
         }
     }
     
     //Remove all observation
     func removeObserveDatabase(path: String){
-        
+        guard let rootReference = rootReference else{
+            print("Something went wrong with root reference")
+            return
+        }
+        rootReference.removeAllObservers()
+        print("Remove Observing")
+        self.delegate?.removeWatchingChanges()
     }
     
     //Get genres, movies and comment
