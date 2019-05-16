@@ -29,6 +29,7 @@ class MovieViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.commentCollectionView.reloadData()
+                self.commentCollectionView.scrollToFirst()
             }
             
         }

@@ -13,6 +13,7 @@ class CommentModalViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentModal: UIView!
     
+    @IBOutlet weak var commentModalImageView: UIImageView!
     private let userAuthentiationNetworkController = UserAuthenticationNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
     
@@ -28,13 +29,18 @@ class CommentModalViewController: UIViewController {
         userAuthentiationNetworkController.authenticationListener()
         
         databaseNetworkController.delegate = self
+        
+        commentTextView.delegate = self
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        commentTextView.text = "Please place your comment here!"
+        commentModalImageView.image = Icons.EDIT_ADD
+        commentTextView.text = ""
+        commentTextView.becomeFirstResponder()
+       
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
@@ -92,5 +98,11 @@ extension CommentModalViewController: UserAuthenticationNetworkControllerDelegat
 extension CommentModalViewController: DatabaseNetworkControllerDelegate{
     func isCommentAdded(isIt: Bool){
         self.isCommentAdded = isIt
+    }
+}
+
+extension CommentModalViewController: UITextViewDelegate{
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        commentTextView.resignFirstResponder()
     }
 }

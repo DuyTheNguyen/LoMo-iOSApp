@@ -11,7 +11,20 @@ import UIKit
 class CommentListCollectionViewCell: UICollectionViewCell {
     var comment: Comment!
     
+    @IBOutlet weak var commentContentLabel: UILabel!
+    @IBOutlet weak var commentDateLabel: UILabel!
+    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var commentNameLabel: UILabel!
+    
     func bind(comment: Comment){
-        print(comment)
+        commentDateLabel.text = comment.timestamp
+        commentContentLabel.text = comment.content
+        commentNameLabel.text = comment.userName
+        
+        commentImageView.image = Icons.USER_MALE
+        if comment.image != ""{
+            commentImageView.load(imageString: comment.image)
+        }
+        
     }
 }
