@@ -243,3 +243,12 @@ extension UICollectionView {
         
     }
 }
+
+extension UIButton{
+    func buttonWithText(title:String, iconName: UIImage){
+        self.setTitle(title, for: .normal)
+        self.setImage(iconName, for: .normal)
+        self.imageView?.contentMode = .scaleAspectFit
+        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+    }
+}

@@ -16,18 +16,28 @@ class ProfileViewController: UIViewController {
     fileprivate var currrentUser = User(){
         didSet{
             emailLabel.text = currrentUser.email
-            userIdLabel.text = currrentUser.uid
-            if currrentUser.photoURL != "" {
-                avatarImageView.load(imageString: currrentUser.photoURL!)
+            passwordLabel.text = currrentUser.password
+            
+            if let name = currrentUser.displayName{
+                nameLabel.text = name
+                displayNameLabel.text = name
+            }else{
+                nameLabel.text = "No Name"
+                displayNameLabel.text = "No Name"
+            }
+            
+            if let photo = currrentUser.photoURL {
+                avatarImageView.load(imageString: photo)
             }else{
                 avatarImageView.image = Icons.USER_MALE
             }
         }
     }
         
+    @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var userIdLabel: UILabel!
+    @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     override func viewDidLoad() {
@@ -39,6 +49,8 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        signOutButton.buttonWithText(title: "Sign Out", iconName: Icons.SIGN_OUT)
+        signOutButton.layer.cornerRadius = 15
     }
     
 

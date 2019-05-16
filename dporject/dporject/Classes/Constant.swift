@@ -21,7 +21,7 @@ enum Icons{
     static let GENRE = #imageLiteral(resourceName: "icons8-windows_phone_store")
     static let PROFILE = #imageLiteral(resourceName: "icons8-parse_resumes")
     static let SEARCH = #imageLiteral(resourceName: "icons8-search")
-    static let EDIT = #imageLiteral(resourceName: "icons8-pencil")
+    static let EDIT = #imageLiteral(resourceName: "icons8-multi_edit")
     static let HAPPY_FACE = #imageLiteral(resourceName: "icons8-lol")
     static let SAD_FACE = #imageLiteral(resourceName: "icons8-sad")
 }
