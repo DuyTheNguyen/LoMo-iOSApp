@@ -31,4 +31,5 @@ class UserAuthenticationNetworkController{
             self.delegate?.didReceiveUser(user: passedUser)
         }
     }
+    
 }
