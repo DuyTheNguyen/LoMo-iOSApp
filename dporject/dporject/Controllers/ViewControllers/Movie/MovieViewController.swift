@@ -24,9 +24,9 @@ class MovieViewController: UIViewController {
     
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserAuthenticationNetworkController();
-    fileprivate var listOfComments = [Movie](){
+    fileprivate var listOfComments = [Comment](){
         didSet{
-            
+            self.commentCollectionView.reloadData()
         }
     }
 
@@ -63,7 +63,6 @@ class MovieViewController: UIViewController {
         
         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
         
-        mapView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
     }
 
     
@@ -93,7 +92,13 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let commentViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCell", for: indexPath) as! CommentListCollectionViewCell
         
+        let comment = listOfComments[indexPath.row]
+        
+        commentViewCell.bind(comment: comment)
+        
+        return commentViewCell
     }
     
     
