@@ -175,6 +175,7 @@ extension UILabel{
         //self.layer.masksToBounds = false;
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
     }
+    
 }
 
 /************************************************
@@ -217,5 +218,28 @@ extension UICollectionView {
     
     func scrollToFirst(){
         self.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .top, animated: true)
+    }
+    
+    
+    func setEmptyMessage(_ message: String) {
+      
+        
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
+        messageLabel.sizeToFit()
+        
+       
+        
+        
+        self.backgroundView = messageLabel
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+        
     }
 }

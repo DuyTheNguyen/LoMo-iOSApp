@@ -76,7 +76,7 @@ class MovieViewController: UIViewController {
         ratingLabel.text = movie.rating
         descriptionLabel.text = movie.description
         
-        movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
+        movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
         
     }
 
@@ -109,6 +109,11 @@ class MovieViewController: UIViewController {
 //Create extension to conform Collection View
 extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if listOfComments.count == 0{
+            self.commentCollectionView.setEmptyMessage("There are no comments!")
+        }else{
+            self.commentCollectionView.restore()
+        }
         return listOfComments.count
     }
     
@@ -121,6 +126,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         return commentViewCell
     }
+    
     
     
 }
