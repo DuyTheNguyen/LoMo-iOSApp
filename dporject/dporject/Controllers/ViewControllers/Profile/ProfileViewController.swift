@@ -17,6 +17,11 @@ class ProfileViewController: UIViewController {
         didSet{
             emailLabel.text = currrentUser.email
             userIdLabel.text = currrentUser.uid
+            if currrentUser.photoURL != "" {
+                avatarImageView.load(imageString: currrentUser.photoURL)
+            }else{
+                avatarImageView.image = Icons.USER_MALE
+            }
         }
     }
         

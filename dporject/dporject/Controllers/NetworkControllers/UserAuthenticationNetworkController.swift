@@ -16,6 +16,7 @@ class UserAuthenticationNetworkController{
             
             guard let user = user1 else{
                 //TODO: handle logout
+                
                 return
             }
             guard let email = user.email else{
