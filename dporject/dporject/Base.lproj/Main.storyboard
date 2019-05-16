@@ -583,6 +583,7 @@
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
                         <outlet property="commentCollectionView" destination="kjg-AJ-icW" id="KQF-6r-drW"/>
+                        <outlet property="commentTitleLabel" destination="Pq1-Ty-uCe" id="s3t-NK-Iie"/>
                         <outlet property="descriptionLabel" destination="cob-Ex-Eo1" id="jAd-Fz-Ue8"/>
                         <outlet property="mapView" destination="HKY-nK-AVX" id="AdD-IJ-CGk"/>
                         <outlet property="movieImageView" destination="u4D-cJ-vDS" id="RWE-dx-f9V"/>

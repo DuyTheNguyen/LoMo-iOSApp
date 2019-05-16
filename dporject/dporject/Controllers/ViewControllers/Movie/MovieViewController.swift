@@ -21,6 +21,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commentCollectionView: UICollectionView!
+    @IBOutlet weak var commentTitleLabel: UILabel!
     
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserAuthenticationNetworkController()
@@ -29,6 +30,7 @@ class MovieViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.commentCollectionView.reloadData()
+                self.commentTitleLabel.text = "Comments (\(self.listOfComments.count))"
                 self.commentCollectionView.scrollToFirst()
             }
             
