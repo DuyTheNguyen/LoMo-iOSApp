@@ -50,7 +50,8 @@ class DatabaseNetworkController{
         }
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
-                fatalError("Could not load list of comments")
+                print("Could not load list of comments")
+                return
             }
             var comments = [Comment]()
             for (_,value) in values{
@@ -61,15 +62,15 @@ class DatabaseNetworkController{
         }
     }
     
-    //Remove all observation
+    //Remove observation
     func removeObserveDatabase(path: String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
         }
+        print(path)
         rootReference.removeAllObservers()
         print("Remove Observing")
-        self.delegate?.removeWatchingChanges()
     }
     
     //Get genres, movies and comment

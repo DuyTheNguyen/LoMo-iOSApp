@@ -11,7 +11,6 @@ protocol DatabaseNetworkControllerDelegate: class{
     func didReceivedListOfMovies(movies : [Movie])
     func didReceivedListOfGenres(genres: [Genre])
     func watchListOfComments(comments: [Comment])
-    func removeWatchingChanges()
     func isCommentAdded(isIt: Bool)
 }
 
@@ -27,10 +26,6 @@ extension DatabaseNetworkControllerDelegate{
     }
     
     func watchListOfComments(comments: [Comment]){
-        
-    }
-    
-    func removeWatchingChanges(){
         
     }
     

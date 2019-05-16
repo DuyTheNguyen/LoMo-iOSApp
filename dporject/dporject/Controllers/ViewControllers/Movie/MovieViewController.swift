@@ -23,10 +23,14 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var commentCollectionView: UICollectionView!
     
     private var currentUser: User!
-    private let userAuthenticationNetworkController = UserAuthenticationNetworkController();
+    private let userAuthenticationNetworkController = UserAuthenticationNetworkController()
+    private let databaseNetworkController = DatabaseNetworkController()
     fileprivate var listOfComments = [Comment](){
         didSet{
-            self.commentCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.commentCollectionView.reloadData()
+            }
+            
         }
     }
 
@@ -35,8 +39,13 @@ class MovieViewController: UIViewController {
         userAuthenticationNetworkController.delegate = self
         userAuthenticationNetworkController.authenticationListener()
         
+        databaseNetworkController.delegate = self
+        databaseNetworkController.observeDatabase(path: "comments/\(selectedMovie.id!)")
+        
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
+        
+        
         
 
         
@@ -65,6 +74,10 @@ class MovieViewController: UIViewController {
         
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseNetworkController.removeObserveDatabase(path: "comments/\(selectedMovie.id!)")
+    }
     
     @IBAction func addButtonOnTapped(_ sender: Any) {
         performSegue(withIdentifier: "movieToComment", sender: nil)
@@ -109,5 +122,12 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
 extension MovieViewController: UserAuthenticationNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         currentUser = user
+    }
+}
+
+//Create extension to conform DatabaseNetworkController
+extension MovieViewController: DatabaseNetworkControllerDelegate{
+    func watchListOfComments(comments: [Comment]) {
+        self.listOfComments = comments
     }
 }
