@@ -24,4 +24,6 @@ enum Icons{
     static let EDIT = #imageLiteral(resourceName: "icons8-multi_edit")
     static let HAPPY_FACE = #imageLiteral(resourceName: "icons8-lol")
     static let SAD_FACE = #imageLiteral(resourceName: "icons8-sad")
+    static let SAVE = #imageLiteral(resourceName: "icons8-save")
+    static let CANCEL = #imageLiteral(resourceName: "icons8-delete_sign")
 }

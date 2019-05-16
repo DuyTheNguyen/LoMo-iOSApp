@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -62,7 +62,16 @@ class ProfileViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
+    @IBAction func changeImageButtonOnTapped(_ sender: Any) {
+    }
+    @IBAction func passwordButtonOnTapped(_ sender: Any) {
+    }
+    @IBAction func emailButtonOnTapped(_ sender: Any) {
+    }
+    @IBAction func displayNameButtonOnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "profileToUpdate", sender: nil)
+    }
     @IBAction func signOutButtonTapped(_ sender: Any) {
          handleControllerTransitionWith(identifier: "SignInViewController")
     }
