@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
-    private let userAuthenticationController = UserAuthenticationNetworkController()
+    private let userAuthenticationController = UserNetworkController()
     
     fileprivate var currrentUser = User(){
         didSet{
@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController {
 }
 
 //Create extension to conform Delegate
-extension ProfileViewController: UserAuthenticationNetworkControllerDelegate{
+extension ProfileViewController: UserNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         self.currrentUser = user
     }

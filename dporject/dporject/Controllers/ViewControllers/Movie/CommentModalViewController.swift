@@ -14,7 +14,7 @@ class CommentModalViewController: UIViewController {
     @IBOutlet weak var commentModal: UIView!
     
     @IBOutlet weak var commentModalImageView: UIImageView!
-    private let userAuthentiationNetworkController = UserAuthenticationNetworkController()
+    private let userAuthentiationNetworkController = UserNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
     
     private var currentUser: User!
@@ -89,7 +89,7 @@ class CommentModalViewController: UIViewController {
 
 
 //Create extension to conform Delegate
-extension CommentModalViewController: UserAuthenticationNetworkControllerDelegate{
+extension CommentModalViewController: UserNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         self.currentUser = user
     }

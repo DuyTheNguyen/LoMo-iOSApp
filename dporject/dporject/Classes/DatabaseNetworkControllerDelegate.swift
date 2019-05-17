@@ -14,7 +14,7 @@ protocol DatabaseNetworkControllerDelegate: class{
     func isCommentAdded(isIt: Bool)
 }
 
-//Make methods for this delegate be optional
+//Make methods of this delegate to be optional
 
 extension DatabaseNetworkControllerDelegate{
     func didReceivedListOfMovies(movies: [Movie]){

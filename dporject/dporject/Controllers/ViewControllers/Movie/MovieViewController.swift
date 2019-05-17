@@ -25,7 +25,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var floattingAddButton: UIButton!
     
     private var currentUser: User!
-    private let userAuthenticationNetworkController = UserAuthenticationNetworkController()
+    private let userAuthenticationNetworkController = UserNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
     fileprivate var listOfComments = [Comment](){
         didSet{
@@ -133,7 +133,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
 
 //Create extension to conform UserAuthenticationNetwork
-extension MovieViewController: UserAuthenticationNetworkControllerDelegate{
+extension MovieViewController: UserNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         currentUser = user
     }

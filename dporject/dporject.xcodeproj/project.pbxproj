@@ -49,8 +49,8 @@
 		6AEEE3E722632FCD00027C88 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E622632FCD00027C88 /* FirebaseStorage.framework */; };
 		6AEEE3E922632FD800027C88 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3E822632FD800027C88 /* GTMSessionFetcher.framework */; };
 		6AEEE3EB2263342A00027C88 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */; };
-		6AEFF028227AD83200ED2FA6 /* UserAuthenticationNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF027227AD83200ED2FA6 /* UserAuthenticationNetworkController.swift */; };
-		6AEFF02A227AD9B900ED2FA6 /* UserAuthenticationNetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF029227AD9B900ED2FA6 /* UserAuthenticationNetworkControllerDelegate.swift */; };
+		6AEFF028227AD83200ED2FA6 /* UserNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */; };
+		6AEFF02A227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,8 +121,8 @@
 		6AEEE3E622632FCD00027C88 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = "<group>"; };
 		6AEEE3E822632FD800027C88 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = "../../../../../../Downloads/Firebase 2/Storage/GTMSessionFetcher.framework"; sourceTree = "<group>"; };
 		6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
-		6AEFF027227AD83200ED2FA6 /* UserAuthenticationNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationNetworkController.swift; sourceTree = "<group>"; };
-		6AEFF029227AD9B900ED2FA6 /* UserAuthenticationNetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationNetworkControllerDelegate.swift; sourceTree = "<group>"; };
+		6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkController.swift; sourceTree = "<group>"; };
+		6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,7 +274,7 @@
 		6AB3C5DD2283F33300CE3AFE /* NetworkControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6AEFF027227AD83200ED2FA6 /* UserAuthenticationNetworkController.swift */,
+				6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */,
 				6AB3C5DE2283F3BF00CE3AFE /* DatabaseNetworkController.swift */,
 			);
 			path = NetworkControllers;
@@ -312,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				6AC705CB227089AC00EDD8B3 /* Extension.swift */,
-				6AEFF029227AD9B900ED2FA6 /* UserAuthenticationNetworkControllerDelegate.swift */,
+				6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */,
 				6AB3C5E02283F66D00CE3AFE /* DatabaseNetworkControllerDelegate.swift */,
 				6A8246D5228D2D8A007C00F5 /* Constant.swift */,
 			);
@@ -543,9 +543,9 @@
 				6A29D0142287E3C500CF35EF /* MovieListViewController.swift in Sources */,
 				6A8246D4228D0559007C00F5 /* CommentListCollectionViewCell.swift in Sources */,
 				6A29D0122287DC6A00CF35EF /* GenreCollectionViewCell.swift in Sources */,
-				6AEFF02A227AD9B900ED2FA6 /* UserAuthenticationNetworkControllerDelegate.swift in Sources */,
+				6AEFF02A227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift in Sources */,
 				6AB3C5DF2283F3BF00CE3AFE /* DatabaseNetworkController.swift in Sources */,
-				6AEFF028227AD83200ED2FA6 /* UserAuthenticationNetworkController.swift in Sources */,
+				6AEFF028227AD83200ED2FA6 /* UserNetworkController.swift in Sources */,
 				6AC705C922707B7200EDD8B3 /* ProfileViewController.swift in Sources */,
 				6AC705C722707B6000EDD8B3 /* HomeViewController.swift in Sources */,
 				6A29D0192287FA7700CF35EF /* Genre.swift in Sources */,
