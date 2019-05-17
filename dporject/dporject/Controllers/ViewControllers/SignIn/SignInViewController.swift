@@ -69,8 +69,8 @@ class SignInViewController: UIViewController {
         }
          */
         
-        emailText.text = "duy@gmail.com"
-        passwordText.text = "duy123"
+        emailText.text = "dave@gmail.com"
+        passwordText.text = "dave123"
         
     }
     
