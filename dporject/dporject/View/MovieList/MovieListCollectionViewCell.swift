@@ -16,5 +16,6 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     func bind(movie: Movie){
         movieNameLabel.text = movie.name
         movieImage.load(imageString: movie.image!)
+        movieImage.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
     }
 }
