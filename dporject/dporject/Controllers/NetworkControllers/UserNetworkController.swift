@@ -46,20 +46,30 @@ class UserNetworkController{
         }
         switch withType {
         case "email":
-            print("update email")
             currentUser.updateEmail(to: withValue) { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    self.delegate?.updateProfile(isUpdated: false, message: error.localizedDescription)
-                }else{
-                     self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
-                }
+                self.validation(error: error)
             }
-            
-          
-           
+        case "password":
+            currentUser.updatePassword(to: withValue) { (error) in
+                self.validation(error: error)
+            }
+        case "name":
+            let changeRequest = currentUser.createProfileChangeRequest()
+            changeRequest.displayName = withValue
+            changeRequest.commitChanges { (error) in
+                self.validation(error: error)
+            }
         default:
             print("Should not in default")
+        }
+    }
+    
+    private func validation(error: Error!){
+        if let error = error{
+            print(error.localizedDescription)
+            self.delegate?.updateProfile(isUpdated: false, message: error.localizedDescription)
+        }else{
+            self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
         }
     }
 }
