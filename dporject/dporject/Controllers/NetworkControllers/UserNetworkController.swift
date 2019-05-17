@@ -35,7 +35,6 @@ class UserNetworkController{
             
             let passedUser = User(pUid: user.uid, pEmail: email, pPassword: "***********", pDisplayName: user.displayName, pPhotoURL: user.photoURL)
             
-            print(passedUser)
             self.delegate?.didReceiveUser(user: passedUser)
         }
     }
@@ -49,15 +48,16 @@ class UserNetworkController{
         case "email":
             print("update email")
             currentUser.updateEmail(to: withValue) { (error) in
-                guard error == nil else {
-                    print((error?.localizedDescription)!)
-                    self.delegate?.updateProfile(isUpdated: false, message: (error?.localizedDescription)!)
-                    return
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.delegate?.updateProfile(isUpdated: false, message: error.localizedDescription)
+                }else{
+                     self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
                 }
             }
             
-            //sucessfull delegate
-            self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
+          
+           
         default:
             print("Should not in default")
         }

@@ -45,11 +45,12 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userAuthenticationController.delegate = self
-        userAuthenticationController.authenticationListener()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userAuthenticationController.authenticationListener()
         signOutButton.buttonWithText(title: "Sign Out", iconName: Icons.SIGN_OUT)
         signOutButton.layer.cornerRadius = 15
     }
