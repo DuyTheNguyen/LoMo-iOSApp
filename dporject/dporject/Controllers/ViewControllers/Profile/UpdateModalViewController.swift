@@ -11,6 +11,7 @@ import UIKit
 class UpdateModalViewController: UIViewController {
     
     private let userNetworkController = UserNetworkController()
+    
 
     @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,8 +20,18 @@ class UpdateModalViewController: UIViewController {
     @IBOutlet weak var updateModalUIImageView: UIImageView!
     
     private var titleValue: String!
-    private var isUpdated: Bool = false
-    private var message: String = ""
+    private var isUpdated: Bool!
+    private var message = String(){
+        didSet{
+            if isUpdated{
+                dismiss(animated: true, completion: nil)
+            }
+            else{
+                
+                print(message)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +59,7 @@ class UpdateModalViewController: UIViewController {
             return
         }
         userNetworkController.updateProfile(titleValue, withValue: newValue)
-        print(message)
-        print(isUpdated)
+        
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {

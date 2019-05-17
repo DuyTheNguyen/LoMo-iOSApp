@@ -12,6 +12,7 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
 
     private let userAuthenticationController = UserNetworkController()
+   
     private var type: String? = ""
     
     fileprivate var currrentUser = User(){
@@ -45,6 +46,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userAuthenticationController.delegate = self
+        
+        
         
     }
     
@@ -100,3 +103,4 @@ extension ProfileViewController: UserNetworkControllerDelegate{
     }
     
 }
+

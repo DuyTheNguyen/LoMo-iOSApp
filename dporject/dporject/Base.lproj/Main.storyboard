@@ -303,7 +303,7 @@
                         <outlet property="nameLabel" destination="qF4-Ei-Rcs" id="H6N-zC-bhh"/>
                         <outlet property="passwordLabel" destination="uFe-8w-yfC" id="wRg-9O-rQf"/>
                         <outlet property="signOutButton" destination="sER-OK-EWE" id="Cpr-Ig-ziW"/>
-                        <segue destination="8JD-0q-Nvq" kind="presentation" identifier="profileToUpdate" modalPresentationStyle="overCurrentContext" id="pZZ-SJ-X0d"/>
+                        <segue destination="8JD-0q-Nvq" kind="show" identifier="profileToUpdate" id="pZZ-SJ-X0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZF-7i-k62" userLabel="First Responder" sceneMemberID="firstResponder"/>
