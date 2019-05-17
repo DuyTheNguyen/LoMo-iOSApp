@@ -72,7 +72,7 @@ extension UIView{
     
     
     //Activity Indicator
-    func activityStartAnimating(activityColor: UIColor, backgroundColor: UIColor) {
+    func startIndicatorAnnimation(activityColor: UIColor, backgroundColor: UIColor) {
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         backgroundView.backgroundColor = backgroundColor
@@ -92,7 +92,7 @@ extension UIView{
         self.addSubview(backgroundView)
     }
     
-    func activityStopAnimating() {
+    func stopIndicatorAnnimation() {
         if let background = viewWithTag(475647){
             background.removeFromSuperview()
         }

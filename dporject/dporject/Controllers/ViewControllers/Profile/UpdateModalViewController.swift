@@ -23,7 +23,7 @@ class UpdateModalViewController: UIViewController {
     private var isUpdated: Bool!
     private var message = String(){
         didSet{
-            self.view.activityStopAnimating()
+            self.view.stopIndicatorAnnimation()
             if isUpdated{
                 dismiss(animated: true, completion: nil)
             }
@@ -59,7 +59,7 @@ class UpdateModalViewController: UIViewController {
             return
         }
         userNetworkController.updateProfile(titleValue, withValue: newValue)
-        self.view.activityStartAnimating(activityColor: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
+        self.view.startIndicatorAnnimation(activityColor: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
