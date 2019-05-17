@@ -134,6 +134,21 @@ extension UIImageView {
             }
         }
     }
+    
+    func setUpImageViewWithIcons(type: String){
+        var image: UIImage!
+        switch(type){
+        case "name":
+            image = Icons.NAME
+        case "password":
+            image = Icons.PASSWORD
+        case "email":
+            image = Icons.EMAIL
+        default:
+            image = Icons.EDIT_ADD
+        }
+        self.image = image
+    }
 }
 
 /*************************************************

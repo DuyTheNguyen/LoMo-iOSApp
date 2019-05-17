@@ -26,6 +26,7 @@ enum Icons{
     static let SAD_FACE = #imageLiteral(resourceName: "icons8-sad")
     static let SAVE = #imageLiteral(resourceName: "icons8-save")
     static let CANCEL = #imageLiteral(resourceName: "icons8-delete_sign")
+    static let NAME = #imageLiteral(resourceName: "icons8-employee_card")
 }
 
 enum UserService{

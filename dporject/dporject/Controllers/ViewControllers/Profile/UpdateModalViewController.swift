@@ -43,11 +43,13 @@ class UpdateModalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.text = "Update \((titleValue)!)"
-        updateModalUIImageView.image = Icons.EDIT_ADD
+        updateModalUIImageView.setUpImageViewWithIcons(type: titleValue!)
         contentTextField.text = ""
         contentTextField.becomeFirstResponder()
         
     }
+    
+   
     
     public func bind(type: String){
        titleValue = type
@@ -55,7 +57,7 @@ class UpdateModalViewController: UIViewController {
     
     @IBAction func saveButtonOnTapped(_ sender: Any) {
         guard let newValue = contentTextField.text else{
-            print("Content is nil or empty")
+            print("Content is nil")
             return
         }
         userNetworkController.updateProfile(titleValue, withValue: newValue)
@@ -67,7 +69,6 @@ class UpdateModalViewController: UIViewController {
     }
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
