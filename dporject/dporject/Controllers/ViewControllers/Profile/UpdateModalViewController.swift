@@ -9,6 +9,8 @@
 import UIKit
 
 class UpdateModalViewController: UIViewController {
+    
+    private let userNetworkController = UserNetworkController()
 
     @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,10 +19,13 @@ class UpdateModalViewController: UIViewController {
     @IBOutlet weak var updateModalUIImageView: UIImageView!
     
     private var titleValue: String!
+    private var isUpdated: Bool = false
+    private var message: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         contentTextField.delegate = self
+        userNetworkController.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -38,6 +43,13 @@ class UpdateModalViewController: UIViewController {
     }
     
     @IBAction func saveButtonOnTapped(_ sender: Any) {
+        guard let newValue = contentTextField.text else{
+            print("Content is nil or empty")
+            return
+        }
+        userNetworkController.updateProfile(titleValue, withValue: newValue)
+        print(message)
+        print(isUpdated)
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
@@ -59,5 +71,12 @@ class UpdateModalViewController: UIViewController {
 extension UpdateModalViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         contentTextField.resignFirstResponder()
+    }
+}
+
+extension UpdateModalViewController:UserNetworkControllerDelegate{
+    func updateProfile(isUpdated: Bool, message: String) {
+        self.isUpdated = isUpdated
+        self.message = message
     }
 }

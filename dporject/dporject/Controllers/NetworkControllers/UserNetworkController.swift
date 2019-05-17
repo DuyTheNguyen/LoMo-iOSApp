@@ -46,9 +46,9 @@ class UserNetworkController{
         switch withType {
         case "email":
             print("update email")
-            currentUser.updatePassword(to: withValue) { (error) in
-                guard error != nil else {
-                    print(error?.localizedDescription)
+            currentUser.updateEmail(to: withValue) { (error) in
+                guard (error != nil)  else {
+                    print((error?.localizedDescription)!)
                     self.delegate?.updateProfile(isUpdated: false, message: (error?.localizedDescription)!)
                     return
                 }

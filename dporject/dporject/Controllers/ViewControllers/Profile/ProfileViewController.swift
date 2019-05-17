@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func displayNameButtonOnTapped(_ sender: Any) {
-       performSequeWithString(type: "display name")
+       performSequeWithString(type: "name")
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
