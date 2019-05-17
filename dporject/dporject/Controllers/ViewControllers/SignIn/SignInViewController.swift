@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
-
 class SignInViewController: UIViewController {
     
     
@@ -18,9 +15,21 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
-    var dataRef  : DatabaseReference!
-    var emailRef: DatabaseReference!
+   
+    private let userNetworlController = UserNetworkController()
     
+    private var isSuccessful: Bool!
+    private var message = String(){
+        didSet{
+            if isSuccessful{
+                view.stopIndicatorAnnimation()
+                //add alert
+                self.handleControllerTransitionWith(identifier: "TabBarController")
+            }else{
+                errorLabel.text = message
+            }
+        }
+    }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         //Destroy View before go to the other
@@ -28,51 +37,31 @@ class SignInViewController: UIViewController {
         performSegue(withIdentifier: "signInToSignUp", sender: nil)
     }
     @IBAction func signInButtonTapped(_ sender: Any) {
-          /*emailRef.setValue(emailTextField.text)*/
         errorLabel.text = ""
         if let email = emailText.text, let password = passwordText.text{
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-                //Handle errors if has
-                guard error == nil else{
-                    self.errorLabel.text = error?.localizedDescription
-                    return
-                }
-                
-                self.handleControllerTransitionWith(identifier: "TabBarController")
-            }
+            userNetworlController.signInWith(email: email, password: password)
+            self.view.startIndicatorAnnimation()
         }
     }
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        /*
-        dataRef = Database.database().reference()
-        emailRef = dataRef.child("someid/name")
-        
-        dataRef.child("someid/name").setValue("hahaha")
-        */
-       
-        
+        userNetworlController.delegate = self
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        /*
-        emailRef.observeSingleEvent(of: .value) { (dataSnapShot) in
-            self.emailLabel.text = dataSnapShot.value as? String
-        }
-         */
-        
         emailText.text = "dave@gmail.com"
         passwordText.text = "dave123"
-        
     }
-    
+}
+
+//Create extension to conform delegate
+extension SignInViewController: UserNetworkControllerDelegate{
+    func updateData(isUpdated: Bool, message: String) {
+        self.isSuccessful = isUpdated
+        self.message = message
+    }
 }
 

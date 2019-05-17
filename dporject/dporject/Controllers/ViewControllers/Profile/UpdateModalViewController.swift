@@ -85,7 +85,7 @@ extension UpdateModalViewController: UITextFieldDelegate{
 }
 
 extension UpdateModalViewController:UserNetworkControllerDelegate{
-    func updateProfile(isUpdated: Bool, message: String) {
+    func updateData(isUpdated: Bool, message: String) {
         self.isUpdated = isUpdated
         self.message = message
     }

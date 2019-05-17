@@ -72,7 +72,7 @@ extension UIView{
     
     
     //Activity Indicator
-    func startIndicatorAnnimation(activityColor: UIColor, backgroundColor: UIColor) {
+    func startIndicatorAnnimation(activityColor: UIColor? = UIColor.white, backgroundColor: UIColor? = UIColor.black.withAlphaComponent(0.5)) {
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         backgroundView.backgroundColor = backgroundColor

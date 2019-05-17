@@ -38,6 +38,11 @@ class UserNetworkController{
             self.delegate?.didReceiveUser(user: passedUser)
         }
     }
+    func signInWith(email: String, password: String){
+        authentication.signIn(withEmail: email, password: password) { (user, error) in
+            self.callBack(error: error, successfulMessage: "Sign In Successfully")
+        }
+    }
     
     func updateProfile(_ withType : String, withValue: String){
         guard let currentUser = authentication.currentUser else{
@@ -47,29 +52,29 @@ class UserNetworkController{
         switch withType {
         case "email":
             currentUser.updateEmail(to: withValue) { (error) in
-                self.validation(error: error)
+                self.callBack(error: error, successfulMessage: "Updated Successfully")
             }
         case "password":
             currentUser.updatePassword(to: withValue) { (error) in
-                self.validation(error: error)
+                self.callBack(error: error, successfulMessage: "Updated Successfully")
             }
         case "name":
             let changeRequest = currentUser.createProfileChangeRequest()
             changeRequest.displayName = withValue
             changeRequest.commitChanges { (error) in
-                self.validation(error: error)
+                 self.callBack(error: error, successfulMessage: "Updated Successfully")
             }
         default:
             print("Should not in default")
         }
     }
     
-    private func validation(error: Error!){
+    private func callBack(error: Error!, successfulMessage: String){
         if let error = error{
             print(error.localizedDescription)
-            self.delegate?.updateProfile(isUpdated: false, message: error.localizedDescription)
+            self.delegate?.updateData(isUpdated: false, message: error.localizedDescription)
         }else{
-            self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
+            self.delegate?.updateData(isUpdated: true, message: successfulMessage)
         }
     }
 }
