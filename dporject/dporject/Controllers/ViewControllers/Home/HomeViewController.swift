@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.a
-        
+        self.navigationController?.setNavbarTransparent()
         databaseNetworkController.delegate = self
         databaseNetworkController.getListOfObjectsFrom(path: "popular",  withDataType: "Movie")
         

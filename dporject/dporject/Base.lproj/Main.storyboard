@@ -825,11 +825,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-ae-SOh">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRa-ae-SOh">
                                         <rect key="frame" x="24" y="251" width="326" height="194"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -999,7 +998,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Okd-AH-NNF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VVq-hT-1bZ"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="VVq-hT-1bZ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="allMovieLabel" destination="xVS-Oa-eTJ" id="crG-tU-aY1"/>
@@ -1011,16 +1010,24 @@
             </objects>
             <point key="canvasLocation" x="3173.913043478261" y="-994.41964285714278"/>
         </scene>
-        <!--Movie List View Controller-->
+        <!--Movie List Controller-->
         <scene sceneID="YTx-oE-cCX">
             <objects>
-                <viewController id="jxZ-By-1wQ" customClass="MovieListViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Movie List Controller" id="jxZ-By-1wQ" customClass="MovieListViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R1Y-Ut-nU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Y5c-e7-6ka">
+                                <rect key="frame" x="0.0" y="83" width="414" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jxZ-By-1wQ" id="kbn-9p-97l"/>
+                                </connections>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-1j-oGq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="674"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1DS-cQ-jaa">
@@ -1070,8 +1077,10 @@
                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HhK-AC-uF0"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ySQ-Qx-PYZ"/>
                     <connections>
                         <outlet property="moviesCollectionView" destination="xb9-1j-oGq" id="MfC-qL-8Sk"/>
+                        <outlet property="searchBar" destination="Y5c-e7-6ka" id="ObR-Om-hcD"/>
                         <segue destination="DEx-tu-9fc" kind="show" identifier="movieListToMovie" id="LGP-He-rsj"/>
                     </connections>
                 </viewController>
@@ -1098,10 +1107,10 @@
             </objects>
             <point key="canvasLocation" x="2237.5999999999999" y="-242.42878560719643"/>
         </scene>
-        <!--Genre-->
+        <!--Genre Navigation Controller Scene-->
         <scene sceneID="aiH-Vj-GeF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lge-yn-onH" sceneMemberID="viewController">
+                <navigationController title="Genre Navigation Controller Scene" automaticallyAdjustsScrollViewInsets="NO" id="lge-yn-onH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Genre" image="icons8-windows_phone_store_filled" id="tgg-B8-t1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkU-Tq-PGH">
@@ -1128,6 +1137,6 @@
         <image name="icons8-windows_phone_store_filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ftl-VD-ggp"/>
+        <segue reference="LGP-He-rsj"/>
     </inferredMetricsTieBreakers>
 </document>

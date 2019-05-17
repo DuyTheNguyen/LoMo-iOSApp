@@ -59,11 +59,6 @@ class MovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
@@ -79,6 +74,8 @@ class MovieViewController: UIViewController {
         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
         
     }
+    
+   
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

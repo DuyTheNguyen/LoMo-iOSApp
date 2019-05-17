@@ -281,3 +281,12 @@ extension UIButton{
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
     }
 }
+
+
+extension UINavigationController{
+    func setNavbarTransparent(){
+        self.navigationBar.isTranslucent = true
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+    }
+}

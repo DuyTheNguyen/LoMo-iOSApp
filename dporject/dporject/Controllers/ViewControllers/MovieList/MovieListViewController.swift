@@ -14,9 +14,13 @@ class MovieListViewController: UIViewController {
     
     var selectedMovie: Movie!
     
+    var searchMovies = [Movie]()
+    var isSearching = false
+    
     private let databaseNetworkController = DatabaseNetworkController()
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     fileprivate var listOfMovie = [Movie](){
@@ -27,8 +31,8 @@ class MovieListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = genre.name
-    
+        
+        setUpNavBar()
         databaseNetworkController.delegate = self
         //get list of movies based on path
         databaseNetworkController.getListOfObjectsFrom(path: "genremovies/\(genre.name ?? "")", withDataType: "Movie")
@@ -36,6 +40,14 @@ class MovieListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func setUpNavBar(){
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = genre.name
+        //let searchController = UISearchController(searchResultsController: nil)
+        //navigationItem.searchController = searchController
+        
+    }
 
     
     // MARK: - Navigation
@@ -55,16 +67,23 @@ class MovieListViewController: UIViewController {
 //Create extension to conform Collection View
 extension MovieListViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listOfMovie.count
+        if isSearching{
+            return searchMovies.count
+        }else{
+            return listOfMovie.count
+        }
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieListCollectionViewCell
         
-        let movie = listOfMovie[indexPath.row]
-        
+        let movie: Movie!
+        if isSearching{
+            movie = searchMovies[indexPath.row]
+        } else{
+            movie = listOfMovie[indexPath.row]
+            
+        }
         movieCell.bind(movie: movie)
-        
         return movieCell
     }
     
@@ -86,4 +105,10 @@ extension MovieListViewController: DatabaseNetworkControllerDelegate{
     
 }
 
-
+extension MovieListViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchMovies = listOfMovie.filter({ $0.name!.prefix(searchText.count) == searchText })
+        isSearching = true
+        self.moviesCollectionView.reloadData()
+    }
+}

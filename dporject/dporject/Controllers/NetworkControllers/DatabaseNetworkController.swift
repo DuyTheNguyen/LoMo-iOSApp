@@ -68,9 +68,7 @@ class DatabaseNetworkController{
             print("Something went wrong with root reference")
             return
         }
-        print(path)
         rootReference.removeAllObservers()
-        print("Remove Observing")
     }
     
     //Get genres, movies and comment
