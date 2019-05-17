@@ -303,7 +303,7 @@
                         <outlet property="nameLabel" destination="qF4-Ei-Rcs" id="H6N-zC-bhh"/>
                         <outlet property="passwordLabel" destination="uFe-8w-yfC" id="wRg-9O-rQf"/>
                         <outlet property="signOutButton" destination="sER-OK-EWE" id="Cpr-Ig-ziW"/>
-                        <segue destination="8JD-0q-Nvq" kind="presentation" identifier="profileToUpdate" id="pZZ-SJ-X0d"/>
+                        <segue destination="8JD-0q-Nvq" kind="presentation" identifier="profileToUpdate" modalPresentationStyle="overCurrentContext" id="pZZ-SJ-X0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZF-7i-k62" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +322,7 @@
                                 <rect key="frame" x="29" y="103" width="357" height="362"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-yC-PWA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-yC-PWA">
                                         <rect key="frame" x="72" y="143" width="212" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="19"/>

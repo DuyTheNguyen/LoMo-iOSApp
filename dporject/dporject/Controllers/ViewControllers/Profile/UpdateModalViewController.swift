@@ -16,6 +16,8 @@ class UpdateModalViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var updateModalUIImageView: UIImageView!
     
+    private var titleValue: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         contentTextField.delegate = self
@@ -24,10 +26,15 @@ class UpdateModalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        titleLabel.text = "Update \((titleValue)!)"
         updateModalUIImageView.image = Icons.EDIT_ADD
         contentTextField.text = ""
         contentTextField.becomeFirstResponder()
         
+    }
+    
+    public func bind(type: String){
+       titleValue = type
     }
     
     @IBAction func saveButtonOnTapped(_ sender: Any) {

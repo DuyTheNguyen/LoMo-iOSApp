@@ -12,6 +12,7 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
 
     private let userAuthenticationController = UserNetworkController()
+    private var type: String? = ""
     
     fileprivate var currrentUser = User(){
         didSet{
@@ -61,19 +62,33 @@ class ProfileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let updateModalViewControler = segue.destination as? UpdateModalViewController{
+            updateModalViewControler.bind(type: type!)
+        }
     }
  
     @IBAction func changeImageButtonOnTapped(_ sender: Any) {
     }
+    
     @IBAction func passwordButtonOnTapped(_ sender: Any) {
+        performSequeWithString(type: "password")
     }
+    
     @IBAction func emailButtonOnTapped(_ sender: Any) {
+        performSequeWithString(type: "email")
     }
+    
     @IBAction func displayNameButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "profileToUpdate", sender: nil)
+       performSequeWithString(type: "display name")
     }
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
          handleControllerTransitionWith(identifier: "SignInViewController")
+    }
+    
+    private func performSequeWithString(type: String){
+        self.type = type
+        performSegue(withIdentifier: "profileToUpdate", sender: nil)
     }
 }
 
