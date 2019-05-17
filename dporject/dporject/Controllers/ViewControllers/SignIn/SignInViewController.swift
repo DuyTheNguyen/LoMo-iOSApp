@@ -21,8 +21,9 @@ class SignInViewController: UIViewController {
     private var isSuccessful: Bool!
     private var message = String(){
         didSet{
+            view.stopIndicatorAnnimation()
             if isSuccessful{
-                view.stopIndicatorAnnimation()
+                
                 //add alert
                 self.handleControllerTransitionWith(identifier: "TabBarController")
             }else{
@@ -54,6 +55,7 @@ class SignInViewController: UIViewController {
         super.viewWillAppear(animated)
         emailText.text = "dave@gmail.com"
         passwordText.text = "dave123"
+        errorLabel.text = ""
     }
 }
 
