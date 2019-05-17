@@ -11,7 +11,7 @@ import Foundation
 protocol UserNetworkControllerDelegate: class {
     func didReceiveUser(user: User)
     
-    func updateProfile(isUpdated: Bool, message: String? = nil)
+    func updateProfile(isUpdated: Bool, message: String)
     
 }
 
@@ -21,7 +21,7 @@ extension UserNetworkControllerDelegate{
         
     }
     
-    func updateProfile(isUpdated: Bool, message: String? = nil){
+    func updateProfile(isUpdated: Bool, message: String){
         
     }
     

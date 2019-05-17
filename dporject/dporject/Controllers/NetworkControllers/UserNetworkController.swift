@@ -49,13 +49,13 @@ class UserNetworkController{
             currentUser.updatePassword(to: withValue) { (error) in
                 guard error != nil else {
                     print(error?.localizedDescription)
-                    self.delegate?.updateProfile(isUpdated: false, message: error?.localizedDescription)
+                    self.delegate?.updateProfile(isUpdated: false, message: (error?.localizedDescription)!)
                     return
                 }
             }
             
             //sucessfull delegate
-            self.delegate?.updateProfile(isUpdated: true)
+            self.delegate?.updateProfile(isUpdated: true, message: "Updated Successfully")
         default:
             print("Should not in default")
         }
