@@ -27,3 +27,7 @@ enum Icons{
     static let SAVE = #imageLiteral(resourceName: "icons8-save")
     static let CANCEL = #imageLiteral(resourceName: "icons8-delete_sign")
 }
+
+enum UserService{
+    case SIGN_IN, SIGN_UP
+}

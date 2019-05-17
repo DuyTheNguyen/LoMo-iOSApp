@@ -11,14 +11,30 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
-   
+    
    
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
+    
+    private let userNetworkController = UserNetworkController()
+    
+    private var isSuccessful: Bool!
+    private var message = String(){
+        didSet{
+            self.view.stopIndicatorAnnimation()
+            if isSuccessful {
+                //add alert
+                self.signInButtonOnTapped(nil)
+            } else{
+                errorLabel.text = message
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userNetworkController.delegate = self
         // Do any additional setup after loading the view.
     }
     @IBAction func signInButtonOnTapped(_ sender: Any?) {
@@ -29,20 +45,9 @@ class SignUpViewController: UIViewController {
     @IBAction func createButtonOnTapped(_ sender: Any) {
         //Clear error
         errorLabel.text = ""
-        
+        self.view.startIndicatorAnnimation()
         if let email = emailText.text, let password = passwordText.text{
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-                //If it has error
-                guard error == nil else{
-                    self.errorLabel.text = error?.localizedDescription
-                    return
-                }
-                
-                self.signInButtonOnTapped(nil)
-                print(user?.user.email ?? "1")
-                print(user?.user.uid ?? "2")
-                print(Auth.auth().currentUser?.uid ?? "3")
-            }
+            userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
         }
     }
 
@@ -56,4 +61,12 @@ class SignUpViewController: UIViewController {
     }
     */
 
+}
+
+//Create extension to comform delegate
+extension SignUpViewController: UserNetworkControllerDelegate{
+    func updateData(isUpdated: Bool, message: String) {
+        self.isSuccessful = isUpdated
+        self.message = message
+    }
 }

@@ -38,11 +38,20 @@ class UserNetworkController{
             self.delegate?.didReceiveUser(user: passedUser)
         }
     }
-    func signInWith(email: String, password: String){
-        authentication.signIn(withEmail: email, password: password) { (user, error) in
-            self.callBack(error: error, successfulMessage: "Sign In Successfully")
+    func userServiceWith(type: UserService, email: String, password: String){
+        switch type{
+        case .SIGN_IN:
+            authentication.signIn(withEmail: email, password: password) { (user, error) in
+                self.callBack(error: error, successfulMessage: "Sign In Successfully")
+            }
+        case .SIGN_UP:
+            authentication.createUser(withEmail: email, password: password) { (user, error) in
+                self.callBack(error: error, successfulMessage: "Sign Up Successfully")
+            }
         }
     }
+    
+    
     
     func updateProfile(_ withType : String, withValue: String){
         guard let currentUser = authentication.currentUser else{

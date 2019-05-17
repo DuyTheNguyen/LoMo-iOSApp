@@ -40,7 +40,7 @@ class SignInViewController: UIViewController {
     @IBAction func signInButtonTapped(_ sender: Any) {
         errorLabel.text = ""
         if let email = emailText.text, let password = passwordText.text{
-            userNetworlController.signInWith(email: email, password: password)
+            userNetworlController.userServiceWith(type: UserService.SIGN_IN, email: email, password: password)
             self.view.startIndicatorAnnimation()
         }
     }
