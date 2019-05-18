@@ -13,13 +13,14 @@ class SignUpViewController: UIViewController {
 
     
    
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var confirmPasswordText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     
     private let userNetworkController = UserNetworkController()
     
     private var isSuccessful: Bool!
+    private var alertType: AlertType!
     private var message = String(){
         didSet{
             self.view.stopIndicatorAnnimation()
@@ -27,13 +28,15 @@ class SignUpViewController: UIViewController {
                 //add alert
                 self.signInButtonOnTapped(nil)
             } else{
-                errorLabel.text = message
+                alertType = AlertType.FALIED
+                performSegue(withIdentifier: "signUpToAlertModal", sender: nil)
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         userNetworkController.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -44,22 +47,39 @@ class SignUpViewController: UIViewController {
     }
     @IBAction func createButtonOnTapped(_ sender: Any) {
         //Clear error
-        errorLabel.text = ""
+       
         self.view.startIndicatorAnnimation()
+        
+        guard passwordText.text != "", emailText.text != "", confirmPasswordText.text != "" else{
+            isSuccessful = false
+            message = "Email, Password and Confirm Password could not be empty!"
+            return
+        }
+        
+        guard passwordText.text == confirmPasswordText.text else{
+            isSuccessful = false
+            message = "Password and Confirm Password must be the same!"
+            return
+        }
+        
         if let email = emailText.text, let password = passwordText.text{
             userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
         }
+        
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let alertViewController = segue.destination as? AlertViewController{
+            alertViewController.bind(alertType: alertType, content: message)
+        }
     }
-    */
+    
 
 }
 

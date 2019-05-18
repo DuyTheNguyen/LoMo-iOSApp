@@ -40,6 +40,12 @@ class SignInViewController: UIViewController {
         performSegue(withIdentifier: "signInToSignUp", sender: nil)
     }
     @IBAction func signInButtonTapped(_ sender: Any) {
+        guard passwordText.text != "", emailText.text != "" else{
+            isSuccessful = false
+            message = "Email and Password could not be empty!"
+            return
+        }
+        
         if let email = emailText.text, let password = passwordText.text{
             userNetworlController.userServiceWith(type: UserService.SIGN_IN, email: email, password: password)
             self.view.startIndicatorAnnimation()

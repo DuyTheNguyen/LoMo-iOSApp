@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+
         setUpNavBar()
         databaseNetworkController.delegate = self
         //get list of movies based on path
@@ -110,5 +110,9 @@ extension MovieListViewController: UISearchBarDelegate{
         searchMovies = listOfMovie.filter({ $0.name!.prefix(searchText.count) == searchText })
         isSearching = true
         self.moviesCollectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
     }
 }

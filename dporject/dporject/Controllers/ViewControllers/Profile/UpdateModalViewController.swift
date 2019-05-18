@@ -30,7 +30,6 @@ class UpdateModalViewController: UIViewController {
                 performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
             }
             else{
-                
                 alertType = AlertType.FALIED
                 performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
             }
@@ -69,11 +68,17 @@ class UpdateModalViewController: UIViewController {
     
     @IBAction func saveButtonOnTapped(_ sender: Any) {
         guard let newValue = contentTextField.text else{
-            print("Content is nil")
+            print("contentTextField is nil")
+            return
+        }
+        
+        guard newValue != "" else{
+            isUpdated = false
+            message = "New \(titleValue!) could not be empty!"
             return
         }
         userNetworkController.updateProfile(titleValue, withValue: newValue)
-        self.view.startIndicatorAnnimation(activityColor: UIColor.white, backgroundColor: UIColor.black.withAlphaComponent(0.5))
+        self.view.startIndicatorAnnimation()
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
