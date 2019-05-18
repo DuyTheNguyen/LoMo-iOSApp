@@ -89,7 +89,11 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedMovie = listOfMovie[indexPath.row]
+        if isSearching{
+            selectedMovie = searchMovies[indexPath.row]
+        }else{
+            selectedMovie = listOfMovie[indexPath.row]
+        }
         performSegue(withIdentifier: "movieListToMovie", sender: nil)
     }
     
