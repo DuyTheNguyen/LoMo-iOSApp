@@ -21,6 +21,7 @@ class UpdateModalViewController: UIViewController {
     
     private var titleValue: String!
     private var isUpdated: Bool!
+    private var alertType: AlertType!
     private var message = String(){
         didSet{
             self.view.stopIndicatorAnnimation()
@@ -29,6 +30,8 @@ class UpdateModalViewController: UIViewController {
             }
             else{
                 print(message)
+                alertType = AlertType.FALIED
+                performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
             }
         }
     }
@@ -67,14 +70,17 @@ class UpdateModalViewController: UIViewController {
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    /*
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let alertViewController = segue.destination as? AlertViewController{
+            alertViewController.bind(alertType: alertType, content: message)
+        }
     }
-    */
+    
 
 }
 

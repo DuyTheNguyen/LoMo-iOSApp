@@ -35,18 +35,20 @@ class AlertViewController: UIViewController {
     }
     
     private func setUpUIComponents(){
+        print(alertType)
         modalUIView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 15)
-        
-        confirmButton.roundedCorner(corners: [.topRight, .topLeft], radius: 15)
+        contentLabel.text = content
         confirmButton.setTitleColor(UIColor.white, for: .normal)
         switch alertType!{
         case AlertType.SUCCESS:
             titleLabel.text = "Yayy!! You did it!!"
-            confirmButton.backgroundColor = UIColor.init(red: 76, green: 175, blue: 80, alpha: 0)
+            imageUIView.image = Icons.SUCCESS
+            confirmButton.backgroundColor = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 0)
             
         case AlertType.FALIED:
+            imageUIView.image = Icons.FAILED
             titleLabel.text = "Opps!! Something went wrong"
-            confirmButton.backgroundColor = UIColor.init(red: 244, green: 67, blue: 54, alpha: 0)
+            confirmButton.backgroundColor = UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
         default:
             print("Should not be here")
         }
