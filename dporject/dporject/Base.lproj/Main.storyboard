@@ -158,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="96" y="-243"/>
         </scene>
-        <!--View Controller-->
+        <!--Alert View Controller-->
         <scene sceneID="wSj-dm-RV5">
             <objects>
-                <viewController id="Bhk-I4-ArF" sceneMemberID="viewController">
+                <viewController id="Bhk-I4-ArF" customClass="AlertViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hmB-Do-UQv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,6 +193,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
                                         <state key="normal" title="Confirm"/>
+                                        <connections>
+                                            <action selector="confirmButtonOnTapped:" destination="Bhk-I4-ArF" eventType="touchUpInside" id="zcU-22-Shz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,6 +204,13 @@
                         <color key="backgroundColor" white="1" alpha="0.70360659246575341" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yfz-3d-eBL"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="VLi-J0-71t" id="zRZ-9T-Sn7"/>
+                        <outlet property="contentLabel" destination="7gr-QF-Usi" id="HiY-oy-SFd"/>
+                        <outlet property="imageUIView" destination="ImU-u0-lwp" id="Goo-zx-DV3"/>
+                        <outlet property="modalUIView" destination="4ne-ZG-ogC" id="8l4-9W-uvW"/>
+                        <outlet property="titleLabel" destination="hsZ-ts-pWR" id="HMm-Og-RY5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiF-70-fJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -352,6 +362,7 @@
                         <outlet property="passwordLabel" destination="uFe-8w-yfC" id="wRg-9O-rQf"/>
                         <outlet property="signOutButton" destination="sER-OK-EWE" id="Cpr-Ig-ziW"/>
                         <segue destination="8JD-0q-Nvq" kind="show" identifier="profileToUpdate" id="pZZ-SJ-X0d"/>
+                        <segue destination="Bhk-I4-ArF" kind="presentation" identifier="profileToAlert" id="JBg-nu-ddC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZF-7i-k62" userLabel="First Responder" sceneMemberID="firstResponder"/>

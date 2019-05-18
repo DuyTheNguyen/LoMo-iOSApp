@@ -14,6 +14,7 @@
 		6A29D0172287E81100CF35EF /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D0162287E81100CF35EF /* MovieListCollectionViewCell.swift */; };
 		6A29D0192287FA7700CF35EF /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D0182287FA7700CF35EF /* Genre.swift */; };
 		6A675F772283E491001F0F11 /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A675F762283E491001F0F11 /* GenreViewController.swift */; };
+		6A6B2BA1229021F2001266FB /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B2BA0229021F2001266FB /* AlertViewController.swift */; };
 		6A7549C1228C14B800C0263E /* CommentModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7549C0228C14B800C0263E /* CommentModalViewController.swift */; };
 		6A7549C3228C1E1100C0263E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7549C2228C1E1100C0263E /* Comment.swift */; };
 		6A8246D4228D0559007C00F5 /* CommentListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8246D3228D0559007C00F5 /* CommentListCollectionViewCell.swift */; };
@@ -79,6 +80,7 @@
 		6A29D0162287E81100CF35EF /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A29D0182287FA7700CF35EF /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		6A675F762283E491001F0F11 /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
+		6A6B2BA0229021F2001266FB /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6A7549C0228C14B800C0263E /* CommentModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModalViewController.swift; sourceTree = "<group>"; };
 		6A7549C2228C1E1100C0263E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		6A8246D3228D0559007C00F5 /* CommentListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -201,6 +203,14 @@
 			path = MovieList;
 			sourceTree = "<group>";
 		};
+		6A6B2B9F229021DD001266FB /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6A6B2BA0229021F2001266FB /* AlertViewController.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		6A7549BF228C148A00C0263E /* Movie */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +272,7 @@
 		6AB3C5DC2283F31400CE3AFE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A6B2B9F229021DD001266FB /* Others */,
 				6A8246D2228D0404007C00F5 /* MovieList */,
 				6A8246D1228D03FB007C00F5 /* Profile */,
 				6A8246D0228D03F2007C00F5 /* Genre */,
@@ -269,7 +280,6 @@
 				6A7549BF228C148A00C0263E /* Movie */,
 				6A8246CE228D03D0007C00F5 /* SignUp */,
 				6AB3C5E22284142F00CE3AFE /* Home */,
-				6A1C2870228ED70600936357 /* TabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -305,6 +315,7 @@
 		6AC705C122705DFB00EDD8B3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A1C2870228ED70600936357 /* TabBarController.swift */,
 				6AB3C5DD2283F33300CE3AFE /* NetworkControllers */,
 				6AB3C5DC2283F31400CE3AFE /* ViewControllers */,
 			);
@@ -552,6 +563,7 @@
 				6AC705C922707B7200EDD8B3 /* ProfileViewController.swift in Sources */,
 				6AC705C722707B6000EDD8B3 /* HomeViewController.swift in Sources */,
 				6A29D0192287FA7700CF35EF /* Genre.swift in Sources */,
+				6A6B2BA1229021F2001266FB /* AlertViewController.swift in Sources */,
 				6AC705CC227089AC00EDD8B3 /* Extension.swift in Sources */,
 				6A7549C3228C1E1100C0263E /* Comment.swift in Sources */,
 				6AEEE39D226326C600027C88 /* SignInViewController.swift in Sources */,

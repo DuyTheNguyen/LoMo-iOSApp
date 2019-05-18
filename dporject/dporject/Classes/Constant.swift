@@ -35,3 +35,7 @@ enum UserService{
     case SIGN_IN, SIGN_UP
 }
 
+enum AlertType{
+    case SUCCESS, FALIED
+}
+
