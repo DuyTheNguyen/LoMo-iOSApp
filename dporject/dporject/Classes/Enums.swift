@@ -39,3 +39,7 @@ enum AlertType{
     case SUCCESS, FALIED
 }
 
+enum CustomColors{
+    static let GREEN = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 1.0)
+    static let RED =  UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
+}

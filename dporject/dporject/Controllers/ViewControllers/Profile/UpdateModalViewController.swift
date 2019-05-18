@@ -26,10 +26,11 @@ class UpdateModalViewController: UIViewController {
         didSet{
             self.view.stopIndicatorAnnimation()
             if isUpdated{
-                dismiss(animated: true, completion: nil)
+                alertType = AlertType.SUCCESS
+                performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
             }
             else{
-                print(message)
+                
                 alertType = AlertType.FALIED
                 performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
             }
@@ -40,6 +41,10 @@ class UpdateModalViewController: UIViewController {
         super.viewDidLoad()
         contentTextField.delegate = self
         userNetworkController.delegate = self
+        
+        //Using notification for success case
+        NotificationCenter.default.addObserver(self, selector: #selector(self.dismissModal), name: NSNotification.Name(rawValue: "CloseUpdateModalNoti"), object: nil)
+
         // Do any additional setup after loading the view.
     }
     
@@ -50,6 +55,10 @@ class UpdateModalViewController: UIViewController {
         contentTextField.text = ""
         contentTextField.becomeFirstResponder()
         
+    }
+    
+    @objc func dismissModal(){
+        dismiss(animated: true, completion: nil)
     }
     
    
@@ -68,7 +77,7 @@ class UpdateModalViewController: UIViewController {
     }
     
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+       dismissModal()
     }
     
     // MARK: - Navigation

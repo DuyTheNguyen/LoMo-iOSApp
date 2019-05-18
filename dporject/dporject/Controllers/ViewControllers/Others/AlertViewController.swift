@@ -39,23 +39,31 @@ class AlertViewController: UIViewController {
         modalUIView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 15)
         contentLabel.text = content
         confirmButton.setTitleColor(UIColor.white, for: .normal)
+       
         switch alertType!{
         case AlertType.SUCCESS:
             titleLabel.text = "Yayy!! You did it!!"
             imageUIView.image = Icons.SUCCESS
-            confirmButton.backgroundColor = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 0)
-            
+            confirmButton.backgroundColor = CustomColors.GREEN
+           
         case AlertType.FALIED:
             imageUIView.image = Icons.FAILED
             titleLabel.text = "Opps!! Something went wrong"
-            confirmButton.backgroundColor = UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
+            confirmButton.backgroundColor = CustomColors.RED
+            
         default:
             print("Should not be here")
         }
     }
     
     @IBAction func confirmButtonOnTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        dismiss(animated: true) {
+            if self.alertType == AlertType.SUCCESS{
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CloseUpdateModalNoti"), object: nil)
+
+            }
+        }
     }
     
     /*
