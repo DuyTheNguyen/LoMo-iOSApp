@@ -13,12 +13,13 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
+    
     
    
     private let userNetworlController = UserNetworkController()
     
     private var isSuccessful: Bool!
+    private var alertType: AlertType!
     private var message = String(){
         didSet{
             view.stopIndicatorAnnimation()
@@ -27,7 +28,8 @@ class SignInViewController: UIViewController {
                 //add alert
                 self.handleControllerTransitionWith(identifier: "TabBarController")
             }else{
-                errorLabel.text = message
+                alertType = AlertType.FALIED
+                performSegue(withIdentifier: "signInToAlertModal", sender: nil)
             }
         }
     }
@@ -38,7 +40,6 @@ class SignInViewController: UIViewController {
         performSegue(withIdentifier: "signInToSignUp", sender: nil)
     }
     @IBAction func signInButtonTapped(_ sender: Any) {
-        errorLabel.text = ""
         if let email = emailText.text, let password = passwordText.text{
             userNetworlController.userServiceWith(type: UserService.SIGN_IN, email: email, password: password)
             self.view.startIndicatorAnnimation()
@@ -47,6 +48,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         userNetworlController.delegate = self
     }
 
@@ -55,7 +57,12 @@ class SignInViewController: UIViewController {
         super.viewWillAppear(animated)
         emailText.text = "dave@gmail.com"
         passwordText.text = "dave123"
-        errorLabel.text = ""
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let alertModalController  = segue.destination as? AlertViewController{
+            alertModalController.bind(alertType: alertType, content: message)
+        }
     }
 }
 
@@ -66,4 +73,5 @@ extension SignInViewController: UserNetworkControllerDelegate{
         self.message = message
     }
 }
+
 

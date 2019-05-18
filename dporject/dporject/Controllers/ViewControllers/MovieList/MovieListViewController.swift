@@ -31,7 +31,7 @@ class MovieListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround()
         setUpNavBar()
         databaseNetworkController.delegate = self
         //get list of movies based on path
