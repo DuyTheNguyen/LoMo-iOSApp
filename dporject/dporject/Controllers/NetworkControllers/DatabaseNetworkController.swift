@@ -87,14 +87,7 @@ class DatabaseNetworkController{
                         var movies = [Movie]()
                         
                         for (_,value) in values{
-                            let movie = Movie(id: value["id"] as? String,
-                                              name: value["name"] as? String,
-                                              rating: value["rating"] as? String,
-                                              year: value["year"] as? String,
-                                              image: value["image"] as? String,
-                                              genre: value["genre"] as? String,
-                                              description: value["description"] as? String,
-                                              director: value["director"] as? String)
+                            let movie = Movie(snapshot: value)
                             movies.append(movie)
                         
                         }
