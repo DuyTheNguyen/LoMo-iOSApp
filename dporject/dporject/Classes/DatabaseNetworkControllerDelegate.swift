@@ -10,6 +10,7 @@ import Foundation
 protocol DatabaseNetworkControllerDelegate: class{
     func didReceivedListOfMovies(movies : [Movie])
     func didReceivedListOfGenres(genres: [Genre])
+    func didReceivedListOfCinemas(cinemas: [Cinema])
     func watchListOfComments(comments: [Comment])
     func isCommentAdded(isIt: Bool)
 }
@@ -22,6 +23,10 @@ extension DatabaseNetworkControllerDelegate{
     }
     
     func didReceivedListOfGenres(genres: [Genre]){
+        
+    }
+    
+    func didReceivedListOfCinemas(cinemas: [Cinema]){
         
     }
     

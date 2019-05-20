@@ -18,12 +18,6 @@ class DatabaseNetworkController{
     
     init(){
         rootReference = Database.database().reference()
-        var query = rootReference.child("cinemas").queryOrdered(byChild: "001")
-        
-        print(query)
-        query = rootReference.child("cinemas").queryOrdered(byChild: "000")
-        
-        print(query)
     }
     
     
@@ -108,7 +102,8 @@ class DatabaseNetworkController{
                         }
                         self.delegate?.didReceivedListOfGenres(genres: genres)
                     
-                    case "Cinemas":
+                    case "Cinema":
+                      
                         var cinemas = [Cinema]()
                         for(_, value) in values{
                             let cinema = Cinema(snapshot: value)

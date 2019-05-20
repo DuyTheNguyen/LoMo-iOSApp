@@ -37,6 +37,22 @@ class MovieViewController: UIViewController {
             
         }
     }
+    private var thisMoviesListOfCinemas = [Cinema]()
+    fileprivate var listOfCinemas = [Cinema](){
+        didSet{
+            thisMoviesListOfCinemas = listOfCinemas
+            
+            guard let validCinemasMovie = self.selectedMovie.cinemas else {
+                print("No cinema for this movie")
+                return
+            }
+
+            thisMoviesListOfCinemas = thisMoviesListOfCinemas.filter { (cinema) -> Bool in
+                 validCinemasMovie.contains(cinema.id)
+            }
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +61,7 @@ class MovieViewController: UIViewController {
         
         databaseNetworkController.delegate = self
         databaseNetworkController.observeDatabase(path: "comments/\(selectedMovie.id!)")
+        databaseNetworkController.getListOfObjectsFrom(path: "cinemas", withDataType: "Cinema")
         
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
@@ -140,5 +157,9 @@ extension MovieViewController: UserNetworkControllerDelegate{
 extension MovieViewController: DatabaseNetworkControllerDelegate{
     func watchListOfComments(comments: [Comment]) {
         self.listOfComments = comments
+    }
+    
+    func didReceivedListOfCinemas(cinemas: [Cinema]) {
+        self.listOfCinemas = cinemas
     }
 }

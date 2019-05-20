@@ -24,7 +24,7 @@ class Cinema: NSObject, MKAnnotation{
         self.latitude = latitude
         self.longitude = longitude
         self.name = name
-      
+        super.init()
     }
     
     init(snapshot: AnyObject){
@@ -33,6 +33,7 @@ class Cinema: NSObject, MKAnnotation{
         self.latitude = snapshot["latitude"] as? String
         self.longitude = snapshot["longitude"] as? String
         self.name = snapshot["name"] as? String
+        super.init()
     }
     
     var coordinate: CLLocationCoordinate2D{
