@@ -18,7 +18,14 @@ class DatabaseNetworkController{
     
     init(){
         rootReference = Database.database().reference()
+        var query = rootReference.child("cinemas").queryOrdered(byChild: "001")
+        
+        print(query)
+        query = rootReference.child("cinemas").queryOrdered(byChild: "000")
+        
+        print(query)
     }
+    
     
     //Add comments
     func addComment(movieId: String, comment: Comment){

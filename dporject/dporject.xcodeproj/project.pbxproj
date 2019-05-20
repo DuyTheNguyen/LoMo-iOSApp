@@ -53,6 +53,7 @@
 		6AEEE3EB2263342A00027C88 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */; };
 		6AEFF028227AD83200ED2FA6 /* UserNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */; };
 		6AEFF02A227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */; };
+		6AF429322292B8C2009A9AAD /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF429312292B8C2009A9AAD /* Cinema.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		6AEEE3EA2263342A00027C88 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkController.swift; sourceTree = "<group>"; };
 		6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkControllerDelegate.swift; sourceTree = "<group>"; };
+		6AF429312292B8C2009A9AAD /* Cinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +310,7 @@
 				6AB3C5DA2283EF0000CE3AFE /* Movie.swift */,
 				6A29D0182287FA7700CF35EF /* Genre.swift */,
 				6A7549C2228C1E1100C0263E /* Comment.swift */,
+				6AF429312292B8C2009A9AAD /* Cinema.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				6AB3C5DB2283EF0000CE3AFE /* Movie.swift in Sources */,
 				6A1C2871228ED70600936357 /* TabBarController.swift in Sources */,
 				6A29D0172287E81100CF35EF /* MovieListCollectionViewCell.swift in Sources */,
+				6AF429322292B8C2009A9AAD /* Cinema.swift in Sources */,
 				6A29D00D2287D3F300CF35EF /* MovieViewController.swift in Sources */,
 				6AB3C5E62284162A00CE3AFE /* HotMoviesCollectionViewCell.swift in Sources */,
 				6AC705C3227061B400EDD8B3 /* User.swift in Sources */,
