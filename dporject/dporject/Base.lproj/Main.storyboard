@@ -1013,6 +1013,8 @@
                     </view>
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
+                        <outlet property="cinemaLabel" destination="c3a-cW-xbV" id="4Pc-29-IHN"/>
+                        <outlet property="cinemaMapView" destination="HKY-nK-AVX" id="FPA-bE-J1l"/>
                         <outlet property="commentCollectionView" destination="kjg-AJ-icW" id="KQF-6r-drW"/>
                         <outlet property="commentTitleLabel" destination="Pq1-Ty-uCe" id="s3t-NK-Iie"/>
                         <outlet property="descriptionLabel" destination="cob-Ex-Eo1" id="jAd-Fz-Ue8"/>

@@ -23,6 +23,8 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentTitleLabel: UILabel!
     @IBOutlet weak var floattingAddButton: UIButton!
+    @IBOutlet weak var cinemaMapView: MKMapView!
+    @IBOutlet weak var cinemaLabel: UILabel!
     
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserNetworkController()
@@ -37,17 +39,22 @@ class MovieViewController: UIViewController {
             
         }
     }
-    private var thisMoviesListOfCinemas = [Cinema]()
+    private var thisMoviesListOfCinemas = [Cinema](){
+        didSet{
+            self.cinemaMapView.addAnnotations(thisMoviesListOfCinemas)
+            self.cinemaMapView.centerMapOnLocationWithCoordinate(regionRadius: 10000)
+            self.cinemaLabel.text = "Cinema (\(self.thisMoviesListOfCinemas.count))"
+        }
+    }
+    
     fileprivate var listOfCinemas = [Cinema](){
         didSet{
-            thisMoviesListOfCinemas = listOfCinemas
-            
             guard let validCinemasMovie = self.selectedMovie.cinemas else {
                 print("No cinema for this movie")
                 return
             }
 
-            thisMoviesListOfCinemas = thisMoviesListOfCinemas.filter { (cinema) -> Bool in
+            thisMoviesListOfCinemas = listOfCinemas.filter { (cinema) -> Bool in
                  validCinemasMovie.contains(cinema.id)
             }
             
@@ -61,11 +68,14 @@ class MovieViewController: UIViewController {
         
         databaseNetworkController.delegate = self
         databaseNetworkController.observeDatabase(path: "comments/\(selectedMovie.id!)")
-        databaseNetworkController.getListOfObjectsFrom(path: "cinemas", withDataType: "Cinema")
+        
+        if selectedMovie.cinemas != nil {
+            databaseNetworkController.getListOfObjectsFrom(path: "cinemas", withDataType: "Cinema")
+        }
+        
         
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
-        
         
         
 
@@ -87,6 +97,7 @@ class MovieViewController: UIViewController {
         yearLabel.text = movie.year
         ratingLabel.text = movie.rating
         descriptionLabel.text = movie.description
+        cinemaLabel.text = "Cinema (None)"
         
         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
         

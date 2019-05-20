@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import MapKit
 
 extension UIViewController{
     func handleControllerTransitionWith(identifier: String){
@@ -313,5 +314,21 @@ extension UINavigationController{
         self.navigationBar.isTranslucent = true
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
+    }
+}
+
+
+extension MKMapView{
+    func centerMapOnLocationWithCoordinate(regionRadius: CLLocationDistance, latitude: String? = nil, longitude:String? = nil){
+        let latitudeD = Double(latitude ?? "-37.8220633")
+        let longitudeD =  Double(longitude ?? "144.9941035")
+        
+        let location = CLLocation(latitude: latitudeD!, longitude: longitudeD!)
+        
+        
+        //Create and add coordinate region to the map view
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        self.setRegion(coordinateRegion, animated: true)
+        
     }
 }
