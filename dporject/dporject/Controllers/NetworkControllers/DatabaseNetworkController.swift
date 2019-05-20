@@ -114,7 +114,7 @@ class DatabaseNetworkController{
                             let cinema = Cinema(snapshot: value)
                             cinemas.append(cinema)
                         }
-                        self.delegate?.didReceivedListOfCinemas(cinemas: [Cinema])
+                        self.delegate?.didReceivedListOfCinemas(cinemas: cinemas)
                     
                     default:
                         print("Something went wrong in the switch case")
