@@ -1175,10 +1175,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MOu-qm-8gR">
-                                <rect key="frame" x="0.0" y="330" width="414" height="431"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-Oa-eTJ">
+                                <rect key="frame" x="20" y="202" width="374" height="120"/>
+                                <color key="backgroundColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="anH-YG-bbq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MOu-qm-8gR">
+                                <rect key="frame" x="0.0" y="382" width="414" height="431"/>
                                 <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="431" id="6dI-nl-ic6"/>
+                                    <constraint firstAttribute="width" constant="414" id="JHx-vr-qco"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Itf-Vj-krw">
                                     <size key="itemSize" width="180" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1225,23 +1238,15 @@
                                     <outlet property="delegate" destination="qGV-tW-5V1" id="2mu-AH-PaW"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Movies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-Oa-eTJ">
-                                <rect key="frame" x="20" y="202" width="374" height="120"/>
-                                <color key="backgroundColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="LPS-eF-IRt"/>
-                                    <constraint firstAttribute="height" constant="120" id="anH-YG-bbq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Okd-AH-NNF" firstAttribute="trailing" secondItem="xVS-Oa-eTJ" secondAttribute="trailing" constant="20" id="3Nd-XE-cex"/>
                             <constraint firstItem="xVS-Oa-eTJ" firstAttribute="top" secondItem="Okd-AH-NNF" secondAttribute="top" constant="114" id="BWd-nK-7NN"/>
                             <constraint firstItem="xVS-Oa-eTJ" firstAttribute="leading" secondItem="Okd-AH-NNF" secondAttribute="leading" constant="20" id="IIH-4z-hgj"/>
+                            <constraint firstItem="MOu-qm-8gR" firstAttribute="bottom" secondItem="Okd-AH-NNF" secondAttribute="bottom" id="OG4-HP-R0D"/>
+                            <constraint firstItem="MOu-qm-8gR" firstAttribute="trailing" secondItem="Okd-AH-NNF" secondAttribute="trailing" id="fUl-MS-AfK"/>
+                            <constraint firstItem="MOu-qm-8gR" firstAttribute="leading" secondItem="Okd-AH-NNF" secondAttribute="leading" id="oo5-gY-oZf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Okd-AH-NNF"/>
                     </view>
