@@ -96,8 +96,7 @@ class DatabaseNetworkController{
                     case "Genre":
                         var genres = [Genre]()
                         for(_, value) in values{
-                            let genre = Genre(name: value["name"] as? String,
-                                              image: value["image"] as? String)
+                            let genre = Genre(snapshot: value)
                             genres.append(genre)
                         }
                         self.delegate?.didReceivedListOfGenres(genres: genres)
