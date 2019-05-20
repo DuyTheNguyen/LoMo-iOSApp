@@ -96,10 +96,9 @@ class DatabaseNetworkController{
                         for (_,value) in values{
                             let movie = Movie(snapshot: value)
                             movies.append(movie)
-                        
                         }
-                        
                         self.delegate?.didReceivedListOfMovies(movies: movies)
+                    
                     case "Genre":
                         var genres = [Genre]()
                         for(_, value) in values{
@@ -108,6 +107,15 @@ class DatabaseNetworkController{
                             genres.append(genre)
                         }
                         self.delegate?.didReceivedListOfGenres(genres: genres)
+                    
+                    case "Cinemas":
+                        var cinemas = [Cinema]()
+                        for(_, value) in values{
+                            let cinema = Cinema(snapshot: value)
+                            cinemas.append(cinema)
+                        }
+                        self.delegate?.didReceivedListOfCinemas(cinemas: [Cinema])
+                    
                     default:
                         print("Something went wrong in the switch case")
                         print("Path: \(rootReference.child(path))")
