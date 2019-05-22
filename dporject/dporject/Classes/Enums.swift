@@ -29,6 +29,7 @@ enum Icons{
     static let NAME = #imageLiteral(resourceName: "icons8-employee_card")
     static let FAILED = #imageLiteral(resourceName: "icons8-cancel")
     static let SUCCESS = #imageLiteral(resourceName: "icons8-ok")
+    static let WARNING = #imageLiteral(resourceName: "icons8-attention")
 }
 
 enum UserService{
@@ -36,10 +37,11 @@ enum UserService{
 }
 
 enum AlertType{
-    case SUCCESS, FALIED
+    case SUCCESS, FALIED, INFO
 }
 
 enum CustomColors{
     static let GREEN = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 1.0)
     static let RED =  UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
+    static let YELLOW = UIColor.init(red: 247/255, green: 204/255, blue: 80/255, alpha: 1.0)
 }

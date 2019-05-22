@@ -506,6 +506,7 @@
                         <outlet property="passwordLabel" destination="uFe-8w-yfC" id="wRg-9O-rQf"/>
                         <outlet property="signOutButton" destination="sER-OK-EWE" id="Cpr-Ig-ziW"/>
                         <segue destination="8JD-0q-Nvq" kind="show" identifier="profileToUpdate" id="pZZ-SJ-X0d"/>
+                        <segue destination="Bhk-I4-ArF" kind="presentation" identifier="profileToAlert" id="PL0-rH-A4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZF-7i-k62" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1393,6 +1394,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ftl-VD-ggp"/>
-        <segue reference="u21-Lg-jNn"/>
+        <segue reference="PL0-rH-A4u"/>
     </inferredMetricsTieBreakers>
 </document>

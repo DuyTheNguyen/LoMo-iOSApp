@@ -69,28 +69,33 @@ class ProfileViewController: UIViewController {
         if let updateModalViewControler = segue.destination as? UpdateModalViewController{
             updateModalViewControler.bind(type: type!)
         }
+        
+        if let alertModalViewController = segue.destination as? AlertViewController{
+            alertModalViewController.bind(alertType: AlertType.INFO, content: "This function has not been updated yet!")
+        }
     }
  
     @IBAction func changeImageButtonOnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "profileToAlert", sender: nil)
     }
     
     @IBAction func passwordButtonOnTapped(_ sender: Any) {
-        performSequeWithString(type: "password")
+        performSequeToUpdateWith(type: "password")
     }
     
     @IBAction func emailButtonOnTapped(_ sender: Any) {
-        performSequeWithString(type: "email")
+        performSequeToUpdateWith(type: "email")
     }
     
     @IBAction func displayNameButtonOnTapped(_ sender: Any) {
-       performSequeWithString(type: "name")
+       performSequeToUpdateWith(type: "name")
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
          handleControllerTransitionWith(identifier: "SignInViewController")
     }
     
-    private func performSequeWithString(type: String){
+    private func performSequeToUpdateWith(type: String){
         self.type = type
         performSegue(withIdentifier: "profileToUpdate", sender: nil)
     }
