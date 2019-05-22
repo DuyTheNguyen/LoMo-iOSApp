@@ -48,6 +48,12 @@ class UserNetworkController{
             authentication.createUser(withEmail: email, password: password) { (user, error) in
                 self.callBack(error: error, successfulMessage: "Sign Up Successfully")
             }
+        case .SIGN_OUT:
+            do{
+               try authentication.signOut()
+            } catch let signOutError as NSError{
+               print ("Error signing out: %@", signOutError)
+            }
         }
     }
     

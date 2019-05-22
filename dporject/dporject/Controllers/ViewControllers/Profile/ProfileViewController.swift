@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
-    private let userAuthenticationController = UserNetworkController()
+    private let userNetworkController = UserNetworkController()
    
     private var type: String? = ""
     
@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        userAuthenticationController.delegate = self
+        userNetworkController.delegate = self
         
         
         
@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userAuthenticationController.authenticationListener()
+        userNetworkController.authenticationListener()
         signOutButton.buttonWithText(title: "Sign Out", iconName: Icons.SIGN_OUT)
         signOutButton.layer.cornerRadius = 15
     }
@@ -92,6 +92,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
+         userNetworkController.userServiceWith(type: UserService.SIGN_OUT, email: "", password: "")
          handleControllerTransitionWith(identifier: "SignInViewController")
     }
     

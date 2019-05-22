@@ -33,7 +33,7 @@ enum Icons{
 }
 
 enum UserService{
-    case SIGN_IN, SIGN_UP
+    case SIGN_IN, SIGN_UP, SIGN_OUT
 }
 
 enum AlertType{
