@@ -497,7 +497,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dui-82-fWK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-parse_resumes_filled" id="FpK-sy-dd1" userLabel="Profile"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-parse_resumes_filled" id="FpK-sy-dd1" userLabel="Profile"/>
                     <connections>
                         <outlet property="avatarImageView" destination="dos-6O-Kgf" id="QAq-Rb-63M"/>
                         <outlet property="displayNameLabel" destination="oPy-TG-Rhf" id="gx1-JC-u7Z"/>
@@ -1341,11 +1341,11 @@
             </objects>
             <point key="canvasLocation" x="4256.521739130435" y="-994.41964285714278"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="UCS-P0-J7D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bgr-wg-371" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="icons8-home_page_filled" id="Ps5-dh-5wD"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-home_page_filled" id="Ps5-dh-5wD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JOO-Fb-Oi8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1365,7 +1365,7 @@
         <scene sceneID="aiH-Vj-GeF">
             <objects>
                 <navigationController title="Genre Navigation Controller Scene" automaticallyAdjustsScrollViewInsets="NO" id="lge-yn-onH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Genre" image="icons8-windows_phone_store_filled" id="tgg-B8-t1D"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-windows_phone_store_filled" id="tgg-B8-t1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkU-Tq-PGH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

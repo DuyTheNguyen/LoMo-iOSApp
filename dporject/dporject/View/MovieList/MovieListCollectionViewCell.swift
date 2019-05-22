@@ -15,7 +15,7 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-    
+        movieImage.image = nil
     }
     
     

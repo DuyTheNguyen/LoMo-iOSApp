@@ -29,7 +29,7 @@ class GenreViewController: UIViewController {
         super.viewDidLoad()
         //Set the label can be tapped
         self.navigationController?.setNavbarTransparent()
-        allMovieLabel.loadCustomisedLabel()
+        allMovieLabel.loadCustomLabel()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(allMoviesLabelOnTapped))
         allMovieLabel.isUserInteractionEnabled = true
         allMovieLabel.addGestureRecognizer(gesture)

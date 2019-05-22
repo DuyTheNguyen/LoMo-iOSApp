@@ -87,7 +87,7 @@ extension UIView{
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         backgroundView.backgroundColor = backgroundColor
-        backgroundView.tag = 475647
+        backgroundView.tag = 77777
         
         var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator = UIActivityIndicatorView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
@@ -104,7 +104,7 @@ extension UIView{
     }
     
     func stopIndicatorAnnimation() {
-        if let background = viewWithTag(475647){
+        if let background = viewWithTag(77777){
             background.removeFromSuperview()
         }
         self.isUserInteractionEnabled = true
@@ -213,7 +213,7 @@ class CustomUIImageView: UIImageView{
 
 //Create cell with shadow and radius
 extension UICollectionViewCell{
-    func loadCustomisedCell(widthCornerRadius: CGFloat){
+    func loadCustomCell(widthCornerRadius: CGFloat){
         self.contentView.layer.cornerRadius = widthCornerRadius
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
@@ -248,7 +248,7 @@ extension UICollectionViewCell{
 
 //Create label with shawdow and radius
 extension UILabel{
-    func loadCustomisedLabel(){
+    func loadCustomLabel(){
         self.layer.cornerRadius = 15.0
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.clear.cgColor
