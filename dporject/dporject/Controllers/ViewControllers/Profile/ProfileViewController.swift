@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
             }
             
             if let photo = currrentUser.photoURL {
-                avatarImageView.load(imageString: photo)
+                avatarImageView.load(urlString: photo)
             }else{
                 avatarImageView.image = Icons.USER_MALE
             }

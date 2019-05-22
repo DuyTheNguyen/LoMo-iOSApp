@@ -22,7 +22,7 @@ class GenreCollectionViewCell: UICollectionViewCell {
         nameLabel.text = genre.name
         nameLabel.layer.opacity = 1
         
-        genreImageView.load(imageString: genre.image ?? "")
+        genreImageView.load(urlString: genre.image ?? "")
         genreImageView.layer.opacity = 0.6
        
        

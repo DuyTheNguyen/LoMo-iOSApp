@@ -23,7 +23,7 @@ class CommentListCollectionViewCell: UICollectionViewCell {
         
         commentImageView.image = Icons.USER_MALE
         if comment.image != ""{
-            commentImageView.load(imageString: comment.image)
+            commentImageView.load(urlString: comment.image)
         }
         
     }

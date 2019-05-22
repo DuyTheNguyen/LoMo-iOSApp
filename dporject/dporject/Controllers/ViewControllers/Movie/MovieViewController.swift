@@ -44,7 +44,6 @@ class MovieViewController: UIViewController {
             modifiedListOfComments = originalListOfComment.sorted(by: { (c1, c2) -> Bool in
                 c1.timestamp.fromTimeStampToDouble() > c2.timestamp.fromTimeStampToDouble()
             })
-        
         }
     }
     
@@ -101,7 +100,7 @@ class MovieViewController: UIViewController {
         
         floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
         
-        movieImageView.load(imageString: movie.image!)
+        movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
         yearLabel.text = movie.year
         ratingLabel.text = movie.rating

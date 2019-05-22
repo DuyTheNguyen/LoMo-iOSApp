@@ -17,7 +17,7 @@ class HotMoviesCollectionViewCell: UICollectionViewCell {
     func bind(movie: Movie){
         movieNameLabel.text = movie.name
         
-        imageView.load(imageString: movie.image!)
+        imageView.load(urlString: movie.image!)
         imageView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
         
     }
