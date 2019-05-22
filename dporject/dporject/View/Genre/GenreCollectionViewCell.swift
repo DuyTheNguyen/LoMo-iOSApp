@@ -11,7 +11,7 @@ import UIKit
 class GenreCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var genreImageView: UIImageView!
+    @IBOutlet weak var genreImageView: CustomUIImageView!
     
    
     

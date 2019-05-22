@@ -13,7 +13,7 @@ class CommentListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var commentContentLabel: UILabel!
     @IBOutlet weak var commentDateLabel: UILabel!
-    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var commentImageView: CustomUIImageView!
     @IBOutlet weak var commentNameLabel: UILabel!
     
     func bind(comment: Comment){

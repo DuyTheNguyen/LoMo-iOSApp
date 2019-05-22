@@ -10,14 +10,12 @@ import UIKit
 
 class MovieListCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var movieImage: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        
-        movieImage.backgroundColor = CustomColors.GREEN
+    
     }
     
     

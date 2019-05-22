@@ -11,7 +11,7 @@ import UIKit
 class HotMoviesCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     
     func bind(movie: Movie){

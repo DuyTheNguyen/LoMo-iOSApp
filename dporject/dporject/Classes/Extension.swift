@@ -130,71 +130,8 @@ extension UIView{
  *************************************************/
 
 //Allow load image from URL
-let imageCache = NSCache<AnyObject, AnyObject>()
+
 extension UIImageView {
-    
-    func load(urlString: String) {
-        guard let url = URL(string: urlString) else{
-            return
-        }
-       self.startIndicatorAnnimation()
-        self.backgroundColor = CustomColors.YELLOW
-        
-        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
-            self.image = imageFromCache
-            self.stopIndicatorAnnimation()
-            return
-            
-        }
-        
-        DispatchQueue.global().async { [weak self] in
-            guard let data = try? Data(contentsOf: url) else{
-                print("No data")
-                return
-            }
-            
-            guard let image = UIImage(data: data) else {
-                print("No Image")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                let imageToCache = image
-                imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
-                self?.image = imageToCache
-                self?.stopIndicatorAnnimation()
-            }
-         
-        }
-    }
-    
-  
-    /*
-     func load(urlString: String) {
-        let url = URL(string: urlString)
-       
-        /*
-        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
-            self.image = imageFromCache
-            return
-        }*/
-        
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            guard error != nil else{
-                print(error as Any)
-                return
-            }
-            
-            
-            
-            DispatchQueue.main.async {
-     
-                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
-                self.image = imageToCache
-            }
-        }.resume()
-    }*/
-    
     
     func setUpImageViewWithIcons(type: String){
         var image: UIImage!
@@ -215,8 +152,52 @@ extension UIImageView {
 /*************************************************
  *************** End: UIImageView ****************
  *************************************************/
-
-
+let imageCache = NSCache<AnyObject, AnyObject>()
+class CustomUIImageView: UIImageView{
+    var imageStringURL: String?
+    func load(urlString: String) {
+        
+        guard let url = URL(string: urlString) else{
+            return
+        }
+        
+        imageStringURL = urlString
+        self.startIndicatorAnnimation()
+        image = nil
+        
+        //Check whether cache image exsits
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
+             self.image = imageFromCache
+             self.stopIndicatorAnnimation()
+             return
+         }
+        
+        DispatchQueue(label: "Image Processing Queue").async {
+            guard let data = try? Data(contentsOf: url) else{
+                print("No data")
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                print("No Image")
+                return
+            }
+            
+          
+             DispatchQueue.main.async {
+                let imageToCache = image
+                //Dont show up previous images
+                guard self.imageStringURL == urlString else{
+                    self.stopIndicatorAnnimation()
+                    return
+                }
+                self.image = imageToCache
+                imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
+                self.stopIndicatorAnnimation()
+             }
+        }
+    }
+}
 
 
 

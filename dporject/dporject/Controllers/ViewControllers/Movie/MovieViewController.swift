@@ -14,7 +14,7 @@ class MovieViewController: UIViewController {
     var selectedMovie: Movie!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var movieImageView: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
