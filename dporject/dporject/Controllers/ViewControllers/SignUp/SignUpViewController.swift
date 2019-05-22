@@ -50,21 +50,36 @@ class SignUpViewController: UIViewController {
        
         self.view.startIndicatorAnnimation()
         
-        guard passwordText.text != "", emailText.text != "", confirmPasswordText.text != "" else{
+        guard  let email = emailText.text, let password = passwordText.text, let cPassword = confirmPasswordText.text else{
+            print("Email, password and confirm password label are nil")
+            return
+        }
+        
+        
+        //Start: Validation
+        guard password != "", email != "", cPassword != "" else{
             isSuccessful = false
             message = "Email, Password and Confirm Password could not be empty!"
             return
         }
         
-        guard passwordText.text == confirmPasswordText.text else{
+        guard email.isValidEmail() else {
+            isSuccessful = false
+            message = "Please enter a valid email!"
+            return
+        }
+        
+        guard password == cPassword else{
             isSuccessful = false
             message = "Password and Confirm Password must be the same!"
             return
         }
+        //End: Validation
+       
         
-        if let email = emailText.text, let password = passwordText.text{
-            userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
-        }
+        //Perform connection with database
+        userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
+   
         
     }
 
