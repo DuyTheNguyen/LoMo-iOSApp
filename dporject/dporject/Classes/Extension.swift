@@ -239,21 +239,6 @@ extension UILabel{
 
 
 
-
-
-extension Date {
-    func currentTimeMillis() -> Int64 {
-        return Int64(self.timeIntervalSince1970 * 1000)
-    }
-    func getCurrentDateInString()-> String{
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return format.string(from: self)
-    }
-}
-
-
-
 extension UICollectionView {
     func scrollToLast() {
         guard numberOfSections > 0 else {
@@ -333,10 +318,36 @@ extension MKMapView{
     }
 }
 
+
+
+/************************************************
+ *************** Begin: String *****************
+ ************************************************/
 extension String{
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+    
+    func fromTimeStampToCustomDate() -> String{
+        guard let myTimeInterval = TimeInterval(self) else {
+            return("Could not convert from string to time interval")
+        }
+        
+        let time = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
+        
+        let formatter = DateFormatter()
+        
+        formatter.timeZone = TimeZone.current
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateString = formatter.string(from: time as Date)
+        
+       return dateString
+    }
 }
+/************************************************
+ *************** End: String *******************
+ ************************************************/

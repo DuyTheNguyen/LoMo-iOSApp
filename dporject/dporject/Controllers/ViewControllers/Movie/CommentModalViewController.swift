@@ -69,7 +69,7 @@ class CommentModalViewController: UIViewController {
                                userName: currentUser?.displayName ?? (currentUser?.email)!,
                                image: currentUser?.photoURL ?? "",
                                content: commentTextView.text,
-                               timestamp: Date().getCurrentDateInString())
+                               timestamp: String(Date().timeIntervalSince1970))
         
         databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
         

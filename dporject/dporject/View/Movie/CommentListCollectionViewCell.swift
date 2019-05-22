@@ -17,7 +17,7 @@ class CommentListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var commentNameLabel: UILabel!
     
     func bind(comment: Comment){
-        commentDateLabel.text = comment.timestamp
+        commentDateLabel.text = comment.timestamp.fromTimeStampToCustomDate()
         commentContentLabel.text = comment.content
         commentNameLabel.text = comment.userName
         

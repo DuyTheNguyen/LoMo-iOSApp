@@ -38,6 +38,8 @@ class SignInViewController: UIViewController {
         //Destroy View before go to the other
         self.navigationController?.popViewController(animated: true)
         performSegue(withIdentifier: "signInToSignUp", sender: nil)
+        
+       
     }
     @IBAction func signInButtonTapped(_ sender: Any) {
         guard let  email = emailText.text, let password = passwordText.text else{
@@ -67,6 +69,8 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         userNetworlController.delegate = self
+        
+       
     }
 
     
@@ -74,6 +78,23 @@ class SignInViewController: UIViewController {
         super.viewWillAppear(animated)
         emailText.text = "dave@gmail.com"
         passwordText.text = "dave123"
+        
+        let timestamp = Date().timeIntervalSince1970
+        
+        print(timestamp)
+        
+        let myTimeInterval = TimeInterval(timestamp)
+        let time = Date(timeIntervalSince1970: TimeInterval(myTimeInterval))
+        
+        let formatter = DateFormatter()
+        
+        formatter.timeZone = TimeZone.current
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let dateString = formatter.string(from: time as Date)
+        
+        print(dateString)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
