@@ -343,9 +343,11 @@ extension String{
         
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
-        let dateString = formatter.string(from: time as Date)
-        
-       return dateString
+       return formatter.string(from: time as Date)
+    }
+    
+    func fromTimeStampToDouble() -> Double{
+        return Double(self) ?? 0.0
     }
 }
 /************************************************

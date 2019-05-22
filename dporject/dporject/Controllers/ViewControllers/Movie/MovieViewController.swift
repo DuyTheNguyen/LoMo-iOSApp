@@ -29,16 +29,25 @@ class MovieViewController: UIViewController {
     private var currentUser: User!
     private let userAuthenticationNetworkController = UserNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
-    fileprivate var listOfComments = [Comment](){
+    fileprivate var modifiedListOfComments = [Comment](){
         didSet{
             DispatchQueue.main.async {
                 self.commentCollectionView.reloadData()
-                self.commentTitleLabel.text = "Comments (\(self.listOfComments.count))"
+                self.commentTitleLabel.text = "Comments (\(self.modifiedListOfComments.count))"
                 self.commentCollectionView.scrollToFirst()
             }
             
         }
     }
+    fileprivate var originalListOfComment = [Comment](){
+        didSet{
+            modifiedListOfComments = originalListOfComment.sorted(by: { (c1, c2) -> Bool in
+                c1.timestamp.fromTimeStampToDouble() > c2.timestamp.fromTimeStampToDouble()
+            })
+        
+        }
+    }
+    
     private var thisMoviesListOfCinemas = [Cinema](){
         didSet{
             self.cinemaMapView.addAnnotations(thisMoviesListOfCinemas)
@@ -134,18 +143,18 @@ class MovieViewController: UIViewController {
 //Create extension to conform Collection View
 extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if listOfComments.count == 0{
+        if modifiedListOfComments.count == 0{
             self.commentCollectionView.setEmptyMessage("There are no comments!")
         }else{
             self.commentCollectionView.restore()
         }
-        return listOfComments.count
+        return modifiedListOfComments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let commentViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCell", for: indexPath) as! CommentListCollectionViewCell
         
-        let comment = listOfComments[indexPath.row]
+        let comment = modifiedListOfComments[indexPath.row]
         
         commentViewCell.bind(comment: comment)
         
@@ -167,7 +176,7 @@ extension MovieViewController: UserNetworkControllerDelegate{
 //Create extension to conform DatabaseNetworkController
 extension MovieViewController: DatabaseNetworkControllerDelegate{
     func watchListOfComments(comments: [Comment]) {
-        self.listOfComments = comments
+        self.originalListOfComment = comments
     }
     
     func didReceivedListOfCinemas(cinemas: [Cinema]) {
