@@ -50,7 +50,12 @@ class CommentModalViewController: UIViewController {
     
     //add comment to the database
     @IBAction func confirmButtonOnTapped(_ sender: Any) {
-        guard commentTextView.text != "" else{
+        guard let vaildComment = commentTextView.text else {
+            print("Comment text view is nil")
+            return
+        }
+        
+        guard vaildComment != "" else{
             print("Empty content")
             return
         }

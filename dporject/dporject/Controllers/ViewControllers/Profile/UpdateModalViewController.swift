@@ -72,11 +72,22 @@ class UpdateModalViewController: UIViewController {
             return
         }
         
+       
+        
         guard newValue != "" else{
             isUpdated = false
             message = "New \(titleValue!) could not be empty!"
             return
         }
+        
+        if (titleValue == "email"){
+            guard newValue.isValidEmail() else {
+                isUpdated = false
+                message = "Please enter a valid email!"
+                return
+            }
+        }
+        
         userNetworkController.updateProfile(titleValue, withValue: newValue)
         self.view.startIndicatorAnnimation()
     }
