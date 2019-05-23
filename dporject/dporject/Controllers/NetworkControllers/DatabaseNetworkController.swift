@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class DatabaseNetworkController{
     
-    private var rootReference: DatabaseReference!
+    private let rootReference: DatabaseReference?
     
     weak var delegate: DatabaseNetworkControllerDelegate?
     
