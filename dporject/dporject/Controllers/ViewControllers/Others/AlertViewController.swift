@@ -54,9 +54,6 @@ class AlertViewController: UIViewController {
             imageUIView.image = Icons.WARNING
             titleLabel.text = AlertTitles.INFO
             confirmButton.backgroundColor = CustomColors.YELLOW
-            
-        default:
-            print("Should not be here")
         }
     }
     
