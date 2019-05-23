@@ -59,19 +59,19 @@ class SignUpViewController: UIViewController {
         //Start: Validation
         guard password != "", email != "", cPassword != "" else{
             isSuccessful = false
-            message = "Email, Password and Confirm Password could not be empty!"
+            message = AlertMessages.FAILED_EMPTY_ENAIL_PASSWORD_CPASSWORD
             return
         }
         
         guard email.isValidEmail() else {
             isSuccessful = false
-            message = "Please enter a valid email!"
+            message = AlertMessages.FAILED_INVALID_EMAIL
             return
         }
         
         guard password == cPassword else{
             isSuccessful = false
-            message = "Password and Confirm Password must be the same!"
+            message = AlertMessages.FAILED_DIFFERENT_PASSWORD_CPASSWORD
             return
         }
         //End: Validation

@@ -53,11 +53,12 @@ enum ViewTags{
 }
 
 enum AlertMessages{
-    static let FAILED_EMPTY_ENAIL_PASSWORD_CPASSWORD = ""
+    static let FAILED_EMPTY_ENAIL_PASSWORD_CPASSWORD = "Email, Password and Confirm Password could not be empty!"
     static let FAILED_EMPTY_EMAIL_PASSWORD = "Email and Password could not be empty!"
+    static let FAILED_DIFFERENT_PASSWORD_CPASSWORD = "Password and Confirm Password must be the same!"
     static let FAILED_EMPTY_STRING = ""
-    static let FAILED_VALID_EMAIL = ""
+    static let FAILED_INVALID_EMAIL = "Please enter a valid email \n Ex: abc@gmail.com"
     
-    static let INFO_NOT_IMPLEMENTED = "This function has not been implemented yet!"
+    static let INFO_NOT_IMPLEMENTED = "This function has not beenF implemented yet!"
 }
 

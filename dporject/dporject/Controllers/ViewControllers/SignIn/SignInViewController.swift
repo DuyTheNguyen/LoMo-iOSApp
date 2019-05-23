@@ -62,7 +62,7 @@ class SignInViewController: UIViewController {
         
         guard email.isValidEmail() else {
             isSuccessful =  false
-            message = AlertMessages.FAILED_EMPTY_STRING
+            message = AlertMessages.FAILED_INVALID_EMAIL
             return
         }
         
