@@ -35,7 +35,7 @@ class MovieListViewController: UIViewController {
         setUpNavBar()
         databaseNetworkController.delegate = self
         //get list of movies based on path
-        databaseNetworkController.getListOfObjectsFrom(path: "genremovies/\(genre.name ?? "")", withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: "\(Paths.GENRE_MOVIES_LIST)/\(genre.name ?? "")", withDataType: .Movie)
      
         // Do any additional setup after loading the view.
     }
@@ -74,7 +74,7 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieListCollectionViewCell
+        let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier:Identifiers.MOVIE_CELL, for: indexPath) as! MovieListCollectionViewCell
         
         let movie: Movie!
         if isSearching{
@@ -94,7 +94,7 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
         }else{
             selectedMovie = listOfMovie[indexPath.row]
         }
-        performSegue(withIdentifier: "movieListToMovie", sender: nil)
+        performSegue(withIdentifier: Identifiers.MOVIELIST_TO_MOVIE, sender: nil)
     }
     
 }

@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
         homeImage.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
         self.navigationController?.setNavbarTransparent()
         databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfObjectsFrom(path: "popular",  withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: Paths.POPULAR_MOVIES,  withDataType: .Movie)
         
     }
     
@@ -60,7 +60,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotMoviesCell", for: indexPath) as! HotMoviesCollectionViewCell
+        let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.HOT_MOVIES_CELL, for: indexPath) as! HotMoviesCollectionViewCell
         
         let hotMovie = listOfMovies[indexPath.row]
         
@@ -71,7 +71,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMovie = listOfMovies[indexPath.row]
-        performSegue(withIdentifier: "homeToMovie", sender: nil)
+        performSegue(withIdentifier: Identifiers.HOME_TO_MOVIE, sender: nil)
     }
 }
 

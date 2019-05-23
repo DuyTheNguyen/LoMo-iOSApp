@@ -24,15 +24,15 @@ class SignInViewController: UIViewController {
         didSet{
             view.stopIndicatorAnnimation()
             guard isSuccessful != nil else{
-                performSegue(withIdentifier: "signInToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.SIGNIN_TO_ALERTMODAL, sender: nil)
                 return
             }
             
             if isSuccessful{
                 //add alert
-                self.handleControllerTransitionWith(identifier: "TabBarController")
+                self.handleControllerTransitionWith(identifier: Identifiers.TAB_BAR_CONTROLLER )
             }else{                alertType = AlertType.FALIED
-                performSegue(withIdentifier: "signInToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.SIGNIN_TO_ALERTMODAL, sender: nil)
             }
         }
     }
@@ -44,7 +44,7 @@ class SignInViewController: UIViewController {
     @IBAction func signUpButtonTapped(_ sender: Any) {
         //Destroy View before go to the other
         self.navigationController?.popViewController(animated: true)
-        performSegue(withIdentifier: "signInToSignUp", sender: nil)
+        performSegue(withIdentifier: Identifiers.SIGNIN_TO_SIGNUP, sender: nil)
         
        
     }

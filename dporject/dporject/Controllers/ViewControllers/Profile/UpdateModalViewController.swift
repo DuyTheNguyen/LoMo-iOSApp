@@ -27,11 +27,11 @@ class UpdateModalViewController: UIViewController {
             self.view.stopIndicatorAnnimation()
             if isUpdated{
                 alertType = AlertType.SUCCESS
-                performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.UPDATEMODAL_TO_ALERTMODAL, sender: nil)
             }
             else{
                 alertType = AlertType.FALIED
-                performSegue(withIdentifier: "updateModalToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.UPDATEMODAL_TO_ALERTMODAL, sender: nil)
             }
         }
     }
@@ -42,7 +42,7 @@ class UpdateModalViewController: UIViewController {
         userNetworkController.delegate = self
         
         //Using notification for success case
-        NotificationCenter.default.addObserver(self, selector: #selector(self.dismissModal), name: NSNotification.Name(rawValue: "CloseUpdateModalNoti"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.dismissModal), name: NSNotification.Name(rawValue: Notifications.CLOSE_UPDATE_MODAL), object: nil)
 
         // Do any additional setup after loading the view.
     }

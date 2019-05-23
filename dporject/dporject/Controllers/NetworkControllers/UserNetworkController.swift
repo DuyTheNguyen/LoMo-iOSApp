@@ -42,11 +42,11 @@ class UserNetworkController{
         switch type{
         case .SIGN_IN:
             authentication.signIn(withEmail: email, password: password) { (user, error) in
-                self.callBack(error: error, successfulMessage: "Sign In Successfully")
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_SIGNIN)
             }
         case .SIGN_UP:
             authentication.createUser(withEmail: email, password: password) { (user, error) in
-                self.callBack(error: error, successfulMessage: "Sign Up Successfully")
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_SIGNUP)
             }
         case .SIGN_OUT:
             do{
@@ -67,23 +67,23 @@ class UserNetworkController{
         switch withType {
         case "email":
             currentUser.updateEmail(to: withValue) { (error) in
-                self.callBack(error: error, successfulMessage: "Updated email Successfully")
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_EMAIL)
             }
         case "password":
             currentUser.updatePassword(to: withValue) { (error) in
-                self.callBack(error: error, successfulMessage: "Updated password Successfully")
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_PASSWORD)
             }
         case "name":
             let changeRequest = currentUser.createProfileChangeRequest()
             changeRequest.displayName = withValue
             changeRequest.commitChanges { (error) in
-                 self.callBack(error: error, successfulMessage: "Updated name Successfully")
+                 self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_NAME)
             }
         case "photoURL":
             let changeREquest = currentUser.createProfileChangeRequest()
             changeREquest.photoURL = URL(string: withValue)
             changeREquest.commitChanges { (error) in
-                self.callBack(error: error, successfulMessage: "Updated photo Successfully")
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_IMAGE)
             }
         default:
             print("Should not in default")

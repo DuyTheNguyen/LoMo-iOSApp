@@ -41,18 +41,18 @@ class AlertViewController: UIViewController {
        
         switch alertType!{
         case AlertType.SUCCESS:
-            titleLabel.text = "Yayy!! You did it!!"
+            titleLabel.text = AlertTitles.SUCCESS
             imageUIView.image = Icons.SUCCESS
             confirmButton.backgroundColor = CustomColors.GREEN
            
         case AlertType.FALIED:
             imageUIView.image = Icons.FAILED
-            titleLabel.text = "Opps!! Something went wrong"
+            titleLabel.text = AlertTitles.FAILED
             confirmButton.backgroundColor = CustomColors.RED
        
         case AlertType.INFO:
             imageUIView.image = Icons.WARNING
-            titleLabel.text = "Sorry!!!"
+            titleLabel.text = AlertTitles.INFO
             confirmButton.backgroundColor = CustomColors.YELLOW
             
         default:
@@ -64,7 +64,7 @@ class AlertViewController: UIViewController {
         
         dismiss(animated: true) {
             if self.alertType == AlertType.SUCCESS{
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CloseUpdateModalNoti"), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.CLOSE_UPDATE_MODAL), object: nil)
             }
         }
     }

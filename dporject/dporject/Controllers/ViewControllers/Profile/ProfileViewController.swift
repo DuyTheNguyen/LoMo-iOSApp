@@ -20,11 +20,11 @@ class ProfileViewController: UIViewController {
             
             if isUpdated{
                 alertType = AlertType.SUCCESS
-                performSegue(withIdentifier: "profileToAlert", sender: nil)
+                performSegue(withIdentifier: Identifiers.PROFILE_TO_ALERTMODAL, sender: nil)
             }
             else{
                 alertType = AlertType.FALIED
-                performSegue(withIdentifier: "profileToAlert", sender: nil)
+                performSegue(withIdentifier: Identifiers.PROFILE_TO_ALERTMODAL, sender: nil)
             }
         }
     }
@@ -119,12 +119,12 @@ class ProfileViewController: UIViewController {
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
          userNetworkController.userServiceWith(type: UserService.SIGN_OUT, email: "", password: "")
-         handleControllerTransitionWith(identifier: "SignInViewController")
+         handleControllerTransitionWith(identifier: Identifiers.SIGN_IN_CONTROLLER)
     }
     
     private func performSequeToUpdateWith(type: String){
         self.type = type
-        performSegue(withIdentifier: "profileToUpdate", sender: nil)
+        performSegue(withIdentifier: Identifiers.PROFILE_TO_UPDATEMODAL, sender: nil)
     }
 }
 

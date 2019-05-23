@@ -29,7 +29,7 @@ class DatabaseNetworkController{
             return
         }
         
-        let commentRef = rootReference.child("comments/\(movieId)").childByAutoId()
+        let commentRef = rootReference.child("\(Paths.COMMENTS)/\(movieId)").childByAutoId()
         commentRef.setValue([
             "commentId" : commentRef.key,
             "userId": comment.userId,
@@ -73,7 +73,7 @@ class DatabaseNetworkController{
     }
     
     //Get genres, movies and comment
-    func getListOfObjectsFrom(path:String, withDataType: String){
+    func getListOfObjectsFrom(path:String, withDataType: DataType){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
@@ -84,7 +84,7 @@ class DatabaseNetworkController{
             if let values = snapshot.value as? [String:AnyObject] {
                 //Begin: Switch
                 switch withDataType {
-                    case "Movie":
+                    case .Movie:
                         var movies = [Movie]()
                         
                         for (_,value) in values{
@@ -93,7 +93,7 @@ class DatabaseNetworkController{
                         }
                         self.delegate?.didReceivedListOfMovies(movies: movies)
                     
-                    case "Genre":
+                    case .Genre:
                         var genres = [Genre]()
                         for(_, value) in values{
                             let genre = Genre(snapshot: value)
@@ -101,7 +101,7 @@ class DatabaseNetworkController{
                         }
                         self.delegate?.didReceivedListOfGenres(genres: genres)
                     
-                    case "Cinema":
+                    case .Cinema:
                       
                         var cinemas = [Cinema]()
                         for(_, value) in values{

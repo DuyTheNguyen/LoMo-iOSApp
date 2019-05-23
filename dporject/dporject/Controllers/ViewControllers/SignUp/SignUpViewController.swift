@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
                 self.signInButtonOnTapped(nil)
             } else{
                 alertType = AlertType.FALIED
-                performSegue(withIdentifier: "signUpToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.SIGNUP_TO_ALERTMODAL, sender: nil)
             }
         }
     }
@@ -43,7 +43,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signInButtonOnTapped(_ sender: Any?) {
         //Destroy View before go to the other
         self.navigationController?.popViewController(animated: true)
-        performSegue(withIdentifier: "signUpToSignIn", sender: nil)
+        performSegue(withIdentifier: Identifiers.SIGNUP_TO_SIGNIN, sender: nil)
     }
     @IBAction func createButtonOnTapped(_ sender: Any) {
         //Clear error

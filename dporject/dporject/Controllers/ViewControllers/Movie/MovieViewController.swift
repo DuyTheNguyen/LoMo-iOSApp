@@ -75,10 +75,10 @@ class MovieViewController: UIViewController {
         userAuthenticationNetworkController.authenticationListener()
         
         databaseNetworkController.delegate = self
-        databaseNetworkController.observeDatabase(path: "comments/\(selectedMovie.id!)")
+        databaseNetworkController.observeDatabase(path: "\(Paths.COMMENTS)/\(selectedMovie.id!)")
         
         if selectedMovie.cinemas != nil {
-            databaseNetworkController.getListOfObjectsFrom(path: "cinemas", withDataType: "Cinema")
+            databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
         }
         
         
@@ -115,11 +115,11 @@ class MovieViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        databaseNetworkController.removeObserveDatabase(path: "comments/\(selectedMovie.id!)")
+        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(selectedMovie.id!)")
     }
     
     @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "movieToComment", sender: nil)
+        performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
     }
   
     
@@ -143,7 +143,7 @@ class MovieViewController: UIViewController {
 extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if modifiedListOfComments.count == 0{
-            self.commentCollectionView.setEmptyMessage("There are no comments!")
+            self.commentCollectionView.setEmptyMessage(GeneralMessages.EMPTY_LIST_OF_COMMENTS)
         }else{
             self.commentCollectionView.restore()
         }
@@ -151,7 +151,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let commentViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CommentCell", for: indexPath) as! CommentListCollectionViewCell
+        let commentViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.COMMENT_CELL, for: indexPath) as! CommentListCollectionViewCell
         
         let comment = modifiedListOfComments[indexPath.row]
         
