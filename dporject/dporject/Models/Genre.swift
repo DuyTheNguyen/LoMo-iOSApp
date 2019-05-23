@@ -11,4 +11,15 @@ import Foundation
 struct Genre: Decodable{
     let name: String?
     let image: String?
+    
+    init(name: String, image: String){
+        self.name = name
+        self.image = image
+       
+    }
+    
+    init(snapshot: AnyObject){
+        self.name = snapshot["name"] as? String
+        self.image = snapshot["image"] as? String
+    }
 }

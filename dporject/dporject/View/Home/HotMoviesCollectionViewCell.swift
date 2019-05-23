@@ -11,13 +11,13 @@ import UIKit
 class HotMoviesCollectionViewCell: UICollectionViewCell {
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     
     func bind(movie: Movie){
         movieNameLabel.text = movie.name
         
-        imageView.load(imageString: movie.image!)
+        imageView.load(urlString: movie.image!)
         imageView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
         
     }

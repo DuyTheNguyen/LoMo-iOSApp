@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
                 self.signInButtonOnTapped(nil)
             } else{
                 alertType = AlertType.FALIED
-                performSegue(withIdentifier: "signUpToAlertModal", sender: nil)
+                performSegue(withIdentifier: Identifiers.SIGNUP_TO_ALERTMODAL, sender: nil)
             }
         }
     }
@@ -43,28 +43,43 @@ class SignUpViewController: UIViewController {
     @IBAction func signInButtonOnTapped(_ sender: Any?) {
         //Destroy View before go to the other
         self.navigationController?.popViewController(animated: true)
-        performSegue(withIdentifier: "signUpToSignIn", sender: nil)
+        performSegue(withIdentifier: Identifiers.SIGNUP_TO_SIGNIN, sender: nil)
     }
     @IBAction func createButtonOnTapped(_ sender: Any) {
         //Clear error
        
         self.view.startIndicatorAnnimation()
         
-        guard passwordText.text != "", emailText.text != "", confirmPasswordText.text != "" else{
-            isSuccessful = false
-            message = "Email, Password and Confirm Password could not be empty!"
+        guard  let email = emailText.text, let password = passwordText.text, let cPassword = confirmPasswordText.text else{
+            print("Email, password and confirm password label are nil")
             return
         }
         
-        guard passwordText.text == confirmPasswordText.text else{
+        
+        //Start: Validation
+        guard password != "", email != "", cPassword != "" else{
             isSuccessful = false
-            message = "Password and Confirm Password must be the same!"
+            message = AlertMessages.FAILED_EMPTY_ENAIL_PASSWORD_CPASSWORD
             return
         }
         
-        if let email = emailText.text, let password = passwordText.text{
-            userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
+        guard email.isValidEmail() else {
+            isSuccessful = false
+            message = AlertMessages.FAILED_INVALID_EMAIL
+            return
         }
+        
+        guard password == cPassword else{
+            isSuccessful = false
+            message = AlertMessages.FAILED_DIFFERENT_PASSWORD_CPASSWORD
+            return
+        }
+        //End: Validation
+       
+        
+        //Perform connection with database
+        userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
+   
         
     }
 

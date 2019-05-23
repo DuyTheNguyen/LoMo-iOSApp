@@ -50,7 +50,12 @@ class CommentModalViewController: UIViewController {
     
     //add comment to the database
     @IBAction func confirmButtonOnTapped(_ sender: Any) {
-        guard commentTextView.text != "" else{
+        guard let vaildComment = commentTextView.text else {
+            print("Comment text view is nil")
+            return
+        }
+        
+        guard vaildComment != "" else{
             print("Empty content")
             return
         }
@@ -64,7 +69,7 @@ class CommentModalViewController: UIViewController {
                                userName: currentUser?.displayName ?? (currentUser?.email)!,
                                image: currentUser?.photoURL ?? "",
                                content: commentTextView.text,
-                               timestamp: Date().getCurrentDateInString())
+                               timestamp: String(Date().timeIntervalSince1970))
         
         databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
         

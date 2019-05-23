@@ -13,17 +13,18 @@ class CommentListCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var commentContentLabel: UILabel!
     @IBOutlet weak var commentDateLabel: UILabel!
-    @IBOutlet weak var commentImageView: UIImageView!
+    @IBOutlet weak var commentImageView: CustomUIImageView!
     @IBOutlet weak var commentNameLabel: UILabel!
     
     func bind(comment: Comment){
-        commentDateLabel.text = comment.timestamp
+        commentDateLabel.text = comment.timestamp.fromTimeStampToCustomDate()
         commentContentLabel.text = comment.content
         commentNameLabel.text = comment.userName
         
         commentImageView.image = Icons.USER_MALE
         if comment.image != ""{
-            commentImageView.load(imageString: comment.image)
+            commentImageView.load(urlString: comment.image, cacheImage: false)
+            commentImageView.setRounded()
         }
         
     }

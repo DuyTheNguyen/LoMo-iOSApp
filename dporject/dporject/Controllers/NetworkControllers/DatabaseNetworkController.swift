@@ -12,13 +12,14 @@ import FirebaseDatabase
 
 class DatabaseNetworkController{
     
-    private var rootReference: DatabaseReference!
+    private let rootReference: DatabaseReference?
     
     weak var delegate: DatabaseNetworkControllerDelegate?
     
     init(){
         rootReference = Database.database().reference()
     }
+    
     
     //Add comments
     func addComment(movieId: String, comment: Comment){
@@ -28,7 +29,7 @@ class DatabaseNetworkController{
             return
         }
         
-        let commentRef = rootReference.child("comments/\(movieId)").childByAutoId()
+        let commentRef = rootReference.child("\(Paths.COMMENTS)/\(movieId)").childByAutoId()
         commentRef.setValue([
             "commentId" : commentRef.key,
             "userId": comment.userId,
@@ -72,7 +73,7 @@ class DatabaseNetworkController{
     }
     
     //Get genres, movies and comment
-    func getListOfObjectsFrom(path:String, withDataType: String){
+    func getListOfObjectsFrom(path:String, withDataType: DataType){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
@@ -83,31 +84,32 @@ class DatabaseNetworkController{
             if let values = snapshot.value as? [String:AnyObject] {
                 //Begin: Switch
                 switch withDataType {
-                    case "Movie":
+                    case .Movie:
                         var movies = [Movie]()
                         
                         for (_,value) in values{
-                            let movie = Movie(id: value["id"] as? String,
-                                              name: value["name"] as? String,
-                                              rating: value["rating"] as? String,
-                                              year: value["year"] as? String,
-                                              image: value["image"] as? String,
-                                              genre: value["genre"] as? String,
-                                              description: value["description"] as? String,
-                                              director: value["director"] as? String)
+                            let movie = Movie(snapshot: value)
                             movies.append(movie)
-                        
                         }
-                        
                         self.delegate?.didReceivedListOfMovies(movies: movies)
-                    case "Genre":
+                    
+                    case .Genre:
                         var genres = [Genre]()
                         for(_, value) in values{
-                            let genre = Genre(name: value["name"] as? String,
-                                              image: value["image"] as? String)
+                            let genre = Genre(snapshot: value)
                             genres.append(genre)
                         }
                         self.delegate?.didReceivedListOfGenres(genres: genres)
+                    
+                    case .Cinema:
+                      
+                        var cinemas = [Cinema]()
+                        for(_, value) in values{
+                            let cinema = Cinema(snapshot: value)
+                            cinemas.append(cinema)
+                        }
+                        self.delegate?.didReceivedListOfCinemas(cinemas: cinemas)
+                    
                     default:
                         print("Something went wrong in the switch case")
                         print("Path: \(rootReference.child(path))")

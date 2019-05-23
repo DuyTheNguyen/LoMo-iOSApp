@@ -14,12 +14,13 @@ class HomeViewController: UIViewController {
     
     private let databaseNetworkController = DatabaseNetworkController()
   
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var homeImage: UIImageView!
+    @IBOutlet weak var hotMoviesCollectionView: UICollectionView!
     
     fileprivate var listOfMovies = [Movie](){
         didSet{
             //self.collectionView.reloadSections(IndexSet(integer: 0))
-            self.collectionView.reloadData()
+            self.hotMoviesCollectionView.reloadData()
         }
     }
     
@@ -29,14 +30,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.a
+        homeImage.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
         self.navigationController?.setNavbarTransparent()
         databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfObjectsFrom(path: "popular",  withDataType: "Movie")
+        databaseNetworkController.getListOfObjectsFrom(path: Paths.POPULAR_MOVIES,  withDataType: .Movie)
         
-    }
-    
-    @IBAction func testButton(_ sender: Any) {
-        databaseNetworkController.getListOfObjectsFrom(path: "popular", withDataType: "Movie")
     }
     
     
@@ -62,7 +60,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HotMoviesCell", for: indexPath) as! HotMoviesCollectionViewCell
+        let hotMovieCell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.HOT_MOVIES_CELL, for: indexPath) as! HotMoviesCollectionViewCell
         
         let hotMovie = listOfMovies[indexPath.row]
         
@@ -73,7 +71,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMovie = listOfMovies[indexPath.row]
-        performSegue(withIdentifier: "homeToMovie", sender: nil)
+        performSegue(withIdentifier: Identifiers.HOME_TO_MOVIE, sender: nil)
     }
 }
 
