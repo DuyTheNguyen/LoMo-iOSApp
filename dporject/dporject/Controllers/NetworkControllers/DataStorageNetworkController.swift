@@ -77,22 +77,7 @@ class DataStorageNetworkController{
         }
     }
     
-    private func updateUserPhotoURL(fileRef: StorageReference){
-        //Get URL
-        fileRef.downloadURL(completion: { (url, error) in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            guard let validURL = url else {
-                print("Invalid URL")
-                return
-            }
-            self.userNetworkController.updateProfile("photoURL", withValue: validURL.absoluteString)
-            
-        })
-    }
+    
 }
 
 //Create extension to conform Delegate

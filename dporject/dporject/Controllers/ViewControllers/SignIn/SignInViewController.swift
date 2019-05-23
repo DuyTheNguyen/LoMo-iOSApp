@@ -29,19 +29,16 @@ class SignInViewController: UIViewController {
             }
             
             if isSuccessful{
-                
                 //add alert
                 self.handleControllerTransitionWith(identifier: "TabBarController")
-            }else{
-                
-                alertType = AlertType.FALIED
+            }else{                alertType = AlertType.FALIED
                 performSegue(withIdentifier: "signInToAlertModal", sender: nil)
             }
         }
     }
     @IBAction func forgotButtonOnTapped(_ sender: Any) {
         alertType = AlertType.INFO
-        message = "This function has not been implemented yet!"
+        message = AlertMessages.INFO_NOT_IMPLEMENTED
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -59,13 +56,13 @@ class SignInViewController: UIViewController {
         
         guard email != "", password != "" else{
             isSuccessful = false
-            message = "Email and Password could not be empty!"
+            message = AlertMessages.FAILED_EMPTY_EMAIL_PASSWORD
             return
         }
         
         guard email.isValidEmail() else {
             isSuccessful =  false
-            message = "Please enter a valid email!"
+            message = AlertMessages.FAILED_EMPTY_STRING
             return
         }
         

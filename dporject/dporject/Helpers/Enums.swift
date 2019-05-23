@@ -51,3 +51,13 @@ enum ViewTags{
     static let PROFILE_VIEW = 88888
     static let INDICATOR_VIEW  = 77777
 }
+
+enum AlertMessages{
+    static let FAILED_EMPTY_ENAIL_PASSWORD_CPASSWORD = ""
+    static let FAILED_EMPTY_EMAIL_PASSWORD = "Email and Password could not be empty!"
+    static let FAILED_EMPTY_STRING = ""
+    static let FAILED_VALID_EMAIL = ""
+    
+    static let INFO_NOT_IMPLEMENTED = "This function has not been implemented yet!"
+}
+
