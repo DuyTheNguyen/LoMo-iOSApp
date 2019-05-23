@@ -76,14 +76,14 @@ class UpdateModalViewController: UIViewController {
         
         guard newValue != "" else{
             isUpdated = false
-            message = "New \(titleValue!) could not be empty!"
+            message = AlertMessages.FAILED_EMPTY_STRING
             return
         }
         
         if (titleValue == "email"){
             guard newValue.isValidEmail() else {
                 isUpdated = false
-                message = "Please enter a valid email!"
+                message = AlertMessages.FAILED_INVALID_EMAIL
                 return
             }
         }
