@@ -26,17 +26,24 @@ class SignUpViewController: UIViewController {
             self.view.stopIndicatorAnnimation()
             if isSuccessful {
                 //add alert
-                self.signInButtonOnTapped(nil)
+                alertType = AlertType.SUCCESS
+                performSegue(withIdentifier: Identifiers.SIGNUP_TO_ALERTMODAL, sender: nil)
+                
             } else{
                 alertType = AlertType.FALIED
                 performSegue(withIdentifier: Identifiers.SIGNUP_TO_ALERTMODAL, sender: nil)
             }
         }
     }
-    
+    @objc func goToSignIn(){
+       self.signInButtonOnTapped(nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        //Using notification for success case
+        NotificationCenter.default.addObserver(self, selector: #selector(self.goToSignIn), name: NSNotification.Name(rawValue: Notifications.TO_SIGN_IN), object: nil)
+        
         userNetworkController.delegate = self
         // Do any additional setup after loading the view.
     }

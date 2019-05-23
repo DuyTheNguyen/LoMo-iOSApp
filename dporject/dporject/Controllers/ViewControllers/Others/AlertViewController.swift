@@ -64,7 +64,12 @@ class AlertViewController: UIViewController {
         
         dismiss(animated: true) {
             if self.alertType == AlertType.SUCCESS{
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.CLOSE_UPDATE_MODAL), object: nil)
+                if self.content == AlertMessages.SUCCESS_SIGNUP{
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.TO_SIGN_IN), object: nil)
+                } else{
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.CLOSE_UPDATE_MODAL), object: nil)
+                }
+                
             }
         }
     }

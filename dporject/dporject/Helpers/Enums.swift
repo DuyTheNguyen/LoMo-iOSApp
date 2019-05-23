@@ -121,6 +121,7 @@ enum Identifiers{
 
 enum Notifications{
     static let CLOSE_UPDATE_MODAL = "CloseUpdateModalNoti"
+    static let TO_SIGN_IN = "ToSignInNoti"
 }
 
 enum Paths{
