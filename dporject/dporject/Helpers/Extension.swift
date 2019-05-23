@@ -87,7 +87,7 @@ extension UIView{
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
         backgroundView.backgroundColor = backgroundColor
-        backgroundView.tag = 77777
+        backgroundView.tag = ViewTags.INDICATOR_VIEW
         
         var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator = UIActivityIndicatorView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 50))
@@ -104,7 +104,7 @@ extension UIView{
     }
     
     func stopIndicatorAnnimation() {
-        if let background = viewWithTag(77777){
+        if let background = viewWithTag(ViewTags.INDICATOR_VIEW){
             background.removeFromSuperview()
         }
         self.isUserInteractionEnabled = true
@@ -146,6 +146,11 @@ extension UIImageView {
             image = Icons.EDIT_ADD
         }
         self.image = image
+    }
+    
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        self.layer.masksToBounds = true
     }
 }
 

@@ -67,17 +67,23 @@ class UserNetworkController{
         switch withType {
         case "email":
             currentUser.updateEmail(to: withValue) { (error) in
-                self.callBack(error: error, successfulMessage: "Updated Successfully")
+                self.callBack(error: error, successfulMessage: "Updated email Successfully")
             }
         case "password":
             currentUser.updatePassword(to: withValue) { (error) in
-                self.callBack(error: error, successfulMessage: "Updated Successfully")
+                self.callBack(error: error, successfulMessage: "Updated password Successfully")
             }
         case "name":
             let changeRequest = currentUser.createProfileChangeRequest()
             changeRequest.displayName = withValue
             changeRequest.commitChanges { (error) in
-                 self.callBack(error: error, successfulMessage: "Updated Successfully")
+                 self.callBack(error: error, successfulMessage: "Updated name Successfully")
+            }
+        case "photoURL":
+            let changeREquest = currentUser.createProfileChangeRequest()
+            changeREquest.photoURL = URL(string: withValue)
+            changeREquest.commitChanges { (error) in
+                self.callBack(error: error, successfulMessage: "Updated photo Successfully")
             }
         default:
             print("Should not in default")

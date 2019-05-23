@@ -12,16 +12,29 @@ import FirebaseStorage
 
 class DataStorageNetworkController{
     private let storage: StorageReference?
+    private let userNetworkController = UserNetworkController()
+    
+    private var message = String(){
+        didSet{
+            self.delegate?.didUpload(isUpdated: isUpdated, message: message)
+        }
+    }
+    private var isUpdated: Bool!
     
     weak var delegate: DataStorageNetworkControllerDelegate?
     
     init() {
         storage = Storage.storage().reference()
+        userNetworkController.delegate = self
     }
     
     func uploadFile(folderName: String, type: String, file: Any, fileName: String){
-        let fileRef = storage?.child(folderName).child("\(fileName).png")
         let meta = StorageMetadata()
+        guard let fileRef = storage?.child(folderName).child("\(fileName).png") else {
+            print("Could not generate file reference")
+            return
+        }
+       
         switch type{
         case "image/png":
              meta.contentType = "image/png"
@@ -36,19 +49,56 @@ class DataStorageNetworkController{
              }
             
             //Upload data
-             fileRef?.putData(uploadData, metadata: meta, completion: { (metadata, error) in
-                guard error != nil else {
+             fileRef.putData(uploadData, metadata: meta, completion: { (metadata, error) in
+                guard error == nil else {
                     print(error!.localizedDescription)
                     return
                 }
                 
+                //Update user profile
+                fileRef.downloadURL(completion: { (url, error) in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    guard let validURL = url else {
+                        print("Invalid URL")
+                        return
+                    }
+                    self.userNetworkController.updateProfile("photoURL", withValue: validURL.absoluteString)
+                    
+                })
                 
              })
             
         default:
             print("Should not be here though")
         }
-       
-       
+    }
+    
+    private func updateUserPhotoURL(fileRef: StorageReference){
+        //Get URL
+        fileRef.downloadURL(completion: { (url, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let validURL = url else {
+                print("Invalid URL")
+                return
+            }
+            self.userNetworkController.updateProfile("photoURL", withValue: validURL.absoluteString)
+            
+        })
+    }
+}
+
+//Create extension to conform Delegate
+extension DataStorageNetworkController:UserNetworkControllerDelegate{
+    func updateData(isUpdated: Bool, message: String) {
+        self.isUpdated = isUpdated
+        self.message = message
     }
 }

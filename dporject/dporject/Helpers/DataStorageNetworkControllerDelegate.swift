@@ -9,13 +9,13 @@
 import Foundation
 
 protocol DataStorageNetworkControllerDelegate: class {
-    func didUpload()
+    func didUpload(isUpdated: Bool, message: String)
 }
 
 //Make methods of this delegate to be optional
 
 extension DataStorageNetworkControllerDelegate{
-    func didUpload(){
+    func didUpload(isUpdated: Bool, message: String){
         
     }
 }

@@ -29,7 +29,7 @@ struct User {
         }
         
         if let validPhoto = pPhotoURL{
-            photoURL = try! String(contentsOf: validPhoto)
+            photoURL = validPhoto.absoluteString
         }else{
             photoURL = nil
         }

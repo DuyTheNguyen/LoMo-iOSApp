@@ -45,3 +45,9 @@ enum CustomColors{
     static let RED =  UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
     static let YELLOW = UIColor.init(red: 247/255, green: 204/255, blue: 80/255, alpha: 1.0)
 }
+
+
+enum ViewTags{
+    static let PROFILE_VIEW = 88888
+    static let INDICATOR_VIEW  = 77777
+}

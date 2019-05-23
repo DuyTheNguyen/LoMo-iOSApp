@@ -10,8 +10,25 @@ import UIKit
 import FirebaseAuth
 
 class ProfileViewController: UIViewController {
-
+    
+    private var isUpdated:Bool!
+    private var alertType: AlertType!
+    private var message = String(){
+        didSet{
+            self.view.stopIndicatorAnnimation()
+            if isUpdated{
+                alertType = AlertType.SUCCESS
+                performSegue(withIdentifier: "profileToAlert", sender: nil)
+            }
+            else{
+                alertType = AlertType.FALIED
+                performSegue(withIdentifier: "profileToAlert", sender: nil)
+            }
+        }
+    }
+    
     private let userNetworkController = UserNetworkController()
+    private let dataStorageNetworkController = DataStorageNetworkController()
     private let uIImagePickerController = UIImagePickerController()
    
     private var type: String? = ""
@@ -31,6 +48,7 @@ class ProfileViewController: UIViewController {
             
             if let photo = currrentUser.photoURL {
                 avatarImageView.load(urlString: photo)
+                avatarImageView.setRounded()
             }else{
                 avatarImageView.image = Icons.USER_MALE
             }
@@ -46,7 +64,10 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.view.tag = ViewTags.PROFILE_VIEW
+        
         userNetworkController.delegate = self
+        dataStorageNetworkController.delegate = self
         
         uIImagePickerController.delegate = self
         uIImagePickerController.allowsEditing = true
@@ -74,7 +95,7 @@ class ProfileViewController: UIViewController {
         }
         
         if let alertModalViewController = segue.destination as? AlertViewController{
-            alertModalViewController.bind(alertType: AlertType.INFO, content: "This function has not been updated yet!")
+            alertModalViewController.bind(alertType: alertType, content: message)
         }
     }
  
@@ -114,6 +135,7 @@ extension ProfileViewController: UserNetworkControllerDelegate{
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBAction func changeImageButtonOnTapped(_ sender: Any) {
         //performSegue(withIdentifier: "profileToAlert", sender: nil)
+        self.view.startIndicatorAnnimation()
         present(uIImagePickerController, animated: true, completion: nil)
     }
     
@@ -134,15 +156,28 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         if let selectedImage = selectedImageFromPicker{
             //Handle uploading
-            print("Yay")
+            
+            dataStorageNetworkController.uploadFile(folderName: "users/\(currrentUser.uid!)", type: "image/png", file: selectedImage, fileName: "avatar")
             dismiss(animated: true, completion: nil)
         }
         
         
     }
     
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Cancel choosing image")
         dismiss(animated: true, completion: nil)
+        if let profileView = view.viewWithTag(ViewTags.PROFILE_VIEW){
+            profileView.stopIndicatorAnnimation()
+        }
+    }
+}
+
+extension ProfileViewController: DataStorageNetworkControllerDelegate{
+    func didUpload(isUpdated: Bool, message: String){
+        self.isUpdated = isUpdated
+        self.message = message
     }
 }
