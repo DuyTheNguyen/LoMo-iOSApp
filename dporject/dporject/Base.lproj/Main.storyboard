@@ -235,6 +235,9 @@
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotButtonOnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Woe-UC-ojU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoMo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqP-5X-aqi">
                                 <rect key="frame" x="133" y="228" width="148" height="40"/>
@@ -1394,6 +1397,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ftl-VD-ggp"/>
-        <segue reference="PL0-rH-A4u"/>
+        <segue reference="Qm4-ZQ-JTk"/>
     </inferredMetricsTieBreakers>
 </document>

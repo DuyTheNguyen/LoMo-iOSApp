@@ -35,7 +35,6 @@ class AlertViewController: UIViewController {
     }
     
     private func setUpUIComponents(){
-        print(alertType)
         modalUIView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 15)
         contentLabel.text = content
         confirmButton.setTitleColor(UIColor.white, for: .normal)
@@ -50,9 +49,10 @@ class AlertViewController: UIViewController {
             imageUIView.image = Icons.FAILED
             titleLabel.text = "Opps!! Something went wrong"
             confirmButton.backgroundColor = CustomColors.RED
+       
         case AlertType.INFO:
             imageUIView.image = Icons.WARNING
-            titleLabel.text = "WARNING!!!"
+            titleLabel.text = "Sorry!!!"
             confirmButton.backgroundColor = CustomColors.YELLOW
             
         default:

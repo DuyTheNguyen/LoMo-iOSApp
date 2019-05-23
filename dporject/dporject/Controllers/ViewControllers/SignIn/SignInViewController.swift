@@ -23,15 +23,25 @@ class SignInViewController: UIViewController {
     private var message = String(){
         didSet{
             view.stopIndicatorAnnimation()
+            guard isSuccessful != nil else{
+                performSegue(withIdentifier: "signInToAlertModal", sender: nil)
+                return
+            }
+            
             if isSuccessful{
                 
                 //add alert
                 self.handleControllerTransitionWith(identifier: "TabBarController")
             }else{
+                
                 alertType = AlertType.FALIED
                 performSegue(withIdentifier: "signInToAlertModal", sender: nil)
             }
         }
+    }
+    @IBAction func forgotButtonOnTapped(_ sender: Any) {
+        alertType = AlertType.INFO
+        message = "This function has not been implemented yet!"
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
