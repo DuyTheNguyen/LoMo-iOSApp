@@ -160,7 +160,7 @@ extension UIImageView {
 let imageCache = NSCache<AnyObject, AnyObject>()
 class CustomUIImageView: UIImageView{
     var imageStringURL: String?
-    func load(urlString: String) {
+    func load(urlString: String, cacheImage: Bool! = true) {
         
         guard let url = URL(string: urlString) else{
             return
@@ -171,11 +171,13 @@ class CustomUIImageView: UIImageView{
         image = nil
         
         //Check whether cache image exsits
-        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
+        if cacheImage{
+            if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
              self.image = imageFromCache
              self.stopIndicatorAnnimation()
              return
-         }
+            }
+        }
         
         DispatchQueue(label: "Image Processing Queue").async {
             guard let data = try? Data(contentsOf: url) else{
@@ -197,7 +199,9 @@ class CustomUIImageView: UIImageView{
                     return
                 }
                 self.image = imageToCache
-                imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
+                if cacheImage{
+                    imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
+                }
                 self.stopIndicatorAnnimation()
              }
         }
