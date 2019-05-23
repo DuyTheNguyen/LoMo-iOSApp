@@ -12,6 +12,7 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
 
     private let userNetworkController = UserNetworkController()
+    private let uIImagePickerController = UIImagePickerController()
    
     private var type: String? = ""
     
@@ -47,6 +48,8 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         userNetworkController.delegate = self
         
+        uIImagePickerController.delegate = self
+        uIImagePickerController.allowsEditing = true
         
         
     }
@@ -75,9 +78,7 @@ class ProfileViewController: UIViewController {
         }
     }
  
-    @IBAction func changeImageButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "profileToAlert", sender: nil)
-    }
+   
     
     @IBAction func passwordButtonOnTapped(_ sender: Any) {
         performSequeToUpdateWith(type: "password")
@@ -107,6 +108,41 @@ extension ProfileViewController: UserNetworkControllerDelegate{
     func didReceiveUser(user: User) {
         self.currrentUser = user
     }
-    
 }
 
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    @IBAction func changeImageButtonOnTapped(_ sender: Any) {
+        //performSegue(withIdentifier: "profileToAlert", sender: nil)
+        present(uIImagePickerController, animated: true, completion: nil)
+    }
+    
+    //Get the image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        guard let originalImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        selectedImageFromPicker = originalImage
+        
+        if let editedImage  = info[.editedImage] as? UIImage{
+            selectedImageFromPicker = editedImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker{
+            //Handle uploading
+            print("Yay")
+            dismiss(animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Cancel choosing image")
+        dismiss(animated: true, completion: nil)
+    }
+}
