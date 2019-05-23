@@ -65,7 +65,6 @@ class AlertViewController: UIViewController {
         dismiss(animated: true) {
             if self.alertType == AlertType.SUCCESS{
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CloseUpdateModalNoti"), object: nil)
-
             }
         }
     }

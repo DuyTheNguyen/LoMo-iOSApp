@@ -15,7 +15,9 @@ class ProfileViewController: UIViewController {
     private var alertType: AlertType!
     private var message = String(){
         didSet{
-            self.view.stopIndicatorAnnimation()
+            self.uIImagePickerController.view.stopIndicatorAnnimation()
+            self.uIImagePickerController.dismiss(animated: true, completion: nil)
+            
             if isUpdated{
                 alertType = AlertType.SUCCESS
                 performSegue(withIdentifier: "profileToAlert", sender: nil)
@@ -47,8 +49,10 @@ class ProfileViewController: UIViewController {
             }
             
             if let photo = currrentUser.photoURL {
+              
                 avatarImageView.load(urlString: photo)
                 avatarImageView.setRounded()
+                
             }else{
                 avatarImageView.image = Icons.USER_MALE
             }
@@ -135,13 +139,13 @@ extension ProfileViewController: UserNetworkControllerDelegate{
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBAction func changeImageButtonOnTapped(_ sender: Any) {
         //performSegue(withIdentifier: "profileToAlert", sender: nil)
-        self.view.startIndicatorAnnimation()
+       
         present(uIImagePickerController, animated: true, completion: nil)
     }
     
     //Get the image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        self.uIImagePickerController.view.startIndicatorAnnimation()
         var selectedImageFromPicker: UIImage?
         
         guard let originalImage = info[.originalImage] as? UIImage else {
@@ -155,10 +159,10 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         
         if let selectedImage = selectedImageFromPicker{
-            //Handle uploading
             
+            //Handle uploading
             dataStorageNetworkController.uploadFile(folderName: "users/\(currrentUser.uid!)", type: "image/png", file: selectedImage, fileName: "avatar")
-            dismiss(animated: true, completion: nil)
+            
         }
         
         
@@ -167,7 +171,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("Cancel choosing image")
         dismiss(animated: true, completion: nil)
         if let profileView = view.viewWithTag(ViewTags.PROFILE_VIEW){
             profileView.stopIndicatorAnnimation()
