@@ -28,19 +28,22 @@ class GenreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set the label can be tapped
-        allMovieLabel.loadCustomisedLabel()
+        self.navigationController?.setNavbarTransparent()
+        allMovieLabel.loadCustomLabel()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(allMoviesLabelOnTapped))
         allMovieLabel.isUserInteractionEnabled = true
         allMovieLabel.addGestureRecognizer(gesture)
         
         databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfObjectsFrom(path: "genre", withDataType: "Genre")
+        databaseNetworkController.getListOfObjectsFrom(path: Paths.GENRE, withDataType:.Genre)
         // Do any additional setup after loading the view.
     }
     
+   
+    
     @objc func allMoviesLabelOnTapped(){
         selectedGenre = Genre(name: "All", image: "")
-        performSegue(withIdentifier: "genreToMovieList", sender: nil)
+        performSegue(withIdentifier: Identifiers.GENRE_TO_MOVIELIST, sender: nil)
     }
     
     // MARK: - Navigation
@@ -64,7 +67,7 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCell", for: indexPath) as! GenreCollectionViewCell
+        let genreCell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.GENRE_CELL, for: indexPath) as! GenreCollectionViewCell
         
         let genre = listOfGenre[indexPath.row]
         
@@ -75,7 +78,7 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedGenre = listOfGenre[indexPath.row]
-        performSegue(withIdentifier: "genreToMovieList", sender: nil)
+        performSegue(withIdentifier: Identifiers.GENRE_TO_MOVIELIST, sender: nil)
     }
     
 }
