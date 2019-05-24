@@ -112,7 +112,7 @@ class MovieViewController: UIViewController {
         movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
         genreLabel.text = movie.genre
-        ratingLabel.text = "⭐️ \(movie.rating!)/10"
+        ratingLabel.setRatingStars(score: movie.rating!)
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
     }
