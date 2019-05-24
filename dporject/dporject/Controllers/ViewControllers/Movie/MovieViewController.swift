@@ -115,6 +115,7 @@ class MovieViewController: UIViewController {
         ratingLabel.setRatingStars(score: movie.rating!)
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
+        
     }
     
    
