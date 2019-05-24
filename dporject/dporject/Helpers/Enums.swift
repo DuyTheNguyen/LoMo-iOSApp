@@ -132,4 +132,5 @@ enum Paths{
 
 enum GeneralMessages{
     static let EMPTY_LIST_OF_COMMENTS = "There are no comments!"
+    static let EMPTY_LIST_OF_RESULT_MOVIES = "404!!! Not found any movies!!!"
 }
