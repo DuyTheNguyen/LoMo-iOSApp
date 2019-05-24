@@ -16,7 +16,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImageView: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -102,7 +102,7 @@ class MovieViewController: UIViewController {
         
         movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
-        yearLabel.text = movie.year
+        genreLabel.text = movie.genre
         ratingLabel.text = movie.rating
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
