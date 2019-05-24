@@ -275,6 +275,14 @@
 			path = MovieList;
 			sourceTree = "<group>";
 		};
+		6A8AAF612297D58B007EE525 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6A1C2870228ED70600936357 /* TabBarController.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		6AB3C5DC2283F31400CE3AFE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +331,7 @@
 		6AC705C122705DFB00EDD8B3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6A1C2870228ED70600936357 /* TabBarController.swift */,
+				6A8AAF612297D58B007EE525 /* Others */,
 				6AB3C5DD2283F33300CE3AFE /* NetworkControllers */,
 				6AB3C5DC2283F31400CE3AFE /* ViewControllers */,
 			);

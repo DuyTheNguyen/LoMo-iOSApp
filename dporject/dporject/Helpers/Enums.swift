@@ -36,8 +36,6 @@ enum UserService{
     case SIGN_IN, SIGN_UP, SIGN_OUT
 }
 
-
-
 enum AlertType{
     case SUCCESS, FALIED, INFO
 }
