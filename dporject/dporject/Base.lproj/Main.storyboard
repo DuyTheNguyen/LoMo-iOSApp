@@ -368,7 +368,7 @@
             <objects>
                 <viewController id="lal-1b-c1G" userLabel="Profile" customClass="ProfileViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WRl-FF-I7W">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1B-Gb-9t1">
@@ -497,10 +497,10 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.95395440924657537" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dui-82-fWK"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-parse_resumes_filled" id="FpK-sy-dd1" userLabel="Profile"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-user" id="FpK-sy-dd1" userLabel="Profile"/>
                     <connections>
                         <outlet property="avatarImageView" destination="dos-6O-Kgf" id="QAq-Rb-63M"/>
                         <outlet property="displayNameLabel" destination="oPy-TG-Rhf" id="gx1-JC-u7Z"/>
@@ -621,7 +621,7 @@
             <objects>
                 <viewController id="G6i-LC-tsl" userLabel="Home" customClass="HomeViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IS2-h8-9dm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeImg" translatesAutoresizingMaskIntoConstraints="NO" id="wFh-5G-ieh">
@@ -745,7 +745,7 @@
             <objects>
                 <viewController id="DEx-tu-9fc" customClass="MovieViewController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bo0-F1-Rbg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1917"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FeN-yf-RRl">
@@ -1184,16 +1184,15 @@
         <scene sceneID="qS9-bD-6dE">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" modalTransitionStyle="crossDissolve" id="bt4-3e-Sf4" customClass="TabBarController" customModule="dporject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="Jzh-RF-85n">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" itemPositioning="fill" id="Jzh-RF-85n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.94903146404109584" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.25098039220000001" green="0.37647058820000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
-                                <color key="value" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="0.0"/>
@@ -1387,7 +1386,7 @@
         <scene sceneID="UCS-P0-J7D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bgr-wg-371" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icons8-home_page_filled" id="Ps5-dh-5wD"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-a_home-1" id="Ps5-dh-5wD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JOO-Fb-Oi8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1407,7 +1406,7 @@
         <scene sceneID="aiH-Vj-GeF">
             <objects>
                 <navigationController title="Genre Navigation Controller Scene" automaticallyAdjustsScrollViewInsets="NO" id="lge-yn-onH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icons8-windows_phone_store_filled" id="tgg-B8-t1D"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-movie" id="tgg-B8-t1D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dkU-Tq-PGH">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1426,16 +1425,16 @@
     </scenes>
     <resources>
         <image name="homeImg" width="2560" height="2560"/>
+        <image name="icons8-a_home-1" width="96" height="96"/>
         <image name="icons8-edit_property" width="100" height="100"/>
         <image name="icons8-email" width="100" height="100"/>
         <image name="icons8-employee_card" width="100" height="100"/>
-        <image name="icons8-home_page_filled" width="25" height="25"/>
         <image name="icons8-lock_portrait" width="100" height="100"/>
-        <image name="icons8-parse_resumes_filled" width="25" height="25"/>
-        <image name="icons8-windows_phone_store_filled" width="25" height="25"/>
+        <image name="icons8-movie" width="96" height="96"/>
+        <image name="icons8-user" width="96" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ftl-VD-ggp"/>
-        <segue reference="u21-Lg-jNn"/>
+        <segue reference="PL0-rH-A4u"/>
     </inferredMetricsTieBreakers>
 </document>

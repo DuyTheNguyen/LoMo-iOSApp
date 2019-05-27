@@ -13,6 +13,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        initialize()
+    }
+    
+    private func initialize(){
+        
+        //Tranparent tab bar
+        self.tabBar.shadowImage = UIImage()
+        self.tabBar.backgroundImage = UIImage()
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
