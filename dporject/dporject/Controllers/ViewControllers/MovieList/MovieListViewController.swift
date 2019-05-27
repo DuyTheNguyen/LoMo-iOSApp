@@ -68,11 +68,16 @@ class MovieListViewController: UIViewController {
 extension MovieListViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching{
+            self.moviesCollectionView.restore()
+            if searchMovies.count == 0{
+                self.moviesCollectionView.setEmptyMessage(GeneralMessages.EMPTY_LIST_OF_RESULT_MOVIES)
+            }
             return searchMovies.count
         }else{
             return listOfMovie.count
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier:Identifiers.MOVIE_CELL, for: indexPath) as! MovieListCollectionViewCell
         

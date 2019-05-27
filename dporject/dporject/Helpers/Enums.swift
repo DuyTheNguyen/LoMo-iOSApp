@@ -36,8 +36,6 @@ enum UserService{
     case SIGN_IN, SIGN_UP, SIGN_OUT
 }
 
-
-
 enum AlertType{
     case SUCCESS, FALIED, INFO
 }
@@ -121,6 +119,7 @@ enum Identifiers{
 
 enum Notifications{
     static let CLOSE_UPDATE_MODAL = "CloseUpdateModalNoti"
+    static let TO_SIGN_IN = "ToSignInNoti"
 }
 
 enum Paths{
@@ -133,4 +132,5 @@ enum Paths{
 
 enum GeneralMessages{
     static let EMPTY_LIST_OF_COMMENTS = "There are no comments!"
+    static let EMPTY_LIST_OF_RESULT_MOVIES = "404!!! Not found any movies!!!"
 }

@@ -109,11 +109,6 @@ class DatabaseNetworkController{
                             cinemas.append(cinema)
                         }
                         self.delegate?.didReceivedListOfCinemas(cinemas: cinemas)
-                    
-                    default:
-                        print("Something went wrong in the switch case")
-                        print("Path: \(rootReference.child(path))")
-                        print("Data type: \(withDataType)")
                 }
                 //End: Switch
 

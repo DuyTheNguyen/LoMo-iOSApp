@@ -271,6 +271,25 @@ extension UILabel{
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.layer.cornerRadius).cgPath
     }
     
+    /**
+     Return the rating bar based on score
+     - Parameter score: your score
+     */
+    func setRatingStars(score: String){
+        var result = ""
+        
+        guard let dScore = Double(score)?.rounded(.toNearestOrAwayFromZero) else{
+            print("Not a valid score")
+            print(score)
+            return
+        }
+        
+        for _ in 1...Int(dScore){
+            result += "⭐️"
+        }
+        
+        self.text = "\(result) (\(score))"
+    }
 }
 
 /************************************************
@@ -301,9 +320,12 @@ extension UICollectionView {
     }
     
     
+    /**
+     Set custom message if the list is empty
+     - Parameter message: your custom message
+     
+     */
     func setEmptyMessage(_ message: String) {
-      
-        
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
         messageLabel.textColor = .black
@@ -311,13 +333,13 @@ extension UICollectionView {
         messageLabel.textAlignment = .center;
         messageLabel.font = UIFont(name: "TrebuchetMS", size: 20)
         messageLabel.sizeToFit()
-        
        
-        
-        
         self.backgroundView = messageLabel
     }
     
+    /**
+     Reset the background
+     */
     func restore() {
         self.backgroundView = nil
         
@@ -389,6 +411,8 @@ extension String{
     func fromTimeStampToDouble() -> Double{
         return Double(self) ?? 0.0
     }
+    
+   
 }
 /************************************************
  *************** End: String *******************

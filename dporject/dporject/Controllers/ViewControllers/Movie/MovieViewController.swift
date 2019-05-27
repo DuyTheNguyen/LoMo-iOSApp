@@ -11,12 +11,12 @@ import MapKit
 
 class MovieViewController: UIViewController {
     
-    var selectedMovie: Movie!
+    var selectedMovie: Movie?
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImageView: CustomUIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -26,9 +26,8 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var cinemaMapView: MKMapView!
     @IBOutlet weak var cinemaLabel: UILabel!
     
-    private var currentUser: User!
-    private let userAuthenticationNetworkController = UserNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
+    
     fileprivate var modifiedListOfComments = [Comment](){
         didSet{
             DispatchQueue.main.async {
@@ -39,6 +38,7 @@ class MovieViewController: UIViewController {
             
         }
     }
+    
     fileprivate var originalListOfComment = [Comment](){
         didSet{
             modifiedListOfComments = originalListOfComment.sorted(by: { (c1, c2) -> Bool in
@@ -47,7 +47,7 @@ class MovieViewController: UIViewController {
         }
     }
     
-    private var thisMoviesListOfCinemas = [Cinema](){
+    fileprivate var thisMoviesListOfCinemas = [Cinema](){
         didSet{
             self.cinemaMapView.addAnnotations(thisMoviesListOfCinemas)
             self.cinemaMapView.centerMapOnLocationWithCoordinate(regionRadius: 10000)
@@ -57,7 +57,10 @@ class MovieViewController: UIViewController {
     
     fileprivate var listOfCinemas = [Cinema](){
         didSet{
-            guard let validCinemasMovie = self.selectedMovie.cinemas else {
+            guard let movie = selectedMovie else{
+                fatalError("Could not load movie")
+            }
+            guard let validCinemasMovie = movie.cinemas else {
                 print("No cinema for this movie")
                 return
             }
@@ -71,51 +74,60 @@ class MovieViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userAuthenticationNetworkController.delegate = self
-        userAuthenticationNetworkController.authenticationListener()
-        
-        databaseNetworkController.delegate = self
-        databaseNetworkController.observeDatabase(path: "\(Paths.COMMENTS)/\(selectedMovie.id!)")
-        
-        if selectedMovie.cinemas != nil {
-            databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
-        }
-        
-        
-        commentCollectionView.delegate = self
-        commentCollectionView.dataSource = self
-        
-        
-
-        
         // Do any additional setup after loading the view.
+        initialize()
+        setUpComponents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    private func initialize(){
+        guard let movie = selectedMovie else{
+            fatalError("Could not load movie")
+        }
+        
+        //Database Network
+        databaseNetworkController.delegate = self
+        databaseNetworkController.observeDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        
+        if movie.cinemas != nil {
+            databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
+        }
+        
+        //Comment Collection View
+        commentCollectionView.delegate = self
+        commentCollectionView.dataSource = self
+    }
+    
+    private func setUpComponents(){
+         floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
+         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
         
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
         
-        floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
-        
         movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
-        yearLabel.text = movie.year
-        ratingLabel.text = movie.rating
+        genreLabel.text = movie.genre
+        ratingLabel.setRatingStars(score: movie.rating!)
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
         
-        movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
-        
     }
+    
+   
     
    
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(selectedMovie.id!)")
+        guard let movie = selectedMovie else{
+            fatalError("Could not load movie")
+        }
+        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
     }
     
     @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
@@ -158,17 +170,6 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
         commentViewCell.bind(comment: comment)
         
         return commentViewCell
-    }
-    
-    
-    
-}
-
-
-//Create extension to conform UserAuthenticationNetwork
-extension MovieViewController: UserNetworkControllerDelegate{
-    func didReceiveUser(user: User) {
-        currentUser = user
     }
 }
 
