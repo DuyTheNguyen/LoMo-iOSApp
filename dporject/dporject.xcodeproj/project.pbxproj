@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A073756229BAEDF008694F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A073755229BAEDE008694F2 /* Assets.xcassets */; };
+		6A073758229BBF8D008694F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A073757229BBF8D008694F2 /* Assets.xcassets */; };
 		6A1C2871228ED70600936357 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1C2870228ED70600936357 /* TabBarController.swift */; };
 		6A29D00D2287D3F300CF35EF /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D00C2287D3F300CF35EF /* MovieViewController.swift */; };
 		6A29D0122287DC6A00CF35EF /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D0112287DC6A00CF35EF /* GenreCollectionViewCell.swift */; };
@@ -76,7 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6A073755229BAEDE008694F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Assets/27.05/Assets.xcassets; sourceTree = "<group>"; };
+		6A073757229BBF8D008694F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A1C2870228ED70600936357 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6A29D00C2287D3F300CF35EF /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		6A29D0112287DC6A00CF35EF /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		6AEEE399226326C600027C88 /* dporject */ = {
 			isa = PBXGroup;
 			children = (
-				6A073755229BAEDE008694F2 /* Assets.xcassets */,
+				6A073757229BBF8D008694F2 /* Assets.xcassets */,
 				6A29D00E2287DC1900CF35EF /* View */,
 				6AC705CA2270899E00EDD8B3 /* Helpers */,
 				6AC705C122705DFB00EDD8B3 /* Controllers */,
@@ -543,8 +543,8 @@
 			files = (
 				6AEEE3A5226326C700027C88 /* LaunchScreen.storyboard in Resources */,
 				6AEEE3DD2263291000027C88 /* GoogleService-Info.plist in Resources */,
-				6A073756229BAEDF008694F2 /* Assets.xcassets in Resources */,
 				6AEEE3A0226326C600027C88 /* Main.storyboard in Resources */,
+				6A073758229BBF8D008694F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
