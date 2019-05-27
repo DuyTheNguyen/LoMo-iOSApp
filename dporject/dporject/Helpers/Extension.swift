@@ -39,7 +39,6 @@ extension UIViewController{
 /************************************************
  *************** Begin: UIView ******************
  ************************************************/
-
 //Rounded Bottom Corners
 extension UIView{
     func roundedCorner (corners:UIRectCorner, radius: CGFloat){
@@ -110,8 +109,6 @@ extension UIView{
         self.isUserInteractionEnabled = true
     }
 }
-
-
 /************************************************
  *************** End: UIView ********************
  ************************************************/
@@ -122,15 +119,10 @@ extension UIView{
 
 
 
-
-
-
 /*************************************************
  *************** Begin: UIImageView **************
  *************************************************/
-
 //Allow load image from URL
-
 extension UIImageView {
     
     func setUpImageViewWithIcons(type: String){
@@ -153,10 +145,18 @@ extension UIImageView {
         self.layer.masksToBounds = true
     }
 }
-
 /*************************************************
  *************** End: UIImageView ****************
  *************************************************/
+
+
+
+
+
+
+/*******************************************************
+ *************** Begin: CustomUIImageView **************
+ *******************************************************/
 let imageCache = NSCache<AnyObject, AnyObject>()
 class CustomUIImageView: UIImageView{
     var imageStringURL: String?
@@ -207,8 +207,9 @@ class CustomUIImageView: UIImageView{
         }
     }
 }
-
-
+/*****************************************************
+ *************** End: CustomUIImageView **************
+ *****************************************************/
 
 
 
@@ -236,7 +237,6 @@ extension UICollectionViewCell{
         self.layer.shadowPath = UIBezierPath(roundedRect:self.bounds, cornerRadius:self.contentView.layer.cornerRadius).cgPath
     }
 }
-
 /********************************************************
  *************** End: UICollectionViewCell **************
  ********************************************************/
@@ -247,14 +247,9 @@ extension UICollectionViewCell{
 
 
 
-
-
-
-
 /************************************************
  *************** Begin: UILabel *****************
  ************************************************/
-
 //Create label with shawdow and radius
 extension UILabel{
     func loadCustomLabel(){
@@ -291,13 +286,19 @@ extension UILabel{
         self.text = "\(result) (\(score))"
     }
 }
-
 /************************************************
  *************** End: UILabel *******************
  ************************************************/
 
 
 
+
+
+
+
+/******************************************************
+ *************** Begin: UICollectionView **************
+ ******************************************************/
 extension UICollectionView {
     func scrollToLast() {
         guard numberOfSections > 0 else {
@@ -379,6 +380,13 @@ extension MKMapView{
         
     }
 }
+/******************************************************
+ *************** Begin: UICollectionView **************
+ ******************************************************/
+
+
+
+
 
 
 
