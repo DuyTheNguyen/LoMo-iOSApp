@@ -106,6 +106,7 @@ enum Identifiers{
     static let SIGNIN_TO_SIGNUP =  "signInToSignUp"
     
     static let MOVIE_TO_COMMENTMODAL = "movieToComment"
+    static let MOVIE_TO_RATINGMODAL = "movieToRating"
     
     static let GENRE_TO_MOVIELIST = "genreToMovieList"
     

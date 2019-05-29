@@ -127,6 +127,7 @@ class MovieViewController: UIViewController {
     
     @objc func ratingLabelOnTapped(){
         print("Tapped............")
+        performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
     }
     
    
@@ -157,6 +158,11 @@ class MovieViewController: UIViewController {
             }
             commentViewController.selectedMovie = movie
         }
+        else if let ratingViewController = segue.destination as? RatingModalViewController{
+            
+        }
+        
+        
     }
  
 

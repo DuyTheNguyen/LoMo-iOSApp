@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6A073758229BBF8D008694F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A073757229BBF8D008694F2 /* Assets.xcassets */; };
+		6A08C24D229E95C100B30113 /* RatingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08C24C229E95C100B30113 /* RatingModalViewController.swift */; };
 		6A1C2871228ED70600936357 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1C2870228ED70600936357 /* TabBarController.swift */; };
 		6A29D00D2287D3F300CF35EF /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D00C2287D3F300CF35EF /* MovieViewController.swift */; };
 		6A29D0122287DC6A00CF35EF /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D0112287DC6A00CF35EF /* GenreCollectionViewCell.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		6A073757229BBF8D008694F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A08C24C229E95C100B30113 /* RatingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingModalViewController.swift; sourceTree = "<group>"; };
 		6A1C2870228ED70600936357 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6A29D00C2287D3F300CF35EF /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		6A29D0112287DC6A00CF35EF /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				6A29D00C2287D3F300CF35EF /* MovieViewController.swift */,
 				6A7549C0228C14B800C0263E /* CommentModalViewController.swift */,
+				6A08C24C229E95C100B30113 /* RatingModalViewController.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				6AEEE39B226326C600027C88 /* AppDelegate.swift in Sources */,
 				6AC705C5227063A500EDD8B3 /* SignUpViewController.swift in Sources */,
 				6AB3C5DB2283EF0000CE3AFE /* Movie.swift in Sources */,
+				6A08C24D229E95C100B30113 /* RatingModalViewController.swift in Sources */,
 				6A1C2871228ED70600936357 /* TabBarController.swift in Sources */,
 				6A29D0172287E81100CF35EF /* MovieListCollectionViewCell.swift in Sources */,
 				6AF429322292B8C2009A9AAD /* Cinema.swift in Sources */,
