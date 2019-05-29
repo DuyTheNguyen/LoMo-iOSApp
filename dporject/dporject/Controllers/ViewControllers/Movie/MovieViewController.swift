@@ -77,6 +77,7 @@ class MovieViewController: UIViewController {
         // Do any additional setup after loading the view.
         initialize()
         setUpComponents()
+        registerInteraction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +117,16 @@ class MovieViewController: UIViewController {
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
         
+    }
+    
+    private func registerInteraction(){
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(ratingLabelOnTapped))
+        ratingLabel.isUserInteractionEnabled = true
+        ratingLabel.addGestureRecognizer(gesture)
+    }
+    
+    @objc func ratingLabelOnTapped(){
+        print("Tapped............")
     }
     
    
