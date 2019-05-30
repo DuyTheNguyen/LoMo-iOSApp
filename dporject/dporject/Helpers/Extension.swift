@@ -281,10 +281,14 @@ extension UILabel{
         var result = ""
         
         let dScore = total.rounded(.toNearestOrAwayFromZero)
-        
-        for _ in 1...Int(dScore){
-            result += "⭐️"
+        if dScore == 0 {
+            result = "😱"
+        }else{
+            for _ in 1...Int(dScore){
+                result += "⭐️"
+            }
         }
+        
         
         let sTotal = String(format: "%.1f", total)
         self.text = "\(result) \(sTotal) - \(ratingList.count) vote(s)"
@@ -305,14 +309,14 @@ extension UILabel{
         var emo = "🥺"
         if score < 5.0 {
             self.textColor = CustomColors.RED
-            self.font = self.font.withSize(20)
+            self.font = self.font.withSize(25)
         } else if score < 8.0{
             self.textColor = CustomColors.YELLOW
-            self.font = self.font.withSize(25)
+            self.font = self.font.withSize(30)
             emo = "😎"
         }else if score <= 10.0{
             self.textColor = CustomColors.GREEN
-            self.font = self.font.withSize(30)
+            self.font = self.font.withSize(35)
             emo = "🤩"
         }
         self.text = String(format: "%@ %.1f", emo, score)
@@ -322,6 +326,32 @@ extension UILabel{
  *************** End: UILabel *******************
  ************************************************/
 
+
+
+
+
+
+
+/************************************************
+ *************** Start: UISlider ****************
+ ************************************************/
+extension UISlider{
+    func customiseSliderColorBasedOnRatingValue(score: Double){
+        if score < 5.0 {
+            self.minimumTrackTintColor = CustomColors.RED
+            self.thumbTintColor = CustomColors.RED
+        } else if score < 8.0{
+            self.minimumTrackTintColor = CustomColors.YELLOW
+            self.thumbTintColor = CustomColors.YELLOW
+        }else if score <= 10.0{
+            self.minimumTrackTintColor = CustomColors.GREEN
+            self.thumbTintColor = CustomColors.GREEN
+        }
+    }
+}
+/************************************************
+ *************** End: UISlider ******************
+ ************************************************/
 
 
 

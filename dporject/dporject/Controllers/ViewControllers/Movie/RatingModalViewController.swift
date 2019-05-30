@@ -10,6 +10,8 @@ import UIKit
 
 class RatingModalViewController: UIViewController {
 
+    @IBOutlet weak var ratingSlider: UISlider!
+    @IBOutlet weak var ratingModalView: UIView!
     @IBOutlet weak var ratingLabel: UILabel!
     var ratingValue: Double = 0.0
     
@@ -23,6 +25,7 @@ class RatingModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        setUpComponents()
         // Do any additional setup after loading the view.
     }
     
@@ -33,10 +36,18 @@ class RatingModalViewController: UIViewController {
         databaseNetworkController.delegate = self
     }
     
+    private func setUpComponents(){
+        ratingModalView.roundedCorner(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 20)
+    }
+    
     @IBAction func ratingUISilder(_ sender: UISlider) {
         //ratingValue = Double(round(10*sender.value)/10)
-        ratingValue = Double(sender.value)
-        ratingLabel.customiseTextBasedOnRatingValue(score: ratingValue)
+        DispatchQueue.main.async {
+            self.ratingValue = Double(sender.value)
+            self.ratingSlider.customiseSliderColorBasedOnRatingValue(score: self.ratingValue)
+            self.ratingLabel.customiseTextBasedOnRatingValue(score: self.ratingValue)
+        }
+        
         //ratingLabel.text = String(format: "%.1f", ratingValue)
         
     }
