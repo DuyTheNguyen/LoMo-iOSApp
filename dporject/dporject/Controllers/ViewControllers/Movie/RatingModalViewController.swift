@@ -12,10 +12,25 @@ class RatingModalViewController: UIViewController {
 
     @IBOutlet weak var ratingLabel: UILabel!
     var ratingValue: Double = 0.0
+    
+    var selectedMovie: Movie!
+    fileprivate var currentUser: User!
+    private var isRatingAdded: Bool = false
+    
+    private let userNetworkController = UserNetworkController()
+    private let databaseNetworkController = DatabaseNetworkController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initialize()
         // Do any additional setup after loading the view.
+    }
+    
+    private func initialize(){
+        userNetworkController.delegate = self
+        userNetworkController.authenticationListener()
+        
+        databaseNetworkController.delegate = self
     }
     
     @IBAction func ratingUISilder(_ sender: UISlider) {
@@ -29,6 +44,18 @@ class RatingModalViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func confirmButtonOnTapped(_ sender: Any) {
+        
+        let rating = Rating(userId: currentUser.uid!, value: ratingValue)
+        
+        databaseNetworkController.addRating(movieId: selectedMovie.id!, rating: rating)
+        
+        if isRatingAdded{
+            dismiss(animated: true, completion: nil)
+        }else{
+            print("Could not rating")
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -40,3 +67,27 @@ class RatingModalViewController: UIViewController {
     */
 
 }
+
+//Create extension to conform Delegate
+extension RatingModalViewController: UserNetworkControllerDelegate{
+    func didReceiveUser(user: User){
+        self.currentUser = user
+    }
+}
+
+extension RatingModalViewController: DatabaseNetworkControllerDelegate{
+    func isRatingAdded(isIt: Bool){
+        self.isRatingAdded = isIt
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

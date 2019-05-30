@@ -270,20 +270,33 @@ extension UILabel{
      Return the rating bar based on score
      - Parameter score: your score
      */
-    func setRatingStars(score: String){
+    func setRatingStars(ratingList:[Rating]){
+        var total = 0.0
+        for rating in ratingList{
+            total += rating.value!
+        }
+        
+        total = total/Double(ratingList.count)
+        
         var result = ""
         
-        guard let dScore = Double(score)?.rounded(.toNearestOrAwayFromZero) else{
-            print("Not a valid score")
-            print(score)
-            return
-        }
+        let dScore = total.rounded(.toNearestOrAwayFromZero)
         
         for _ in 1...Int(dScore){
             result += "⭐️"
         }
         
-        self.text = "\(result) (\(score))"
+        let sTotal = String(format: "%.1f", total)
+        self.text = "\(result) \(sTotal) - \(ratingList.count) vote(s)"
+    }
+    
+    func generateAverage(ratingLists: [Rating])->String{
+        var total = 0.0
+        for rating in ratingLists{
+            total += rating.value!
+        }
+        
+        return "\(total/Double(ratingLists.count))"
     }
     
     ///  Return text color and size based on the score

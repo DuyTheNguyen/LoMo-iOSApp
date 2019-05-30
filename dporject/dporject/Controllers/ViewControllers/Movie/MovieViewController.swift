@@ -39,6 +39,14 @@ class MovieViewController: UIViewController {
         }
     }
     
+    fileprivate var listOfRating = [Rating](){
+        didSet{
+            DispatchQueue.main.async {
+                self.ratingLabel.setRatingStars(ratingList: self.listOfRating)
+            }
+        }
+    }
+    
     fileprivate var originalListOfComment = [Comment](){
         didSet{
             modifiedListOfComments = originalListOfComment.sorted(by: { (c1, c2) -> Bool in
@@ -91,7 +99,8 @@ class MovieViewController: UIViewController {
         
         //Database Network
         databaseNetworkController.delegate = self
-        databaseNetworkController.observeDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        databaseNetworkController.observeDatabase(type: ObserveType.COMMENT, path: "\(Paths.COMMENTS)/\(movie.id!)")
+        databaseNetworkController.observeDatabase(type: ObserveType.RATING, path: "\(Paths.RATING)/\(movie.id!)")
         
         if movie.cinemas != nil {
             databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
@@ -113,7 +122,9 @@ class MovieViewController: UIViewController {
         movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
         genreLabel.text = movie.genre
-        ratingLabel.setRatingStars(score: movie.rating!)
+        //ratingLabel.setRatingStars(score: movie.rating!)
+        
+        ratingLabel.text = "N/A"
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
         
@@ -126,7 +137,6 @@ class MovieViewController: UIViewController {
     }
     
     @objc func ratingLabelOnTapped(){
-        print("Tapped............")
         performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
     }
     
@@ -151,18 +161,16 @@ class MovieViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let movie = selectedMovie else {
+            fatalError("MovieViewController: cannot load movie" )
+        }
         // Get the new view controller using segue.destination.
         if let commentViewController = segue.destination as? CommentModalViewController{
-            guard let movie = selectedMovie else {
-                fatalError("MovieViewController: cannot load movie" )
-            }
             commentViewController.selectedMovie = movie
         }
         else if let ratingViewController = segue.destination as? RatingModalViewController{
-            
+            ratingViewController.selectedMovie = movie
         }
-        
-        
     }
  
 
@@ -195,6 +203,11 @@ extension MovieViewController: DatabaseNetworkControllerDelegate{
     func watchListOfComments(comments: [Comment]) {
         self.originalListOfComment = comments
     }
+    
+    func watchListOfRatings(ratings: [Rating]) {
+        self.listOfRating = ratings
+    }
+    
     
     func didReceivedListOfCinemas(cinemas: [Cinema]) {
         self.listOfCinemas = cinemas

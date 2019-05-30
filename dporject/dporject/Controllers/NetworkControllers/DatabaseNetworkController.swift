@@ -43,23 +43,49 @@ class DatabaseNetworkController{
        
     }
     
+    func addRating(movieId: String, rating: Rating){
+        guard let rootReference = rootReference else{
+            print("Something went wrong with root reference")
+            self.delegate?.isCommentAdded(isIt: false)
+            return
+        }
+        
+        let ratingRef = rootReference.child("\(Paths.RATING)").child(movieId).child(rating.userId!)
+        ratingRef.setValue([
+            "userId": rating.userId!,
+            "value": rating.value!
+            ])
+        
+        self.delegate?.isRatingAdded(isIt: true)
+    }
+    
     //Observe the data in the database
-    func observeDatabase(path:String){
+    func observeDatabase(type: ObserveType, path:String){
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
             return
         }
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
-                print("Could not load list of comments")
+                print("Could not load list of objects")
                 return
             }
-            var comments = [Comment]()
-            for (_,value) in values{
-                let comment = Comment(snapshot: value)
-                comments.append(comment)
+            switch type{
+            case .COMMENT:
+                var comments = [Comment]()
+                for (_,value) in values{
+                    let comment = Comment(snapshot: value)
+                    comments.append(comment)
+                }
+                self.delegate?.watchListOfComments(comments: comments)
+            case .RATING:
+                var ratings = [Rating]()
+                for(_,value) in values{
+                    let rating = Rating(snapshot: value)
+                    ratings.append(rating)
+                }
+                self.delegate?.watchListOfRatings(ratings: ratings)
             }
-            self.delegate?.watchListOfComments(comments: comments)
         }
     }
     
