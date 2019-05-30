@@ -285,6 +285,25 @@ extension UILabel{
         
         self.text = "\(result) (\(score))"
     }
+    
+    ///  Return text color and size based on the score
+    ///- Parameter score: your score
+    func customiseTextBasedOnRatingValue(score: Double){
+        var emo = "🥺"
+        if score < 5.0 {
+            self.textColor = CustomColors.RED
+            self.font = self.font.withSize(20)
+        } else if score < 8.0{
+            self.textColor = CustomColors.YELLOW
+            self.font = self.font.withSize(25)
+            emo = "😎"
+        }else if score <= 10.0{
+            self.textColor = CustomColors.GREEN
+            self.font = self.font.withSize(30)
+            emo = "🤩"
+        }
+        self.text = String(format: "%@ %.1f", emo, score)
+    }
 }
 /************************************************
  *************** End: UILabel *******************

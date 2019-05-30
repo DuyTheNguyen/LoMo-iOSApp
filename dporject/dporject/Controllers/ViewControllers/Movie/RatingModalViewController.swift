@@ -21,7 +21,8 @@ class RatingModalViewController: UIViewController {
     @IBAction func ratingUISilder(_ sender: UISlider) {
         //ratingValue = Double(round(10*sender.value)/10)
         ratingValue = Double(sender.value)
-        ratingLabel.text = String(format: "%.1f", ratingValue)
+        ratingLabel.customiseTextBasedOnRatingValue(score: ratingValue)
+        //ratingLabel.text = String(format: "%.1f", ratingValue)
         
     }
     @IBAction func cancelButtonOnTapped(_ sender: Any) {
