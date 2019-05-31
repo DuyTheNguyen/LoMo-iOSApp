@@ -179,7 +179,7 @@ class MovieViewController: UIViewController {
         }
         
         //Action Button
-        actionButton = ActionButton(attachedToView: self.view, items: [addComment, ratingButton, favouriteButton, sharingButton, reportButton])
+        actionButton = ActionButton(attachedToView: self.view, items: [addComment, favouriteButton, reportButton, sharingButton,  ratingButton])
         actionButton.action = {button in button.toggleMenu()}
         actionButton.backgroundColor = CustomColors.MAIN
         actionButton.backgroundColorSelected = CustomColors.MAIN_DISABLED
