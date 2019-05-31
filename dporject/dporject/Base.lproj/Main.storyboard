@@ -979,6 +979,24 @@
                                                     <action selector="floattingAddButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="OzE-rI-L7v"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3f-vx-lUF" customClass="CircleMenu" customModule="CircleMenu">
+                                                <rect key="frame" x="176" y="379" width="65" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="FA9-lT-goV"/>
+                                                    <constraint firstAttribute="height" constant="65" id="X26-aS-iYx"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonsCount">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="distance">
+                                                        <real key="value" value="120"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1047,9 +1065,11 @@
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="top" secondItem="FeN-yf-RRl" secondAttribute="top" constant="88" id="EoS-xb-NP1"/>
                             <constraint firstItem="d6o-Jk-vJP" firstAttribute="top" secondItem="x8d-b6-5Ty" secondAttribute="top" constant="547" id="KOY-Xh-BDV"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="bottom" secondItem="x8d-b6-5Ty" secondAttribute="bottom" constant="83" id="OlT-RR-rEv"/>
+                            <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="T3f-vx-lUF" secondAttribute="trailing" constant="173" id="bM8-II-8dE"/>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="FeN-yf-RRl" secondAttribute="trailing" id="lJb-rI-FBP"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="leading" secondItem="x8d-b6-5Ty" secondAttribute="leading" id="t7V-ju-1uj"/>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="d6o-Jk-vJP" secondAttribute="trailing" constant="25" id="wf9-Rw-pwD"/>
+                            <constraint firstItem="T3f-vx-lUF" firstAttribute="top" secondItem="x8d-b6-5Ty" secondAttribute="top" constant="379" id="y6H-L0-rdB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x8d-b6-5Ty"/>
                     </view>
@@ -1065,6 +1085,7 @@
                         <outlet property="mapView" destination="HKY-nK-AVX" id="AdD-IJ-CGk"/>
                         <outlet property="movieImageView" destination="u4D-cJ-vDS" id="RWE-dx-f9V"/>
                         <outlet property="movieNameLabel" destination="Owb-Cv-kRQ" id="g33-zO-yBO"/>
+                        <outlet property="optionButton" destination="T3f-vx-lUF" id="Shk-AG-uCS"/>
                         <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
                         <segue destination="CFD-dO-ihk" kind="presentation" identifier="movieToRating" id="hHN-Tq-YfJ"/>
                         <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="49q-ys-uEe"/>
@@ -1072,7 +1093,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5070" y="-242"/>
+            <point key="canvasLocation" x="5069.5652173913049" y="-242.41071428571428"/>
         </scene>
         <!--Comment Modal View Controller-->
         <scene sceneID="ajB-pt-DaZ">

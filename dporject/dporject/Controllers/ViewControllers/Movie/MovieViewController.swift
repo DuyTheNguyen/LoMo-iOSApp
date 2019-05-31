@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CircleMenu
 
 class MovieViewController: UIViewController {
     
@@ -25,6 +26,8 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var floattingAddButton: UIButton!
     @IBOutlet weak var cinemaMapView: MKMapView!
     @IBOutlet weak var cinemaLabel: UILabel!
+    
+    @IBOutlet weak var optionButton: CircleMenu!
     
     private let databaseNetworkController = DatabaseNetworkController()
     
@@ -109,10 +112,16 @@ class MovieViewController: UIViewController {
         //Comment Collection View
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
+        optionButton.delegate = self
     }
     
     private func setUpComponents(){
          floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
+         optionButton.isHidden = true
+        optionButton.setBackgroundImage(Icons.ADD, for: .normal)
+        
+        
+        
          movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
         
         guard let movie = selectedMovie else{
@@ -153,7 +162,9 @@ class MovieViewController: UIViewController {
     }
     
     @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
+       // performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
+        optionButton.isHidden = false
+        
     }
   
     
@@ -212,4 +223,8 @@ extension MovieViewController: DatabaseNetworkControllerDelegate{
     func didReceivedListOfCinemas(cinemas: [Cinema]) {
         self.listOfCinemas = cinemas
     }
+}
+
+extension MovieViewController: CircleMenuDelegate{
+    
 }
