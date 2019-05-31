@@ -281,17 +281,20 @@ extension UILabel{
         var result = ""
         
         let dScore = total.rounded(.toNearestOrAwayFromZero)
-        if dScore == 0 {
+        let sTotal = String(format: "%.1f", total)
+        
+        guard dScore != 0 else{
             result = "😱"
-        }else{
-            for _ in 1...Int(dScore){
-                result += "⭐️"
-            }
+            self.text = "\(result) \(sTotal) - \(ratingList.count) vote(s)"
+            return
+        }
+    
+        for _ in 1...Int(dScore){
+            result += "⭐️"
         }
         
-        
-        let sTotal = String(format: "%.1f", total)
         self.text = "\(result) \(sTotal) - \(ratingList.count) vote(s)"
+    
     }
     
     func generateAverage(ratingLists: [Rating])->String{
