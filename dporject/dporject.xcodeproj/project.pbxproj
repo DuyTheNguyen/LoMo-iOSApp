@@ -22,6 +22,7 @@
 		6A8246D4228D0559007C00F5 /* CommentListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8246D3228D0559007C00F5 /* CommentListCollectionViewCell.swift */; };
 		6A8246D6228D2D8A007C00F5 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8246D5228D2D8A007C00F5 /* Enums.swift */; };
 		6A83181B229F896B00348726 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83181A229F896B00348726 /* Rating.swift */; };
+		6A9A76CB22A0FE360006F363 /* CircleMenu in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A76CA22A0FE360006F363 /* CircleMenu */; };
 		6AB3C5DB2283EF0000CE3AFE /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB3C5DA2283EF0000CE3AFE /* Movie.swift */; };
 		6AB3C5DF2283F3BF00CE3AFE /* DatabaseNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB3C5DE2283F3BF00CE3AFE /* DatabaseNetworkController.swift */; };
 		6AB3C5E12283F66D00CE3AFE /* DatabaseNetworkControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB3C5E02283F66D00CE3AFE /* DatabaseNetworkControllerDelegate.swift */; };
@@ -75,6 +76,48 @@
 			remoteGlobalIDString = 6AEEE396226326C600027C88;
 			remoteInfo = dporject;
 		};
+		6AFC78B322A0FE5D00902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84F248B31C58E65F008F12C1;
+			remoteInfo = CircleMenuDemo;
+		};
+		6AFC78B522A0FE5D00902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84F248C71C58E65F008F12C1;
+			remoteInfo = CircleMenuTests;
+		};
+		6AFC78B722A0FE5D00902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8403F5791CFF2C2E007D0BD1;
+			remoteInfo = CircleMenu;
+		};
+		6AFC78BF22A0FE6900902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84F248B31C58E65F008F12C1;
+			remoteInfo = CircleMenuDemo;
+		};
+		6AFC78C122A0FE6900902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84F248C71C58E65F008F12C1;
+			remoteInfo = CircleMenuTests;
+		};
+		6AFC78C322A0FE6900902BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8403F5791CFF2C2E007D0BD1;
+			remoteInfo = CircleMenu;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +136,7 @@
 		6A8246D3228D0559007C00F5 /* CommentListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A8246D5228D2D8A007C00F5 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		6A83181A229F896B00348726 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		6A9A76CA22A0FE360006F363 /* CircleMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CircleMenu; sourceTree = "<group>"; };
 		6AB3C5DA2283EF0000CE3AFE /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		6AB3C5DE2283F3BF00CE3AFE /* DatabaseNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseNetworkController.swift; sourceTree = "<group>"; };
 		6AB3C5E02283F66D00CE3AFE /* DatabaseNetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseNetworkControllerDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +181,8 @@
 		6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkController.swift; sourceTree = "<group>"; };
 		6AEFF029227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkControllerDelegate.swift; sourceTree = "<group>"; };
 		6AF429312292B8C2009A9AAD /* Cinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
+		6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CircleMenu.xcodeproj; path = CircleMenu/CircleMenu.xcodeproj; sourceTree = SOURCE_ROOT; };
+		6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CircleMenu.xcodeproj; path = CircleMenu/CircleMenu.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +405,8 @@
 		6AEEE38E226326C600027C88 = {
 			isa = PBXGroup;
 			children = (
+				6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */,
+				6A9A76CA22A0FE360006F363 /* CircleMenu */,
 				6AEEE3C8226326E100027C88 /* Frameworks */,
 				6AEEE399226326C600027C88 /* dporject */,
 				6AEEE3AE226326C700027C88 /* dporjectTests */,
@@ -415,6 +463,7 @@
 		6AEEE3C8226326E100027C88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */,
 				6AEEE3C9226326ED00027C88 /* Firebase */,
 			);
 			path = Frameworks;
@@ -441,6 +490,26 @@
 				6AEEE3CA226326FC00027C88 /* FIRAnalyticsConnector.framework */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		6AFC78AE22A0FE5D00902BAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AFC78B422A0FE5D00902BAE /* CircleMenuDemo.app */,
+				6AFC78B622A0FE5D00902BAE /* CircleMenuTests.xctest */,
+				6AFC78B822A0FE5D00902BAE /* CircleMenu.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AFC78BA22A0FE6900902BAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AFC78C022A0FE6900902BAE /* CircleMenuDemo.app */,
+				6AFC78C222A0FE6900902BAE /* CircleMenuTests.xctest */,
+				6AFC78C422A0FE6900902BAE /* CircleMenu.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +602,16 @@
 			mainGroup = 6AEEE38E226326C600027C88;
 			productRefGroup = 6AEEE398226326C600027C88 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6AFC78BA22A0FE6900902BAE /* Products */;
+					ProjectRef = 6AFC78B922A0FE6900902BAE /* CircleMenu.xcodeproj */;
+				},
+				{
+					ProductGroup = 6AFC78AE22A0FE5D00902BAE /* Products */;
+					ProjectRef = 6AFC78AD22A0FE5D00902BAE /* CircleMenu.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6AEEE396226326C600027C88 /* dporject */,
@@ -542,12 +621,58 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		6AFC78B422A0FE5D00902BAE /* CircleMenuDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CircleMenuDemo.app;
+			remoteRef = 6AFC78B322A0FE5D00902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6AFC78B622A0FE5D00902BAE /* CircleMenuTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CircleMenuTests.xctest;
+			remoteRef = 6AFC78B522A0FE5D00902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6AFC78B822A0FE5D00902BAE /* CircleMenu.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CircleMenu.framework;
+			remoteRef = 6AFC78B722A0FE5D00902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6AFC78C022A0FE6900902BAE /* CircleMenuDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CircleMenuDemo.app;
+			remoteRef = 6AFC78BF22A0FE6900902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6AFC78C222A0FE6900902BAE /* CircleMenuTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CircleMenuTests.xctest;
+			remoteRef = 6AFC78C122A0FE6900902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6AFC78C422A0FE6900902BAE /* CircleMenu.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CircleMenu.framework;
+			remoteRef = 6AFC78C322A0FE6900902BAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		6AEEE395226326C600027C88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6AEEE3A5226326C700027C88 /* LaunchScreen.storyboard in Resources */,
+				6A9A76CB22A0FE360006F363 /* CircleMenu in Resources */,
 				6AEEE3DD2263291000027C88 /* GoogleService-Info.plist in Resources */,
 				6AEEE3A0226326C600027C88 /* Main.storyboard in Resources */,
 				6A073758229BBF8D008694F2 /* Assets.xcassets in Resources */,
