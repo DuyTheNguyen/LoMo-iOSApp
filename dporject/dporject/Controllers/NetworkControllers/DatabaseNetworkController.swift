@@ -67,7 +67,7 @@ class DatabaseNetworkController{
         }
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
-                print("Could not load list of objects")
+                print("Could not load list of objects or empty list")
                 return
             }
             switch type{

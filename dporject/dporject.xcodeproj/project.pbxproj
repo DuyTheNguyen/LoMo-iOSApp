@@ -220,7 +220,6 @@
 		6A6B2B9F229021DD001266FB /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				6AFC790022A113A600902BAE /* ActionButton */,
 				6A6B2BA0229021F2001266FB /* AlertViewController.swift */,
 			);
 			path = Others;
@@ -420,6 +419,7 @@
 		6AEEE3C8226326E100027C88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6AFC790022A113A600902BAE /* ActionButton */,
 				6AEEE3C9226326ED00027C88 /* Firebase */,
 			);
 			path = Frameworks;
