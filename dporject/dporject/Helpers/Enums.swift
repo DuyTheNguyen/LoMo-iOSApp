@@ -45,6 +45,7 @@ enum ObserveType{
 }
 
 enum CustomColors{
+    static let MAIN = UIColor.init(red: 64/255, green: 96/255, blue: 160/255, alpha: 1.0)
     static let GREEN = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 1.0)
     static let RED =  UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
     static let YELLOW = UIColor.init(red: 247/255, green: 204/255, blue: 80/255, alpha: 1.0)

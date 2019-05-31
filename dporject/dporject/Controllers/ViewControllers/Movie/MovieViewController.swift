@@ -22,9 +22,9 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentTitleLabel: UILabel!
-    @IBOutlet weak var floattingAddButton: UIButton!
     @IBOutlet weak var cinemaMapView: MKMapView!
     @IBOutlet weak var cinemaLabel: UILabel!
+    var actionButton: ActionButton!
     
     private let databaseNetworkController = DatabaseNetworkController()
     
@@ -79,20 +79,31 @@ class MovieViewController: UIViewController {
             
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialize()
-        setUpComponents()
-        registerInteraction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let movie = selectedMovie else{
+            fatalError("Could not load movie")
+        }
+        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
+    }
+    
     private func initialize(){
+        setUpDelegate()
+        setUpComponents()
+    }
+    
+    private func setUpDelegate(){
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
@@ -112,9 +123,10 @@ class MovieViewController: UIViewController {
     }
     
     private func setUpComponents(){
-         floattingAddButton.setBackgroundImage(Icons.ADD, for: .normal)
-         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
+         setUpFloatingButtons()
         
+         movieImageView.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 40)
+       
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
@@ -122,40 +134,36 @@ class MovieViewController: UIViewController {
         movieImageView.load(urlString: movie.image!)
         movieNameLabel.text = movie.name
         genreLabel.text = movie.genre
-        //ratingLabel.setRatingStars(score: movie.rating!)
-        
         ratingLabel.text = "N/A - Be the first one to vote"
         descriptionLabel.text = movie.description
         cinemaLabel.text = "Cinema (None)"
         
     }
-    
-    private func registerInteraction(){
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(ratingLabelOnTapped))
-        ratingLabel.isUserInteractionEnabled = true
-        ratingLabel.addGestureRecognizer(gesture)
-    }
-    
-    @objc func ratingLabelOnTapped(){
-        performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
-    }
-    
-   
-    
-   
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let movie = selectedMovie else{
-            fatalError("Could not load movie")
+    /// Set up Floating Button
+    private func setUpFloatingButtons(){
+        //Comment Button
+        let addComment = ActionButtonItem(title: "Add Comment", image: Icons.ADD)
+        addComment.action = { item in
+            
+            self.performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
+            
         }
-        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        
+        //Rating Button
+        let rating = ActionButtonItem(title: "Rate this movie", image: Icons.SUCCESS)
+        rating.action = {item in
+            self.actionButton.toggleMenu()
+            self.performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
+        }
+        
+        
+        //Action Button
+        actionButton = ActionButton(attachedToView: self.view, items: [addComment, rating])
+        actionButton.action = {button in button.toggleMenu()}
+        actionButton.backgroundColor = CustomColors.MAIN
     }
     
-    @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
-    }
-  
     
     // MARK: - Navigation
 

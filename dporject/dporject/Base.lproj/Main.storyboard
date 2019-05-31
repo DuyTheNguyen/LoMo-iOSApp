@@ -969,17 +969,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-Jk-vJP">
-                                                <rect key="frame" x="324" y="547" width="65" height="65"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="65" id="cn6-I1-1G5"/>
-                                                    <constraint firstAttribute="width" constant="65" id="hx7-Jq-Mm4"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="floattingAddButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="OzE-rI-L7v"/>
-                                                    <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="8zq-PC-5R6"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1046,11 +1035,9 @@
                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="top" secondItem="FeN-yf-RRl" secondAttribute="top" constant="88" id="EoS-xb-NP1"/>
-                            <constraint firstItem="d6o-Jk-vJP" firstAttribute="top" secondItem="x8d-b6-5Ty" secondAttribute="top" constant="547" id="KOY-Xh-BDV"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="bottom" secondItem="x8d-b6-5Ty" secondAttribute="bottom" constant="83" id="OlT-RR-rEv"/>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="FeN-yf-RRl" secondAttribute="trailing" id="lJb-rI-FBP"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="leading" secondItem="x8d-b6-5Ty" secondAttribute="leading" id="t7V-ju-1uj"/>
-                            <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="d6o-Jk-vJP" secondAttribute="trailing" constant="25" id="wf9-Rw-pwD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x8d-b6-5Ty"/>
                     </view>
@@ -1061,13 +1048,13 @@
                         <outlet property="commentCollectionView" destination="kjg-AJ-icW" id="KQF-6r-drW"/>
                         <outlet property="commentTitleLabel" destination="Pq1-Ty-uCe" id="s3t-NK-Iie"/>
                         <outlet property="descriptionLabel" destination="cob-Ex-Eo1" id="jAd-Fz-Ue8"/>
-                        <outlet property="floattingAddButton" destination="d6o-Jk-vJP" id="9ka-b8-KGb"/>
                         <outlet property="genreLabel" destination="Fgj-9d-FB5" id="9Zz-cj-dmU"/>
                         <outlet property="mapView" destination="HKY-nK-AVX" id="AdD-IJ-CGk"/>
                         <outlet property="movieImageView" destination="u4D-cJ-vDS" id="RWE-dx-f9V"/>
                         <outlet property="movieNameLabel" destination="Owb-Cv-kRQ" id="g33-zO-yBO"/>
                         <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
                         <segue destination="CFD-dO-ihk" kind="presentation" identifier="movieToRating" id="hHN-Tq-YfJ"/>
+                        <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="LpP-aC-OXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
