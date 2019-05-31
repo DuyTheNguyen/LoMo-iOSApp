@@ -944,6 +944,7 @@
                                                                         <constraint firstItem="lIm-PA-nrW" firstAttribute="top" secondItem="wWJ-fr-2Cs" secondAttribute="top" constant="50" id="jSi-bg-5Q5"/>
                                                                         <constraint firstAttribute="trailing" secondItem="fYW-ll-vTh" secondAttribute="trailing" constant="15" id="lcK-FE-ejS"/>
                                                                         <constraint firstAttribute="trailing" secondItem="2z7-db-v31" secondAttribute="trailing" constant="15" id="pWT-PX-51J"/>
+                                                                        <constraint firstItem="GdP-4n-UWJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X3X-vU-Y8o" secondAttribute="trailing" constant="8" symbolic="YES" id="tKB-VV-c1K"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -969,15 +970,31 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-Jk-vJP">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-Jk-vJP" customClass="CircleMenu" customModule="CircleMenu">
                                                 <rect key="frame" x="324" y="547" width="65" height="65"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="cn6-I1-1G5"/>
                                                     <constraint firstAttribute="width" constant="65" id="hx7-Jq-Mm4"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonsCount">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="distance">
+                                                        <real key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="floattingAddButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="OzE-rI-L7v"/>
-                                                    <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="8zq-PC-5R6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1068,6 +1085,7 @@
                         <outlet property="movieNameLabel" destination="Owb-Cv-kRQ" id="g33-zO-yBO"/>
                         <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
                         <segue destination="CFD-dO-ihk" kind="presentation" identifier="movieToRating" id="hHN-Tq-YfJ"/>
+                        <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="zZ6-Pg-Qmj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1559,6 +1577,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ftl-VD-ggp"/>
-        <segue reference="Qm4-ZQ-JTk"/>
+        <segue reference="PL0-rH-A4u"/>
     </inferredMetricsTieBreakers>
 </document>

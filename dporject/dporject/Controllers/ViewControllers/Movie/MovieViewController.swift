@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CircleMenu
 
 class MovieViewController: UIViewController {
     
@@ -22,11 +23,20 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentTitleLabel: UILabel!
-    @IBOutlet weak var floattingAddButton: UIButton!
+    
     @IBOutlet weak var cinemaMapView: MKMapView!
     @IBOutlet weak var cinemaLabel: UILabel!
     
+    
+    @IBOutlet weak var floattingAddButton: UIButton!
+   
+    @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
+        //performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
+    }
+    
     private let databaseNetworkController = DatabaseNetworkController()
+    
+    
     
     fileprivate var modifiedListOfComments = [Comment](){
         didSet{
@@ -152,9 +162,7 @@ class MovieViewController: UIViewController {
         databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
     }
     
-    @IBAction func floattingAddButtonOnTapped(_ sender: Any) {
-        performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
-    }
+   
   
     
     // MARK: - Navigation

@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../Macaw">
-   </FileRef>
-   <FileRef
-      location = "self:">
+      location = "self:CircleMenu.xcodeproj">
    </FileRef>
 </Workspace>
