@@ -971,7 +971,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </collectionView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6o-Jk-vJP" customClass="CircleMenu" customModule="CircleMenu">
-                                                <rect key="frame" x="324" y="547" width="65" height="65"/>
+                                                <rect key="frame" x="279" y="590" width="65" height="65"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="cn6-I1-1G5"/>
                                                     <constraint firstAttribute="width" constant="65" id="hx7-Jq-Mm4"/>
@@ -985,12 +985,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="distance">
                                                         <real key="value" value="100"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
-                                                        <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -1063,11 +1057,11 @@
                         <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="top" secondItem="FeN-yf-RRl" secondAttribute="top" constant="88" id="EoS-xb-NP1"/>
-                            <constraint firstItem="d6o-Jk-vJP" firstAttribute="top" secondItem="x8d-b6-5Ty" secondAttribute="top" constant="547" id="KOY-Xh-BDV"/>
+                            <constraint firstItem="d6o-Jk-vJP" firstAttribute="top" secondItem="x8d-b6-5Ty" secondAttribute="top" constant="590" id="KOY-Xh-BDV"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="bottom" secondItem="x8d-b6-5Ty" secondAttribute="bottom" constant="83" id="OlT-RR-rEv"/>
                             <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="FeN-yf-RRl" secondAttribute="trailing" id="lJb-rI-FBP"/>
                             <constraint firstItem="FeN-yf-RRl" firstAttribute="leading" secondItem="x8d-b6-5Ty" secondAttribute="leading" id="t7V-ju-1uj"/>
-                            <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="d6o-Jk-vJP" secondAttribute="trailing" constant="25" id="wf9-Rw-pwD"/>
+                            <constraint firstItem="x8d-b6-5Ty" firstAttribute="trailing" secondItem="d6o-Jk-vJP" secondAttribute="trailing" constant="70" id="wf9-Rw-pwD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x8d-b6-5Ty"/>
                     </view>
