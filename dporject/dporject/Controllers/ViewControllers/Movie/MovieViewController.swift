@@ -143,25 +143,38 @@ class MovieViewController: UIViewController {
     /// Set up Floating Button
     private func setUpFloatingButtons(){
         //Comment Button
-        let addComment = ActionButtonItem(title: "Add Comment", image: Icons.ADD)
+        let addComment = ActionButtonItem(title: "Add Comment", image: Icons.ADD_COMMENT)
         addComment.action = { item in
-            
+            self.actionButton.toggleMenu()
             self.performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
             
         }
         
         //Rating Button
-        let rating = ActionButtonItem(title: "Rate this movie", image: Icons.SUCCESS)
-        rating.action = {item in
+        let ratingButton = ActionButtonItem(title: "Rate This Movie", image: Icons.RATE)
+        ratingButton.action = {item in
             self.actionButton.toggleMenu()
             self.performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
         }
         
+        //Favourite Button
+        let favouriteButton = ActionButtonItem(title: "Add To Favourite", image: Icons.FAVOURITE)
+        favouriteButton.action = {item in
+            self.actionButton.toggleMenu()
+        }
+        
+        //Sharing Button
+        let sharingButton = ActionButtonItem(title: "Share", image: Icons.SHARE)
+        sharingButton.action = {item in
+            self.actionButton.toggleMenu()
+        }
+        
         
         //Action Button
-        actionButton = ActionButton(attachedToView: self.view, items: [addComment, rating])
+        actionButton = ActionButton(attachedToView: self.view, items: [addComment, ratingButton, favouriteButton, sharingButton])
         actionButton.action = {button in button.toggleMenu()}
         actionButton.backgroundColor = CustomColors.MAIN
+        actionButton.backgroundColorSelected = CustomColors.MAIN_DISABLED
     }
     
     

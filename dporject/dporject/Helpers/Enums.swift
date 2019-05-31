@@ -30,6 +30,13 @@ enum Icons{
     static let FAILED = #imageLiteral(resourceName: "icons8-cancel")
     static let SUCCESS = #imageLiteral(resourceName: "icons8-ok")
     static let WARNING = #imageLiteral(resourceName: "icons8-attention")
+    
+    //Floating Buttons
+    static let ADD_COMMENT = #imageLiteral(resourceName: "icons8-edit_file")
+    static let RATE = #imageLiteral(resourceName: "icons8-rating")
+    static let SHARE = #imageLiteral(resourceName: "icons8-hub")
+    static let FAVOURITE = #imageLiteral(resourceName: "icons8-filled_like")
+    
 }
 
 enum UserService{
@@ -46,6 +53,7 @@ enum ObserveType{
 
 enum CustomColors{
     static let MAIN = UIColor.init(red: 64/255, green: 96/255, blue: 160/255, alpha: 1.0)
+     static let MAIN_DISABLED = UIColor.init(red: 64/255, green: 96/255, blue: 160/255, alpha: 0.3)
     static let GREEN = UIColor.init(red: 76/255, green: 175/255, blue: 80/255, alpha: 1.0)
     static let RED =  UIColor.init(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
     static let YELLOW = UIColor.init(red: 247/255, green: 204/255, blue: 80/255, alpha: 1.0)
