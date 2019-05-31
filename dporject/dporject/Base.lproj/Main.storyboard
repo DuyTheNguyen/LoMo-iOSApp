@@ -977,7 +977,6 @@
                                                 </constraints>
                                                 <connections>
                                                     <action selector="floattingAddButtonOnTapped:" destination="DEx-tu-9fc" eventType="touchUpInside" id="OzE-rI-L7v"/>
-                                                    <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="8zq-PC-5R6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1068,6 +1067,7 @@
                         <outlet property="movieNameLabel" destination="Owb-Cv-kRQ" id="g33-zO-yBO"/>
                         <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
                         <segue destination="CFD-dO-ihk" kind="presentation" identifier="movieToRating" id="hHN-Tq-YfJ"/>
+                        <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="49q-ys-uEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
