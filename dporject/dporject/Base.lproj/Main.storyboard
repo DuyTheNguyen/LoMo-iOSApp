@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JWI-c3-ErE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="-1054"/>
+            <point key="canvasLocation" x="-71" y="1406"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -278,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71" y="-243"/>
+            <point key="canvasLocation" x="-71" y="488"/>
         </scene>
         <!--Alert View Controller-->
         <scene sceneID="wSj-dm-RV5">
@@ -361,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OiF-70-fJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080" y="514"/>
+            <point key="canvasLocation" x="3175" y="488"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tRr-1p-cgK">
@@ -514,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZF-7i-k62" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2234.7826086956525" y="513.61607142857144"/>
+            <point key="canvasLocation" x="1080" y="1406"/>
         </scene>
         <!--Update Modal View Controller-->
         <scene sceneID="hTN-Rz-kJ3">
@@ -614,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc4-LY-RoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="514"/>
+            <point key="canvasLocation" x="2236" y="1406"/>
         </scene>
         <!--Home-->
         <scene sceneID="6Y9-T1-sSw">
@@ -1055,6 +1055,7 @@
                         <outlet property="ratingLabel" destination="Svz-NW-YDv" id="pGU-jc-7DY"/>
                         <segue destination="CFD-dO-ihk" kind="presentation" identifier="movieToRating" id="hHN-Tq-YfJ"/>
                         <segue destination="Cym-in-IjV" kind="presentation" identifier="movieToComment" id="LpP-aC-OXi"/>
+                        <segue destination="Bhk-I4-ArF" kind="presentation" identifier="movieToAlertModal" id="w74-wq-1X5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PW-1z-bQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1546,6 +1547,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ftl-VD-ggp"/>
-        <segue reference="Qm4-ZQ-JTk"/>
+        <segue reference="w74-wq-1X5"/>
     </inferredMetricsTieBreakers>
 </document>

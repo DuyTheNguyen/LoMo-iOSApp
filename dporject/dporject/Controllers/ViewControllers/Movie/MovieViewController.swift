@@ -143,7 +143,7 @@ class MovieViewController: UIViewController {
     /// Set up Floating Button
     private func setUpFloatingButtons(){
         //Comment Button
-        let addComment = ActionButtonItem(title: "Add Comment", image: Icons.ADD_COMMENT)
+        let addComment = ActionButtonItem(title: "Comment", image: Icons.ADD_COMMENT)
         addComment.action = { item in
             self.actionButton.toggleMenu()
             self.performSegue(withIdentifier: Identifiers.MOVIE_TO_COMMENTMODAL, sender: nil)
@@ -151,27 +151,35 @@ class MovieViewController: UIViewController {
         }
         
         //Rating Button
-        let ratingButton = ActionButtonItem(title: "Rate This Movie", image: Icons.RATE)
+        let ratingButton = ActionButtonItem(title: "Rate", image: Icons.RATE)
         ratingButton.action = {item in
             self.actionButton.toggleMenu()
             self.performSegue(withIdentifier: Identifiers.MOVIE_TO_RATINGMODAL, sender: nil)
         }
         
         //Favourite Button
-        let favouriteButton = ActionButtonItem(title: "Add To Favourite", image: Icons.FAVOURITE)
+        let favouriteButton = ActionButtonItem(title: "Favourite", image: Icons.FAVOURITE)
         favouriteButton.action = {item in
             self.actionButton.toggleMenu()
+            self.performSegue(withIdentifier: Identifiers.MOVIE_TO_ALERTMODAL, sender: nil)
         }
         
         //Sharing Button
         let sharingButton = ActionButtonItem(title: "Share", image: Icons.SHARE)
         sharingButton.action = {item in
             self.actionButton.toggleMenu()
+            self.performSegue(withIdentifier: Identifiers.MOVIE_TO_ALERTMODAL, sender: nil)
         }
         
+        //Sharing Button
+        let reportButton = ActionButtonItem(title: "Report", image: Icons.REPORT)
+        reportButton.action = {item in
+            self.actionButton.toggleMenu()
+            self.performSegue(withIdentifier: Identifiers.MOVIE_TO_ALERTMODAL, sender: nil)
+        }
         
         //Action Button
-        actionButton = ActionButton(attachedToView: self.view, items: [addComment, ratingButton, favouriteButton, sharingButton])
+        actionButton = ActionButton(attachedToView: self.view, items: [addComment, ratingButton, favouriteButton, sharingButton, reportButton])
         actionButton.action = {button in button.toggleMenu()}
         actionButton.backgroundColor = CustomColors.MAIN
         actionButton.backgroundColorSelected = CustomColors.MAIN_DISABLED
@@ -191,6 +199,9 @@ class MovieViewController: UIViewController {
         }
         else if let ratingViewController = segue.destination as? RatingModalViewController{
             ratingViewController.selectedMovie = movie
+        }
+        else if let alertModalController = segue.destination as? AlertViewController{
+            alertModalController.bind(alertType: .INFO, content: AlertMessages.INFO_NOT_IMPLEMENTED)
         }
     }
  

@@ -36,6 +36,7 @@ enum Icons{
     static let RATE = #imageLiteral(resourceName: "icons8-rating")
     static let SHARE = #imageLiteral(resourceName: "icons8-hub")
     static let FAVOURITE = #imageLiteral(resourceName: "icons8-filled_like")
+    static let REPORT = #imageLiteral(resourceName: "icons8-filled_flag")
     
 }
 
@@ -120,6 +121,7 @@ enum Identifiers{
     
     static let MOVIE_TO_COMMENTMODAL = "movieToComment"
     static let MOVIE_TO_RATINGMODAL = "movieToRating"
+    static let MOVIE_TO_ALERTMODAL = "movieToAlertModal"
     
     static let GENRE_TO_MOVIELIST = "genreToMovieList"
     
