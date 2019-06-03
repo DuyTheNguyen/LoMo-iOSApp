@@ -13,7 +13,7 @@ protocol DatabaseNetworkControllerDelegate: class{
     func didReceivedListOfCinemas(cinemas: [Cinema])
     func watchListOfComments(comments: [Comment])
     func watchListOfRatings( ratings: [Rating])
-    func isCommentAdded(isIt: Bool)
+    func isCommentAdded1(isIt: Bool)
     func isRatingAdded(isIt: Bool)
 }
 
@@ -40,7 +40,7 @@ extension DatabaseNetworkControllerDelegate{
         
     }
     
-    func isCommentAdded(isIt: Bool){
+    func isCommentAdded1(isIt: Bool){
         
     }
     

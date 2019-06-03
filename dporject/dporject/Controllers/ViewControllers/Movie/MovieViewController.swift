@@ -27,6 +27,7 @@ class MovieViewController: UIViewController {
     var actionButton: ActionButton!
     
     private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
     
     fileprivate var modifiedListOfComments = [Comment](){
         didSet{
@@ -107,6 +108,8 @@ class MovieViewController: UIViewController {
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
+        
+      
         
         //Database Network
         databaseNetworkController.delegate = self

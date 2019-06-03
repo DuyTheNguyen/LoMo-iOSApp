@@ -21,43 +21,42 @@ class DatabaseNetworkController{
     }
     
     
-    //Add comments
-    func addComment(movieId: String, comment: Comment){
+    //Add 
+    func addToMovie(movieId: String, object: Any)-> Bool{
         guard let rootReference = rootReference else{
             print("Something went wrong with root reference")
-            self.delegate?.isCommentAdded(isIt: false)
-            return
+            self.delegate?.isCommentAdded1(isIt: false)
+            return false
         }
         
-        let commentRef = rootReference.child("\(Paths.COMMENTS)/\(movieId)").childByAutoId()
-        commentRef.setValue([
-            "commentId" : commentRef.key,
-            "userId": comment.userId,
-            "userName": comment.userName,
-            "image" : comment.image,
-            "timestamp" : comment.timestamp,
-            "content": comment.content
-        ])
-        
-        self.delegate?.isCommentAdded(isIt: true)
-       
+        if object is Comment{
+            
+            let comment = object as! Comment
+            let commentRef = rootReference.child("\(Paths.COMMENTS)/\(movieId)").childByAutoId()
+            commentRef.setValue([
+                "commentId" : commentRef.key,
+                "userId": comment.userId,
+                "userName": comment.userName,
+                "image" : comment.image,
+                "timestamp" : comment.timestamp,
+                "content": comment.content
+                ])
+            return true
+            
+        }else if object is Rating{
+            let rating = object as! Rating
+            let ratingRef = rootReference.child("\(Paths.RATING)").child(movieId).child(rating.userId!)
+            ratingRef.setValue([
+                "userId": rating.userId!,
+                "value": rating.value!
+                ])
+            
+            return true
+        }else{
+            fatalError("Not a proper type")
+        }
     }
     
-    func addRating(movieId: String, rating: Rating){
-        guard let rootReference = rootReference else{
-            print("Something went wrong with root reference")
-            self.delegate?.isCommentAdded(isIt: false)
-            return
-        }
-        
-        let ratingRef = rootReference.child("\(Paths.RATING)").child(movieId).child(rating.userId!)
-        ratingRef.setValue([
-            "userId": rating.userId!,
-            "value": rating.value!
-            ])
-        
-        self.delegate?.isRatingAdded(isIt: true)
-    }
     
     //Observe the data in the database
     func observeDatabase(type: ObserveType, path:String){

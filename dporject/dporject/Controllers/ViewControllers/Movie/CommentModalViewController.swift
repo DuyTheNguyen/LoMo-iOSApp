@@ -16,6 +16,7 @@ class CommentModalViewController: UIViewController {
     @IBOutlet weak var commentModalImageView: UIImageView!
     private let userAuthentiationNetworkController = UserNetworkController()
     private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
     
     private var currentUser: User!
     var selectedMovie: Movie!
@@ -28,10 +29,11 @@ class CommentModalViewController: UIViewController {
         userAuthentiationNetworkController.delegate = self
         userAuthentiationNetworkController.authenticationListener()
         
-        databaseNetworkController.delegate = self
         
         commentTextView.delegate = self
         // Do any additional setup after loading the view.
+        
+        networkFacade.delegate = self 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +73,8 @@ class CommentModalViewController: UIViewController {
                                content: commentTextView.text,
                                timestamp: String(Date().timeIntervalSince1970))
         
-        databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
+        //databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
+        networkFacade.addToMovie(movieId: movie.id!, object: comment)
         
         if isCommentAdded {
              dismiss(animated: true, completion: nil)
@@ -100,14 +103,17 @@ extension CommentModalViewController: UserNetworkControllerDelegate{
     }
 }
 
-extension CommentModalViewController: DatabaseNetworkControllerDelegate{
-    func isCommentAdded(isIt: Bool){
-        self.isCommentAdded = isIt
-    }
-}
 
 extension CommentModalViewController: UITextViewDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         commentTextView.resignFirstResponder()
     }
 }
+
+extension CommentModalViewController: NetworkFacadeDelegate{
+    func isAdded(isIt: Bool){
+        self.isCommentAdded = isIt
+    }
+}
+
+

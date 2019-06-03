@@ -20,7 +20,7 @@ class RatingModalViewController: UIViewController {
     private var isRatingAdded: Bool = false
     
     private let userNetworkController = UserNetworkController()
-    private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class RatingModalViewController: UIViewController {
         userNetworkController.delegate = self
         userNetworkController.authenticationListener()
         
-        databaseNetworkController.delegate = self
+        networkFacade.delegate = self
     }
     
     private func setUpComponents(){
@@ -59,7 +59,7 @@ class RatingModalViewController: UIViewController {
         
         let rating = Rating(userId: currentUser.uid!, value: ratingValue)
         
-        databaseNetworkController.addRating(movieId: selectedMovie.id!, rating: rating)
+        networkFacade.addToMovie(movieId: selectedMovie.id!, object: rating)
         
         if isRatingAdded{
             dismiss(animated: true, completion: nil)
@@ -86,8 +86,8 @@ extension RatingModalViewController: UserNetworkControllerDelegate{
     }
 }
 
-extension RatingModalViewController: DatabaseNetworkControllerDelegate{
-    func isRatingAdded(isIt: Bool){
+extension RatingModalViewController: NetworkFacadeDelegate{
+    func isAdded(isIt: Bool){
         self.isRatingAdded = isIt
     }
 }
