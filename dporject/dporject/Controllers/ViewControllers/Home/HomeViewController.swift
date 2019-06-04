@@ -13,6 +13,7 @@ import FirebaseDatabase
 class HomeViewController: UIViewController {
     
     private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
   
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var hotMoviesCollectionView: UICollectionView!
@@ -32,8 +33,14 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.a
         homeImage.roundedCorner(corners: [.bottomLeft, .bottomRight], radius: 30)
         self.navigationController?.setNavbarTransparent()
+        /*
         databaseNetworkController.delegate = self
         databaseNetworkController.getListOfObjectsFrom(path: Paths.POPULAR_MOVIES,  withDataType: .Movie)
+        */
+        
+        networkFacade.delegate = self
+        networkFacade.getListOfMovies(path: Paths.POPULAR_MOVIES)
+        
         
     }
     
@@ -76,7 +83,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 //Create extension to conform Delegate
-extension HomeViewController: DatabaseNetworkControllerDelegate{
+extension HomeViewController: NetworkFacadeDelegate{
     func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovies = movies
     }

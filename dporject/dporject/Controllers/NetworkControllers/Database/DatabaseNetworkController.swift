@@ -10,25 +10,12 @@ import Foundation
 import FirebaseDatabase
 
 
-class DatabaseNetworkController{
-    
-    private let rootReference: DatabaseReference?
+class DatabaseNetworkController: BaseDatabaseNetworkController{
     
     weak var delegate: DatabaseNetworkControllerDelegate?
     
-    init(){
-        rootReference = Database.database().reference()
-    }
-    
-    
     //Add 
     func addToMovie(movieId: String, object: Any)-> Bool{
-        guard let rootReference = rootReference else{
-            print("Something went wrong with root reference")
-            self.delegate?.isCommentAdded1(isIt: false)
-            return false
-        }
-        
         if object is Comment{
             
             let comment = object as! Comment
@@ -60,10 +47,6 @@ class DatabaseNetworkController{
     
     //Observe the data in the database
     func observeDatabase(type: ObserveType, path:String){
-        guard let rootReference = rootReference else{
-            print("Something went wrong with root reference")
-            return
-        }
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
                 print("Could not load list of objects or empty list")
@@ -90,19 +73,12 @@ class DatabaseNetworkController{
     
     //Remove observation
     func removeObserveDatabase(path: String){
-        guard let rootReference = rootReference else{
-            print("Something went wrong with root reference")
-            return
-        }
+       
         rootReference.removeAllObservers()
     }
     
     //Get genres, movies and comment
     func getListOfObjectsFrom(path:String, withDataType: DataType){
-        guard let rootReference = rootReference else{
-            print("Something went wrong with root reference")
-            return
-        }
         
         //Get the list of object
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -140,7 +116,7 @@ class DatabaseNetworkController{
             }else{
                 print("Cannot get values")
                 print("Value exist? : \(snapshot.exists())")
-                print("Path: \(rootReference.child(path))")
+                print("Path: \(self.rootReference.child(path))")
             }
         }) { (error) in
             print(error.localizedDescription)

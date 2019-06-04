@@ -382,6 +382,7 @@ extension UICollectionView {
     }
     
     func scrollToFirst(){
+       
         self.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .top, animated: true)
     }
     

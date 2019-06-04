@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6A073758229BBF8D008694F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A073757229BBF8D008694F2 /* Assets.xcassets */; };
+		6A08604522A66AC000B944E8 /* BaseDatabaseNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604422A66AC000B944E8 /* BaseDatabaseNetworkController.swift */; };
+		6A08604722A670D700B944E8 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604622A670D700B944E8 /* ServiceFactory.swift */; };
+		6A08604922A6719600B944E8 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604822A6719600B944E8 /* CommentService.swift */; };
+		6A08604B22A6720700B944E8 /* RatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604A22A6720700B944E8 /* RatingService.swift */; };
+		6A08604D22A67A3300B944E8 /* ObservationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604C22A67A3300B944E8 /* ObservationDelegate.swift */; };
+		6A08604F22A67E0000B944E8 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08604E22A67E0000B944E8 /* MovieService.swift */; };
 		6A08C24D229E95C100B30113 /* RatingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A08C24C229E95C100B30113 /* RatingModalViewController.swift */; };
 		6A1C2871228ED70600936357 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1C2870228ED70600936357 /* TabBarController.swift */; };
 		6A29D00D2287D3F300CF35EF /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A29D00C2287D3F300CF35EF /* MovieViewController.swift */; };
@@ -83,6 +89,12 @@
 
 /* Begin PBXFileReference section */
 		6A073757229BBF8D008694F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6A08604422A66AC000B944E8 /* BaseDatabaseNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDatabaseNetworkController.swift; sourceTree = "<group>"; };
+		6A08604622A670D700B944E8 /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		6A08604822A6719600B944E8 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		6A08604A22A6720700B944E8 /* RatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingService.swift; sourceTree = "<group>"; };
+		6A08604C22A67A3300B944E8 /* ObservationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDelegate.swift; sourceTree = "<group>"; };
+		6A08604E22A67E0000B944E8 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		6A08C24C229E95C100B30113 /* RatingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingModalViewController.swift; sourceTree = "<group>"; };
 		6A1C2870228ED70600936357 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6A29D00C2287D3F300CF35EF /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +198,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A08604322A66A9000B944E8 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6AB3C5DE2283F3BF00CE3AFE /* DatabaseNetworkController.swift */,
+				6A08604422A66AC000B944E8 /* BaseDatabaseNetworkController.swift */,
+				6A08604622A670D700B944E8 /* ServiceFactory.swift */,
+				6A08604822A6719600B944E8 /* CommentService.swift */,
+				6A08604A22A6720700B944E8 /* RatingService.swift */,
+				6A08604E22A67E0000B944E8 /* MovieService.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		6A29D00E2287DC1900CF35EF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,8 +347,8 @@
 		6AB3C5DD2283F33300CE3AFE /* NetworkControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A08604322A66A9000B944E8 /* Database */,
 				6AEFF027227AD83200ED2FA6 /* UserNetworkController.swift */,
-				6AB3C5DE2283F3BF00CE3AFE /* DatabaseNetworkController.swift */,
 				6AD297C3229650C100E81683 /* DataStorageNetworkController.swift */,
 			);
 			path = NetworkControllers;
@@ -369,6 +394,7 @@
 				6A8246D5228D2D8A007C00F5 /* Enums.swift */,
 				6AD297C5229653E000E81683 /* DataStorageNetworkControllerDelegate.swift */,
 				6A46E1A422A53A68009FEC10 /* NetworkFacadeDelegate.swift */,
+				6A08604C22A67A3300B944E8 /* ObservationDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -606,6 +632,7 @@
 				6A7549C1228C14B800C0263E /* CommentModalViewController.swift in Sources */,
 				6AC7B0F7228D837600D75F49 /* UpdateModalViewController.swift in Sources */,
 				6A29D0142287E3C500CF35EF /* MovieListViewController.swift in Sources */,
+				6A08604F22A67E0000B944E8 /* MovieService.swift in Sources */,
 				6A8246D4228D0559007C00F5 /* CommentListCollectionViewCell.swift in Sources */,
 				6A29D0122287DC6A00CF35EF /* GenreCollectionViewCell.swift in Sources */,
 				6AEFF02A227AD9B900ED2FA6 /* UserNetworkControllerDelegate.swift in Sources */,
@@ -615,10 +642,14 @@
 				6AC705C722707B6000EDD8B3 /* HomeViewController.swift in Sources */,
 				6A29D0192287FA7700CF35EF /* Genre.swift in Sources */,
 				6A46E1A522A53A68009FEC10 /* NetworkFacadeDelegate.swift in Sources */,
+				6A08604B22A6720700B944E8 /* RatingService.swift in Sources */,
 				6AD297C6229653E000E81683 /* DataStorageNetworkControllerDelegate.swift in Sources */,
 				6A6B2BA1229021F2001266FB /* AlertViewController.swift in Sources */,
 				6AC705CC227089AC00EDD8B3 /* Extension.swift in Sources */,
 				6AFC790422A113CB00902BAE /* ActionButton.swift in Sources */,
+				6A08604522A66AC000B944E8 /* BaseDatabaseNetworkController.swift in Sources */,
+				6A08604922A6719600B944E8 /* CommentService.swift in Sources */,
+				6A08604722A670D700B944E8 /* ServiceFactory.swift in Sources */,
 				6A83181B229F896B00348726 /* Rating.swift in Sources */,
 				6AD297C4229650C100E81683 /* DataStorageNetworkController.swift in Sources */,
 				6A7549C3228C1E1100C0263E /* Comment.swift in Sources */,
@@ -626,6 +657,7 @@
 				6A675F772283E491001F0F11 /* GenreViewController.swift in Sources */,
 				6A46E1A322A538EA009FEC10 /* NetworkFacade.swift in Sources */,
 				6AEEE39B226326C600027C88 /* AppDelegate.swift in Sources */,
+				6A08604D22A67A3300B944E8 /* ObservationDelegate.swift in Sources */,
 				6AC705C5227063A500EDD8B3 /* SignUpViewController.swift in Sources */,
 				6AB3C5DB2283EF0000CE3AFE /* Movie.swift in Sources */,
 				6A08C24D229E95C100B30113 /* RatingModalViewController.swift in Sources */,

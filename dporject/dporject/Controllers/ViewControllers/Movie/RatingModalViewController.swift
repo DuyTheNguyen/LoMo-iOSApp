@@ -59,7 +59,7 @@ class RatingModalViewController: UIViewController {
         
         let rating = Rating(userId: currentUser.uid!, value: ratingValue)
         
-        networkFacade.addToMovie(movieId: selectedMovie.id!, object: rating)
+        networkFacade.addRating(movieId: selectedMovie.id!, object: rating)
         
         if isRatingAdded{
             dismiss(animated: true, completion: nil)

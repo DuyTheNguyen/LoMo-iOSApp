@@ -2,4 +2,70 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "dporject/Controllers/NetworkControllers/Database/MovieService.swift"
+            timestampString = "581339521.365394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getListOfObject(path:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "dporject.MovieService.getListOfObject(path: Swift.String) -&gt; Swift.Array&lt;Any&gt;"
+                  moduleName = "dporject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/101036886/OneDrive%20-%20Swinburne%20University/Creating%20Data%20Driven%20Application/NewRepo/LoMo-iOSApp/dporject/dporject/Controllers/NetworkControllers/Database/MovieService.swift"
+                  timestampString = "581339521.47385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "154">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in dporject.MovieService.getListOfObject(path: Swift.String) -&gt; Swift.Array&lt;Any&gt;"
+                  moduleName = "dporject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/101036886/OneDrive%20-%20Swinburne%20University/Creating%20Data%20Driven%20Application/NewRepo/LoMo-iOSApp/dporject/dporject/Controllers/NetworkControllers/Database/MovieService.swift"
+                  timestampString = "581339521.476313"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "86">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "dporject/Controllers/NetworkControllers/Database/MovieService.swift"
+            timestampString = "581339521.366168"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "getListOfObject(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

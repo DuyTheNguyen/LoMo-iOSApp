@@ -34,7 +34,7 @@ class MovieViewController: UIViewController {
             DispatchQueue.main.async {
                 self.commentCollectionView.reloadData()
                 self.commentTitleLabel.text = "Comments (\(self.modifiedListOfComments.count))"
-                self.commentCollectionView.scrollToFirst()
+                //self.commentCollectionView.scrollToFirst()
             }
             
         }
@@ -110,7 +110,7 @@ class MovieViewController: UIViewController {
         }
         
       
-        
+        /*
         //Database Network
         databaseNetworkController.delegate = self
         databaseNetworkController.observeDatabase(type: ObserveType.COMMENT, path: "\(Paths.COMMENTS)/\(movie.id!)")
@@ -119,6 +119,11 @@ class MovieViewController: UIViewController {
         if movie.cinemas != nil {
             databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
         }
+        */
+        
+        
+        networkFacade.delegate = self
+        networkFacade.observeComments(path: "\(Paths.COMMENTS)/\(movie.id!)")
         
         //Comment Collection View
         commentCollectionView.delegate = self
@@ -234,6 +239,7 @@ extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 //Create extension to conform DatabaseNetworkController
+/*
 extension MovieViewController: DatabaseNetworkControllerDelegate{
     func watchListOfComments(comments: [Comment]) {
         self.originalListOfComment = comments
@@ -247,4 +253,11 @@ extension MovieViewController: DatabaseNetworkControllerDelegate{
     func didReceivedListOfCinemas(cinemas: [Cinema]) {
         self.listOfCinemas = cinemas
     }
+}
+*/
+extension MovieViewController: NetworkFacadeDelegate{
+    func watchListOfComments(comments: [Comment]) {
+        self.originalListOfComment = comments
+    }
+    
 }

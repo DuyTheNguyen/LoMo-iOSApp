@@ -74,7 +74,7 @@ class CommentModalViewController: UIViewController {
                                timestamp: String(Date().timeIntervalSince1970))
         
         //databaseNetworkController.addComment(movieId: movie.id!, comment: comment)
-        networkFacade.addToMovie(movieId: movie.id!, object: comment)
+        networkFacade.addComment(movieId: movie.id!, object: comment)
         
         if isCommentAdded {
              dismiss(animated: true, completion: nil)
