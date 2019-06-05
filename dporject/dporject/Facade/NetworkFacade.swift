@@ -13,6 +13,7 @@ class NetworkFacade{
     private let commentService = CommentService()
     private let ratingService = RatingService()
     private let movieService = MovieService()
+    private let cinemaService = CinemaService()
     
     weak var delegate: NetworkFacadeDelegate?
     
@@ -57,6 +58,12 @@ class NetworkFacade{
         movieService.getListOfObject(path: path){ movies in
             result = movies
             self.delegate?.didReceivedListOfMovies(movies: result as! [Movie])
+        }
+    }
+    
+    func getListOfCinemas(path:String){
+        cinemaService.getListOfObject(path: path) { (cinemas) in
+            self.delegate?.didReceivedListOfCinemas(cinemas: cinemas as! [Cinema]) 
         }
     }
     
