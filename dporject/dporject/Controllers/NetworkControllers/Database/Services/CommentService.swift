@@ -10,10 +10,7 @@ import Foundation
 
 class CommentService: BaseService, ServicesFactory{
   
-    
-    weak var delegate: ObservationDelegate?
-    
-    
+   
     func add(path: String, object: Any) -> Bool{
         let comment = object as! Comment
         let commentRef = rootReference.child("\(Paths.COMMENTS)/\(path)").childByAutoId()

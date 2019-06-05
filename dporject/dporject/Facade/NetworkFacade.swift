@@ -19,11 +19,6 @@ class NetworkFacade{
     
     weak var delegate: NetworkFacadeDelegate?
     
-    
-    init(){
-        commentService.delegate = self
-    }
-    
    
     /************************ Begin: Database *************************************/
     //////////////Add///////////////
@@ -83,10 +78,3 @@ class NetworkFacade{
     /************************ End: Database *************************************/
 }
 
-//Create extension to confrom delegate
-//DatabaseNetworkController
-extension NetworkFacade: ObservationDelegate{
-    func watchObjects(object: Any) {
-        
-    }
-}
