@@ -38,7 +38,7 @@ class UserNetworkController{
             self.delegate?.didReceiveUser(user: passedUser)
         }
     }
-    func userServiceWith(type: UserService, email: String, password: String){
+    func userServiceWith(type: UserService1, email: String, password: String){
         switch type{
         case .SIGN_IN:
             authentication.signIn(withEmail: email, password: password) { (user, error) in

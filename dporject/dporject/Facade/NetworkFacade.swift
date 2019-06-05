@@ -10,38 +10,40 @@ import Foundation
 
 class NetworkFacade{
    
-    private let baseDatabaseNetworkControlle = BaseService()
-    private let commentService = CommentService()
-    private let ratingService = RatingService()
-    private let movieService = MovieService()
-    private let cinemaService = CinemaService()
-    private let genreService = GenreService()
+    private let baseFactory = BaseFactory()
+    private let commentFactory = CommentFactory()
+    private let ratingFactory = RatingFactory()
+    private let movieFactory = MovieFactory()
+    private let cinemaFactory = CinemaFactory()
+    private let genreFactory = GenreFactory()
     
+    private let userService = UserService()
+
     weak var delegate: NetworkFacadeDelegate?
     
    
     /************************ Begin: Database *************************************/
     //////////////Add///////////////
     func addComment(movieId: String, object: Any){
-        let result = commentService.add(path: movieId, object: object)
+        let result = commentFactory.add(path: movieId, object: object)
         self.delegate?.isAdded(isIt: result)
     }
     
     func addRating(movieId: String, object: Any){
-        let result = ratingService.add(path: movieId, object: object)
+        let result = ratingFactory.add(path: movieId, object: object)
         self.delegate?.isAdded(isIt: result)
     }
     
     
     /////////////Observe//////////////
     func observeComments(path:String){
-        commentService.observe(path: path){ comments in
+        commentFactory.observe(path: path){ comments in
             self.delegate?.watchListOfComments(comments: comments as! [Comment])
         }
         
     }
     func observeRatings(path:String){
-        ratingService.observe(path: path) { ratings in
+        ratingFactory.observe(path: path) { ratings in
             self.delegate?.watchListOfRatings(ratings: ratings as! [Rating])
         }
     }
@@ -49,32 +51,48 @@ class NetworkFacade{
     
     /////////////Remove Observe//////////////
     func removeObserve(path:String){
-        baseDatabaseNetworkControlle.removeObserveDatabase(path: path)
+        baseFactory.removeObserveDatabase(path: path)
     }
-    
-   
     
     
     ////////////Get Objects/////////
     func getListOfMovies(path:String){
         var result = [Any]()
-        movieService.getListOfObject(path: path){ movies in
+        movieFactory.getListOfObject(path: path){ movies in
             result = movies
             self.delegate?.didReceivedListOfMovies(movies: result as! [Movie])
         }
     }
     
     func getListOfCinemas(path:String){
-        cinemaService.getListOfObject(path: path) { (cinemas) in
+        cinemaFactory.getListOfObject(path: path) { (cinemas) in
             self.delegate?.didReceivedListOfCinemas(cinemas: cinemas as! [Cinema])
         }
     }
     
     func getListOfGenre(path: String){
-        genreService.getListOfObject(path: path) { (genres) in
+        genreFactory.getListOfObject(path: path) { (genres) in
             self.delegate?.didReceivedListOfGenres(genres: genres as! [Genre])
         }
     }
     /************************ End: Database *************************************/
+    
+    /************************ Begin: User Service *************************************/
+    func signIn(email: String, password:String){
+        userService.signIn(email: email, password: password) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
+    
+    func signUp(email: String, password:String){
+        userService.signUp(email: email, password: password) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
+    
+    func signOut(){
+        userService.signOut()
+    }
+    /************************ End: User Service *************************************/
 }
 

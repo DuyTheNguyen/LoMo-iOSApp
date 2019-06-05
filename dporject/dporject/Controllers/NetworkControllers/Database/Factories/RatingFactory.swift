@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RatingService:BaseService, ServicesFactory{
+class RatingFactory:BaseFactory, FactoryProtocol{
     
     func add(path: String, object: Any) -> Bool{
         let rating = object as! Rating

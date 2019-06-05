@@ -40,7 +40,7 @@ enum Icons{
     
 }
 
-enum UserService{
+enum UserService1{
     case SIGN_IN, SIGN_UP, SIGN_OUT
 }
 

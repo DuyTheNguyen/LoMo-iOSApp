@@ -13,10 +13,8 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
-    
-    
-   
-    private let userNetworlController = UserNetworkController()
+ 
+    private let networkFacade = NetworkFacade()
     
     private var isSuccessful: Bool!
     private var alertType: AlertType!
@@ -67,7 +65,7 @@ class SignInViewController: UIViewController {
         }
         
       
-        userNetworlController.userServiceWith(type: UserService.SIGN_IN, email: email, password: password)
+        networkFacade.signIn(email: email, password: password)
         self.view.startIndicatorAnnimation()
         
     }
@@ -75,9 +73,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        userNetworlController.delegate = self
-        
-       
+        networkFacade.delegate = self
     }
 
     
@@ -95,8 +91,8 @@ class SignInViewController: UIViewController {
 }
 
 //Create extension to conform delegate
-extension SignInViewController: UserNetworkControllerDelegate{
-    func updateData(isUpdated: Bool, message: String) {
+extension SignInViewController: NetworkFacadeDelegate{
+    func updateData1(isUpdated: Bool, message: String) {
         self.isSuccessful = isUpdated
         self.message = message
     }

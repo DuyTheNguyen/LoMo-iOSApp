@@ -8,12 +8,14 @@
 
 import Foundation
 
-protocol ServicesFactory {
+protocol FactoryProtocol {
+    typealias  ObjectsCompletionHandler = (_ objects:[Any]) -> ()
+    
     func add(path: String, object:Any)->Bool
     func delete(path:String)
-    func observe(path:String, completion: @escaping ([Any]) -> ())
+    func observe(path:String, completion: @escaping ObjectsCompletionHandler)
     
-    func getListOfObject(path: String, completion:@escaping ([Any])->())
+    func getListOfObject(path: String, completion:@escaping ObjectsCompletionHandler)
 
     func getSingleObject(path:String)
 }

@@ -118,7 +118,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
-         userNetworkController.userServiceWith(type: UserService.SIGN_OUT, email: "", password: "")
+         userNetworkController.userServiceWith(type: UserService1.SIGN_OUT, email: "", password: "")
          handleControllerTransitionWith(identifier: Identifiers.SIGN_IN_CONTROLLER)
     }
     
