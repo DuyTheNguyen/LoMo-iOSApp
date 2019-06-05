@@ -15,7 +15,6 @@ class CommentModalViewController: UIViewController {
     
     @IBOutlet weak var commentModalImageView: UIImageView!
     private let userAuthentiationNetworkController = UserNetworkController()
-    private let databaseNetworkController = DatabaseNetworkController()
     private let networkFacade = NetworkFacade()
     
     private var currentUser: User!

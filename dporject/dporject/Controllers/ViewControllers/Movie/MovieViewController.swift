@@ -25,8 +25,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var cinemaMapView: MKMapView!
     @IBOutlet weak var cinemaLabel: UILabel!
     var actionButton: ActionButton!
-    
-    private let databaseNetworkController = DatabaseNetworkController()
+
     private let networkFacade = NetworkFacade()
     
     fileprivate var modifiedListOfComments = [Comment](){
@@ -34,7 +33,7 @@ class MovieViewController: UIViewController {
             DispatchQueue.main.async {
                 self.commentCollectionView.reloadData()
                 self.commentTitleLabel.text = "Comments (\(self.modifiedListOfComments.count))"
-                //self.commentCollectionView.scrollToFirst()
+                self.commentCollectionView.scrollToFirst()
             }
             
         }
@@ -96,7 +95,8 @@ class MovieViewController: UIViewController {
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
-        databaseNetworkController.removeObserveDatabase(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        networkFacade.removeObserve(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        networkFacade.removeObserve(path: "\(Paths.RATING)/\(movie.id!)")
     }
     
     private func initialize(){
@@ -109,17 +109,6 @@ class MovieViewController: UIViewController {
             fatalError("Could not load movie")
         }
         
-      
-        /*
-        //Database Network
-        databaseNetworkController.delegate = self
-        databaseNetworkController.observeDatabase(type: ObserveType.COMMENT, path: "\(Paths.COMMENTS)/\(movie.id!)")
-        databaseNetworkController.observeDatabase(type: ObserveType.RATING, path: "\(Paths.RATING)/\(movie.id!)")
-        
-        if movie.cinemas != nil {
-            databaseNetworkController.getListOfObjectsFrom(path: Paths.CINEMAS, withDataType: .Cinema)
-        }
-        */
         
         
         networkFacade.delegate = self

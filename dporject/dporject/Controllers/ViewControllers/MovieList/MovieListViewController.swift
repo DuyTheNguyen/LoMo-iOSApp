@@ -17,7 +17,7 @@ class MovieListViewController: UIViewController {
     var searchMovies = [Movie]()
     var isSearching = false
     
-    private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,9 +33,9 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
 
         setUpNavBar()
-        databaseNetworkController.delegate = self
+        networkFacade.delegate = self
         //get list of movies based on path
-        databaseNetworkController.getListOfObjectsFrom(path: "\(Paths.GENRE_MOVIES_LIST)/\(genre.name ?? "")", withDataType: .Movie)
+        networkFacade.getListOfMovies(path: "\(Paths.GENRE_MOVIES_LIST)/\(genre.name ?? "")")
      
         // Do any additional setup after loading the view.
     }
@@ -107,7 +107,7 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
 
 //Create extension to comform delegate
 
-extension MovieListViewController: DatabaseNetworkControllerDelegate{
+extension MovieListViewController: NetworkFacadeDelegate{
     func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovie = movies
     }

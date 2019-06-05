@@ -1,39 +1,37 @@
 //
-//  MovieService.swift
+//  CinemaService.swift
 //  dporject
 //
-//  Created by THE DUY NGUYEN on 4/6/19.
+//  Created by THE DUY NGUYEN on 5/6/19.
 //  Copyright © 2019 THE DUY NGUYEN. All rights reserved.
 //
 
 import Foundation
 
-class MovieService: BaseDatabaseNetworkController{
+class CinemaService: BaseService, ServicesFactory{
     func add(path: String, object: Any) -> Bool {
+        //Not yet
         return false
     }
     
     func delete(path: String) {
-        
+        //Not yet
     }
     
-    func getListOfObject(path: String, completion:@escaping ([Any])->()){
-        //Get the list of object
-        var movies = [Movie]()
+    func observe(path: String, completion: @escaping ([Any]) -> ()) {
+        //Not yet
+    }
     
+    func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
+        //Get the list of object
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
-           
             if let values = snapshot.value as? [String:AnyObject] {
-                
-               
-                    for (_,value) in values{
-                        let movie = Movie(snapshot: value)
-                        movies.append(movie)
-                    }
-                
-                    completion(movies)
-               
-              
+                var cinemas = [Cinema]()
+                for(_, value) in values{
+                    let cinema = Cinema(snapshot: value)
+                    cinemas.append(cinema)
+                }
+                completion(cinemas)
             }else{
                 print("Cannot get values")
                 print("Value exist? : \(snapshot.exists())")
@@ -44,7 +42,8 @@ class MovieService: BaseDatabaseNetworkController{
         }
     }
     
-    func getSingleObject(path: String){
+    func getSingleObject(path: String) {
+        //Not yet
         
     }
     

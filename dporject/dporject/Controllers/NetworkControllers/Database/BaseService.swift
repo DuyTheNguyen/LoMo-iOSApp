@@ -8,7 +8,11 @@
 
 import Foundation
 import FirebaseDatabase
-class BaseDatabaseNetworkController{
+class BaseService{
     let rootReference = Database.database().reference()
+    
+    func removeObserveDatabase(path: String){
+        rootReference.child(path).removeAllObservers()
+    }
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RatingService:BaseDatabaseNetworkController, ServiceFactory{
+class RatingService:BaseService, ServicesFactory{
     
     func add(path: String, object: Any) -> Bool{
         let rating = object as! Rating

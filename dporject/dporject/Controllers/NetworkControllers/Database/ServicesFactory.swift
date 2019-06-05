@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ServiceFactory {
+protocol ServicesFactory {
     func add(path: String, object:Any)->Bool
     func delete(path:String)
     func observe(path:String, completion: @escaping ([Any]) -> ())

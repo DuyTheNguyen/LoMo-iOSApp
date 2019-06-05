@@ -21,7 +21,7 @@ class GenreViewController: UIViewController {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
-    private let databaseNetworkController = DatabaseNetworkController()
+    private let networkFacade = NetworkFacade()
     
     fileprivate var selectedGenre: Genre!
     
@@ -34,8 +34,8 @@ class GenreViewController: UIViewController {
         allMovieLabel.isUserInteractionEnabled = true
         allMovieLabel.addGestureRecognizer(gesture)
         
-        databaseNetworkController.delegate = self
-        databaseNetworkController.getListOfObjectsFrom(path: Paths.GENRE, withDataType:.Genre)
+        networkFacade.delegate = self
+        networkFacade.getListOfGenre(path: Paths.GENRE)
         // Do any additional setup after loading the view.
     }
     
@@ -84,7 +84,7 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
 }
 
 //Create extension to conform delegate
-extension GenreViewController: DatabaseNetworkControllerDelegate{
+extension GenreViewController: NetworkFacadeDelegate{
     func didReceivedListOfGenres(genres: [Genre]) {
         self.listOfGenre = genres
     }

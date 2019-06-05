@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommentService: BaseDatabaseNetworkController, ServiceFactory{
+class CommentService: BaseService, ServicesFactory{
   
     
     weak var delegate: ObservationDelegate?
