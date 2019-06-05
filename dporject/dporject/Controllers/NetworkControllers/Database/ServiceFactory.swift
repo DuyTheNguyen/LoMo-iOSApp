@@ -12,6 +12,7 @@ protocol ServiceFactory {
     func add(path: String, object:Any)->Bool
     func delete(path:String)
     
-    func getListOfObject(path: String)->[Any]
+    func getListOfObject(path: String, completion:@escaping ([Any])->())
+
     func getSingleObject(path:String)
 }

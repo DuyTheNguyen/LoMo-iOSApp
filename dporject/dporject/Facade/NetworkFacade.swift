@@ -43,8 +43,11 @@ class NetworkFacade{
     
     //Get Objects
     func getListOfMovies(path:String){
-        let result = movieService.getListOfObject(path: path) as! [Movie]
-        self.delegate?.didReceivedListOfMovies(movies: result)
+        var result = [Any]()
+        movieService.getListOfObject(path: path){ movies in
+            result = movies
+            self.delegate?.didReceivedListOfMovies(movies: result as! [Movie])
+        }
     }
     
 }

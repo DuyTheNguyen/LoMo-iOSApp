@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieService: BaseDatabaseNetworkController, ServiceFactory{
+class MovieService: BaseDatabaseNetworkController{
     func add(path: String, object: Any) -> Bool {
         return false
     }
@@ -17,10 +17,10 @@ class MovieService: BaseDatabaseNetworkController, ServiceFactory{
         
     }
     
-    func getListOfObject(path: String) -> [Any] {
+    func getListOfObject(path: String, completion:@escaping ([Any])->()){
         //Get the list of object
         var movies = [Movie]()
-     // self.dispatchGroup.enter()
+    
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
            
             if let values = snapshot.value as? [String:AnyObject] {
@@ -30,23 +30,18 @@ class MovieService: BaseDatabaseNetworkController, ServiceFactory{
                         let movie = Movie(snapshot: value)
                         movies.append(movie)
                     }
-                    //self.dispatchGroup.leave()
                 
+                    completion(movies)
                
-               //  self.dispatchGroup.wait()
+              
             }else{
                 print("Cannot get values")
                 print("Value exist? : \(snapshot.exists())")
                 print("Path: \(self.rootReference.child(path))")
             }
-            //self.dispatchGroup.leave()
         }) { (error) in
             print(error.localizedDescription)
-             self.dispatchGroup.leave()
         }
-        
-        
-        return movies
     }
     
     func getSingleObject(path: String){

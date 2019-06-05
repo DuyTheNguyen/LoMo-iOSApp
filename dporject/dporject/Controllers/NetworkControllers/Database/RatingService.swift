@@ -9,6 +9,7 @@
 import Foundation
 
 class RatingService:BaseDatabaseNetworkController, ServiceFactory{
+  
     
     func add(path: String, object: Any) -> Bool{
         let rating = object as! Rating
@@ -24,11 +25,9 @@ class RatingService:BaseDatabaseNetworkController, ServiceFactory{
         
     }
     
-    
-    func getListOfObject(path: String) -> [Any] {
-        let objects = [Any]()
-        return objects
+    func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
     }
+   
     
     func getSingleObject(path: String){
        

@@ -11,6 +11,8 @@ import Foundation
 class CommentService: BaseDatabaseNetworkController, ServiceFactory{
   
     
+  
+    
     
     weak var delegate: ObservationDelegate?
     
@@ -53,9 +55,8 @@ class CommentService: BaseDatabaseNetworkController, ServiceFactory{
     }
     
     
-    func getListOfObject(path: String) -> [Any]{
-        let objects = [Any]()
-        return objects
+    func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
+        
     }
     
     func getSingleObject(path: String){
