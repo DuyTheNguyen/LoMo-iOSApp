@@ -9,7 +9,6 @@
 import Foundation
 
 class RatingService:BaseDatabaseNetworkController, ServiceFactory{
-  
     
     func add(path: String, object: Any) -> Bool{
         let rating = object as! Rating
@@ -25,12 +24,26 @@ class RatingService:BaseDatabaseNetworkController, ServiceFactory{
         
     }
     
+    func observe(path: String, completion: @escaping ([Any]) -> ()) {
+        rootReference.child(path).observe(.value) { (snapshot) in
+            guard let values = snapshot.value as? [String:AnyObject] else {
+                print("Could not load list of objects or empty list")
+                return
+            }
+            var ratings = [Rating]()
+            for(_,value) in values{
+                let rating = Rating(snapshot: value)
+                ratings.append(rating)
+            }
+            completion(ratings)
+        }
+    }
+    
     func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
     }
    
     
     func getSingleObject(path: String){
-       
     }
     
 }

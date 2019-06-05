@@ -11,6 +11,7 @@ import Foundation
 protocol ServiceFactory {
     func add(path: String, object:Any)->Bool
     func delete(path:String)
+    func observe(path:String, completion: @escaping ([Any]) -> ())
     
     func getListOfObject(path: String, completion:@escaping ([Any])->())
 

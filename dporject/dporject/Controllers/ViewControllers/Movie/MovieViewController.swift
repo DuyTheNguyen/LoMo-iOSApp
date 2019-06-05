@@ -124,7 +124,7 @@ class MovieViewController: UIViewController {
         
         networkFacade.delegate = self
         networkFacade.observeComments(path: "\(Paths.COMMENTS)/\(movie.id!)")
-        
+        networkFacade.observeRatings(path: "\(Paths.RATING)/\(movie.id!)")
         //Comment Collection View
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
@@ -260,4 +260,7 @@ extension MovieViewController: NetworkFacadeDelegate{
         self.originalListOfComment = comments
     }
     
+    func watchListOfRatings(ratings: [Rating]) {
+        self.listOfRating = ratings
+    }
 }

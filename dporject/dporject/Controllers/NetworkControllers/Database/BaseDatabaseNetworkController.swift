@@ -10,6 +10,5 @@ import Foundation
 import FirebaseDatabase
 class BaseDatabaseNetworkController{
     let rootReference = Database.database().reference()
-    let dispatchGroup = DispatchGroup()
 }
 

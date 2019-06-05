@@ -11,9 +11,6 @@ import Foundation
 class CommentService: BaseDatabaseNetworkController, ServiceFactory{
   
     
-  
-    
-    
     weak var delegate: ObservationDelegate?
     
     
@@ -35,23 +32,22 @@ class CommentService: BaseDatabaseNetworkController, ServiceFactory{
         
     }
     
-    func observe(path:String)->[Comment]{
-        var comments = [Comment]()
+    func observe(path:String, completion: @escaping ([Any]) -> ()){
+        
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
                 print("Could not load list of objects or empty list")
                 return
             }
           
-          
+            var comments = [Comment]()
             for (_,value) in values{
                 let comment = Comment(snapshot: value)
                 comments.append(comment)
             }
-            
-           
+            completion(comments)
         }
-        return comments
+       
     }
     
     
