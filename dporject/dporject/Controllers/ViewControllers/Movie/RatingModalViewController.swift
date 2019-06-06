@@ -18,9 +18,8 @@ class RatingModalViewController: UIViewController {
     var selectedMovie: Movie!
     fileprivate var currentUser: User!
     private var isRatingAdded: Bool = false
-    
-    private let userNetworkController = UserNetworkController()
-    private let networkFacade = NetworkFacade()
+
+    private let networkFacade = NetworkServiceFacade()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +29,9 @@ class RatingModalViewController: UIViewController {
     }
     
     private func initialize(){
-        userNetworkController.delegate = self
-        userNetworkController.authenticationListener()
         
         networkFacade.delegate = self
+        networkFacade.checkCurrentUserStatus()
     }
     
     private func setUpComponents(){
@@ -80,13 +78,12 @@ class RatingModalViewController: UIViewController {
 }
 
 //Create extension to conform Delegate
-extension RatingModalViewController: UserNetworkControllerDelegate{
-    func didReceiveUser(user: User){
+
+extension RatingModalViewController: NetworkServiceFacadeDelegate{
+    func didReceiveUser1(user: User){
         self.currentUser = user
     }
-}
-
-extension RatingModalViewController: NetworkFacadeDelegate{
+    
     func isAdded(isIt: Bool){
         self.isRatingAdded = isIt
     }

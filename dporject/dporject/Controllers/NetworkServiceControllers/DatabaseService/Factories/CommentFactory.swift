@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommentService: BaseService, ServicesFactory{
+class CommentFactory: BaseFactory, FactoryProtocol{
   
    
     func add(path: String, object: Any) -> Bool{

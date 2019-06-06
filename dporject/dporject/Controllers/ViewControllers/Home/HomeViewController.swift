@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class HomeViewController: UIViewController {
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
   
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var hotMoviesCollectionView: UICollectionView!
@@ -78,7 +78,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 //Create extension to conform Delegate
-extension HomeViewController: NetworkFacadeDelegate{
+extension HomeViewController: NetworkServiceFacadeDelegate{
     func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovies = movies
     }

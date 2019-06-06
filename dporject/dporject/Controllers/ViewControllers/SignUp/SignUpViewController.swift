@@ -17,7 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     
-    private let userNetworkController = UserNetworkController()
+    private let networkFacade = NetworkServiceFacade()
     
     private var isSuccessful: Bool!
     private var alertType: AlertType!
@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController {
         //Using notification for success case
         NotificationCenter.default.addObserver(self, selector: #selector(self.goToSignIn), name: NSNotification.Name(rawValue: Notifications.TO_SIGN_IN), object: nil)
         
-        userNetworkController.delegate = self
+        networkFacade.delegate = self
         // Do any additional setup after loading the view.
     }
     @IBAction func signInButtonOnTapped(_ sender: Any?) {
@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController {
        
         
         //Perform connection with database
-        userNetworkController.userServiceWith(type: UserService.SIGN_UP, email: email, password: password)
+        networkFacade.signUp(email: email, password: password)
    
         
     }
@@ -106,8 +106,8 @@ class SignUpViewController: UIViewController {
 }
 
 //Create extension to comform delegate
-extension SignUpViewController: UserNetworkControllerDelegate{
-    func updateData(isUpdated: Bool, message: String) {
+extension SignUpViewController: NetworkServiceFacadeDelegate{
+    func updateData1(isUpdated: Bool, message: String) {
         self.isSuccessful = isUpdated
         self.message = message
     }

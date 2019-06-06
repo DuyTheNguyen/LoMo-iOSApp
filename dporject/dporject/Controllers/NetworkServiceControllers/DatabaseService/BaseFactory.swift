@@ -8,7 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
-class BaseService{
+class BaseFactory{
     let rootReference = Database.database().reference()
     
     func removeObserveDatabase(path: String){

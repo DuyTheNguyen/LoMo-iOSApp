@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenreService: BaseService, ServicesFactory{
+class GenreFactory: BaseFactory, FactoryProtocol{
     func add(path: String, object: Any) -> Bool {
         return false
     }

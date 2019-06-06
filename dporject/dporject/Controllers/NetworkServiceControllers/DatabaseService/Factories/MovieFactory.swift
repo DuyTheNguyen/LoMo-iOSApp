@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieService: BaseService{
+class MovieFactory: BaseFactory{
     func add(path: String, object: Any) -> Bool {
         return false
     }

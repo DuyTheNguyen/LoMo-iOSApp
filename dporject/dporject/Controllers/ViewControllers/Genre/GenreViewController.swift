@@ -21,7 +21,7 @@ class GenreViewController: UIViewController {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     fileprivate var selectedGenre: Genre!
     
@@ -84,7 +84,7 @@ extension GenreViewController: UICollectionViewDataSource, UICollectionViewDeleg
 }
 
 //Create extension to conform delegate
-extension GenreViewController: NetworkFacadeDelegate{
+extension GenreViewController: NetworkServiceFacadeDelegate{
     func didReceivedListOfGenres(genres: [Genre]) {
         self.listOfGenre = genres
     }
