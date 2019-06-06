@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FactoryProtocol {
+protocol DatabaseServiceProtocol {
     typealias  ObjectsCompletionHandler = (_ objects:[Any]) -> ()
     
     func add(path: String, object:Any)->Bool

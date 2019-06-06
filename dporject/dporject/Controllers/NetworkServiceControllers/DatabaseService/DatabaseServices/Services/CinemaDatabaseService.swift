@@ -1,5 +1,5 @@
 //
-//  GenreService.swift
+//  CinemaService.swift
 //  dporject
 //
 //  Created by THE DUY NGUYEN on 5/6/19.
@@ -8,28 +8,30 @@
 
 import Foundation
 
-class GenreFactory: BaseFactory, FactoryProtocol{
+class CinemaDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
     func add(path: String, object: Any) -> Bool {
+        //Not yet
         return false
     }
     
     func delete(path: String) {
-        
+        //Not yet
     }
     
-    func observe(path: String, completion: @escaping ([Any]) -> ()) {
-        
+    func observe(path: String, completion: @escaping ObjectsCompletionHandler) {
+        //Not yet
     }
     
-    func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
+    func getListOfObject(path: String, completion: @escaping ObjectsCompletionHandler) {
+       
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             if let values = snapshot.value as? [String:AnyObject] {
-                var genres = [Genre]()
+                var cinemas = [Cinema]()
                 for(_, value) in values{
-                    let genre = Genre(snapshot: value)
-                    genres.append(genre)
+                    let cinema = Cinema(snapshot: value)
+                    cinemas.append(cinema)
                 }
-                completion(genres)
+                completion(cinemas)
             }else{
                 print("Cannot get values")
                 print("Value exist? : \(snapshot.exists())")
@@ -41,6 +43,7 @@ class GenreFactory: BaseFactory, FactoryProtocol{
     }
     
     func getSingleObject(path: String) {
+        //Not yet
         
     }
     

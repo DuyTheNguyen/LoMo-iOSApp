@@ -8,7 +8,11 @@
 
 import Foundation
 
-class MovieFactory: BaseFactory{
+class MovieDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
+    func observe(path: String, completion: @escaping ObjectsCompletionHandler) {
+        
+    }
+    
     func add(path: String, object: Any) -> Bool {
         return false
     }
@@ -17,7 +21,7 @@ class MovieFactory: BaseFactory{
         
     }
     
-    func getListOfObject(path: String, completion:@escaping ([Any])->()){
+    func getListOfObject(path: String, completion: @escaping ObjectsCompletionHandler){
         //Get the list of object
         rootReference.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
            

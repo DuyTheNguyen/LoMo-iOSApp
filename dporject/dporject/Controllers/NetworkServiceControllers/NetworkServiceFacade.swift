@@ -11,12 +11,12 @@ import UIKit
 
 class NetworkServiceFacade{
    
-    private let baseFactory = BaseFactory()
-    private let commentFactory = CommentFactory()
-    private let ratingFactory = RatingFactory()
-    private let movieFactory = MovieFactory()
-    private let cinemaFactory = CinemaFactory()
-    private let genreFactory = GenreFactory()
+    private let baseFactory = BaseDatabaseService()
+    private let commentFactory = CommentDatabaseService()
+    private let ratingFactory = RatingDatabaseService()
+    private let movieFactory = MovieDatabaseService()
+    private let cinemaFactory = CinemaDatabaseService()
+    private let genreFactory = GenreDatabaseService()
     
     private let userService = UserService()
     

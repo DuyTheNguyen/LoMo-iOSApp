@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommentFactory: BaseFactory, FactoryProtocol{
+class CommentDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
   
    
     func add(path: String, object: Any) -> Bool{
@@ -29,7 +29,7 @@ class CommentFactory: BaseFactory, FactoryProtocol{
         
     }
     
-    func observe(path:String, completion: @escaping ([Any]) -> ()){
+    func observe(path:String, completion: @escaping ObjectsCompletionHandler){
         
         rootReference.child(path).observe(.value) { (snapshot) in
             guard let values = snapshot.value as? [String:AnyObject] else {
@@ -48,7 +48,7 @@ class CommentFactory: BaseFactory, FactoryProtocol{
     }
     
     
-    func getListOfObject(path: String, completion: @escaping ([Any]) -> ()) {
+    func getListOfObject(path: String, completion: @escaping ObjectsCompletionHandler) {
         
     }
     

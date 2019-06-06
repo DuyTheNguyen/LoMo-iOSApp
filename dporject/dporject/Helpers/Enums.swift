@@ -50,6 +50,10 @@ enum UserServiceType: String{
     case UPDATE_PHOTO = "Photo"
 }
 
+enum DatabaseServiceType{
+    case Comment, Rating, Movie, Cinema, Genre
+}
+
 enum AlertType{
     case SUCCESS, FALIED, INFO
 }
