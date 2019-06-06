@@ -142,7 +142,8 @@ class NetworkServiceFacade{
     
     /************************ Begin: Storage *************************************/
     func uploadImage(folderName: String, imageFile: UIImage, fileName: String){
-        storageService.uploadImage(folderName: folderName, imageFile: imageFile, fileName: fileName) { (isUploaded, message) in
+        storageService.uploadImage(folderName: folderName, imageFile: imageFile, fileName: fileName) {
+            (isUploaded, message) in
             
             if isUploaded{
                 //Update in user service

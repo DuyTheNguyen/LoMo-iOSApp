@@ -58,9 +58,6 @@ enum AlertType{
     case SUCCESS, FALIED, INFO
 }
 
-enum ObserveType{
-    case COMMENT, RATING
-}
 
 enum CustomColors{
     static let MAIN = UIColor.init(red: 64/255, green: 96/255, blue: 160/255, alpha: 1.0)
@@ -102,10 +99,6 @@ enum AlertTitles{
     static let SUCCESS = "Yayy!! You did it!!"
     static let FAILED = "Opps!! Something went wrong"
     static let INFO = "Sorry!!!"
-}
-
-enum DataType{
-    case Movie, Genre, Cinema
 }
 
 
