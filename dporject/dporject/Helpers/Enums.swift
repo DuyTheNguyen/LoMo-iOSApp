@@ -40,8 +40,14 @@ enum Icons{
     
 }
 
-enum UserService1{
-    case SIGN_IN, SIGN_UP, SIGN_OUT
+enum UserServiceType: String{
+    case SIGN_IN = "Sign In"
+    case SIGN_UP = "Sign Up"
+    case SIGN_OUT = "Sign Out"
+    case UPDATE_EMAIL = "Email"
+    case UPDATE_PASSWORD = "Password"
+    case UPDATE_NAME = "Name"
+    case UPDATE_PHOTO = "Photo"
 }
 
 enum AlertType{

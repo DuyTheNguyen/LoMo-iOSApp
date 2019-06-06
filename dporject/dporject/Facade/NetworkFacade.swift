@@ -101,7 +101,7 @@ class NetworkFacade{
     }
     
     func updatePassword(email: String){
-        userService.updateEmail(value: email) { (isUpdated, message) in
+        userService.updatePassword(value: email) { (isUpdated, message) in
             self.delegate?.updateData1(isUpdated: isUpdated, message: message)
         }
     }

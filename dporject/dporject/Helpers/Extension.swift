@@ -125,14 +125,14 @@ extension UIView{
 //Allow load image from URL
 extension UIImageView {
     
-    func setUpImageViewWithIcons(type: String){
+    func setUpImageViewWithIcons(userServiceType: UserServiceType){
         var image: UIImage!
-        switch(type){
-        case "name":
+        switch(userServiceType){
+        case .UPDATE_NAME:
             image = Icons.NAME
-        case "password":
+        case .UPDATE_PASSWORD:
             image = Icons.PASSWORD
-        case "email":
+        case .UPDATE_EMAIL:
             image = Icons.EMAIL
         default:
             image = Icons.EDIT_ADD

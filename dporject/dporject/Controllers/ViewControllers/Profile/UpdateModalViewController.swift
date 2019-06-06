@@ -10,7 +10,7 @@ import UIKit
 
 class UpdateModalViewController: UIViewController {
     
-    private let userNetworkController = UserNetworkController()
+    private let networkFacade = NetworkFacade()
     
 
     @IBOutlet weak var contentTextField: UITextField!
@@ -19,7 +19,7 @@ class UpdateModalViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var updateModalUIImageView: UIImageView!
     
-    private var titleValue: String!
+    private var userServiceType: UserServiceType!
     private var isUpdated: Bool!
     private var alertType: AlertType!
     private var message = String(){
@@ -39,7 +39,7 @@ class UpdateModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         contentTextField.delegate = self
-        userNetworkController.delegate = self
+        networkFacade.delegate = self
         
         //Using notification for success case
         NotificationCenter.default.addObserver(self, selector: #selector(self.dismissModal), name: NSNotification.Name(rawValue: Notifications.CLOSE_UPDATE_MODAL), object: nil)
@@ -49,8 +49,8 @@ class UpdateModalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titleLabel.text = "Update \((titleValue)!)"
-        updateModalUIImageView.setUpImageViewWithIcons(type: titleValue!)
+        titleLabel.text = "Update \(userServiceType.rawValue)"
+        updateModalUIImageView.setUpImageViewWithIcons(userServiceType: userServiceType)
         contentTextField.text = ""
         contentTextField.becomeFirstResponder()
         
@@ -62,8 +62,8 @@ class UpdateModalViewController: UIViewController {
     
    
     
-    public func bind(type: String){
-       titleValue = type
+    public func bind(userServiceType: UserServiceType){
+       self.userServiceType = userServiceType
     }
     
     @IBAction func saveButtonOnTapped(_ sender: Any) {
@@ -80,15 +80,23 @@ class UpdateModalViewController: UIViewController {
             return
         }
         
-        if (titleValue == "email"){
+        switch  userServiceType! {
+        case .UPDATE_EMAIL:
             guard newValue.isValidEmail() else {
                 isUpdated = false
                 message = AlertMessages.FAILED_INVALID_EMAIL
                 return
             }
+            networkFacade.updateEmail(email: newValue)
+        case .UPDATE_NAME:
+            networkFacade.updateName(name: newValue)
+        case .UPDATE_PASSWORD:
+            networkFacade.updatePassword(email: newValue)
+        default:
+            print("")
         }
         
-        userNetworkController.updateProfile(titleValue, withValue: newValue)
+       
         self.view.startIndicatorAnnimation()
     }
     
@@ -116,8 +124,8 @@ extension UpdateModalViewController: UITextFieldDelegate{
     }
 }
 
-extension UpdateModalViewController:UserNetworkControllerDelegate{
-    func updateData(isUpdated: Bool, message: String) {
+extension UpdateModalViewController:NetworkFacadeDelegate{
+    func updateData1(isUpdated: Bool, message: String) {
         self.isUpdated = isUpdated
         self.message = message
     }

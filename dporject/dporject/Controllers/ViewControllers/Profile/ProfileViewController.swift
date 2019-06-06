@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
     private let dataStorageNetworkController = DataStorageNetworkController()
     private let uIImagePickerController = UIImagePickerController()
    
-    private var type: String? = ""
+    private var userServiceType: UserServiceType?
     
     fileprivate var currrentUser = User(){
         didSet{
@@ -95,7 +95,7 @@ class ProfileViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let updateModalViewControler = segue.destination as? UpdateModalViewController{
-            updateModalViewControler.bind(type: type!)
+            updateModalViewControler.bind(userServiceType: userServiceType!)
         }
         
         if let alertModalViewController = segue.destination as? AlertViewController{
@@ -106,24 +106,24 @@ class ProfileViewController: UIViewController {
    
     
     @IBAction func passwordButtonOnTapped(_ sender: Any) {
-        performSequeToUpdateWith(type: "password")
+        performSequeToUpdateWith(userServiceType: .UPDATE_PASSWORD)
     }
     
     @IBAction func emailButtonOnTapped(_ sender: Any) {
-        performSequeToUpdateWith(type: "email")
+        performSequeToUpdateWith(userServiceType: .UPDATE_EMAIL)
     }
     
     @IBAction func displayNameButtonOnTapped(_ sender: Any) {
-       performSequeToUpdateWith(type: "name")
+       performSequeToUpdateWith(userServiceType: .UPDATE_NAME)
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
-         userNetworkController.userServiceWith(type: UserService1.SIGN_OUT, email: "", password: "")
+         userNetworkController.userServiceWith(type: UserServiceType.SIGN_OUT, email: "", password: "")
          handleControllerTransitionWith(identifier: Identifiers.SIGN_IN_CONTROLLER)
     }
     
-    private func performSequeToUpdateWith(type: String){
-        self.type = type
+    private func performSequeToUpdateWith(userServiceType: UserServiceType){
+        self.userServiceType = userServiceType
         performSegue(withIdentifier: Identifiers.PROFILE_TO_UPDATEMODAL, sender: nil)
     }
 }
