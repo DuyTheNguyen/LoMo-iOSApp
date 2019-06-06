@@ -95,8 +95,8 @@ class MovieViewController: UIViewController {
         guard let movie = selectedMovie else{
             fatalError("Could not load movie")
         }
-        networkFacade.removeObserve(path: "\(Paths.COMMENTS)/\(movie.id!)")
-        networkFacade.removeObserve(path: "\(Paths.RATING)/\(movie.id!)")
+        networkFacade.removeObserveComments(path: "\(Paths.COMMENTS)/\(movie.id!)")
+        networkFacade.removeObserveRating(path: "\(Paths.RATING)/\(movie.id!)")
     }
     
     private func initialize(){

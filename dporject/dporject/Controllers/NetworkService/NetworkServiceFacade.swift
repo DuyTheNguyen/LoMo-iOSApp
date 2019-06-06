@@ -11,70 +11,80 @@ import UIKit
 
 class NetworkServiceFacade{
    
-    private let baseFactory = BaseDatabaseService()
-    private let commentFactory = CommentDatabaseService()
-    private let ratingFactory = RatingDatabaseService()
-    private let movieFactory = MovieDatabaseService()
-    private let cinemaFactory = CinemaDatabaseService()
-    private let genreFactory = GenreDatabaseService()
-    
+    private let databaseServiceFactory = DatabaseServiceFactory()
     private let userService = UserService()
-    
     private let storageService = StorageService()
+    
+    private let commentDatabaseService: DatabaseServiceProtocol
+    private let ratingDatabaseService: DatabaseServiceProtocol
+    private let movieDatabaseService: DatabaseServiceProtocol
+    private let cinemaDatabaseService: DatabaseServiceProtocol
+    private let genreDatabaseService: DatabaseServiceProtocol
 
     weak var delegate: NetworkServiceFacadeDelegate?
     
+    init(){
+        commentDatabaseService = databaseServiceFactory.create(.Comment)
+        ratingDatabaseService = databaseServiceFactory.create(.Rating)
+        movieDatabaseService = databaseServiceFactory.create(.Movie)
+        cinemaDatabaseService = databaseServiceFactory.create(.Cinema)
+        genreDatabaseService = databaseServiceFactory.create(.Genre)
+    }
    
     /************************ Begin: Database *************************************/
     //////////////Add///////////////
     func addComment(movieId: String, object: Any){
-        let result = commentFactory.add(path: movieId, object: object)
+        let result = commentDatabaseService.add(path: movieId, object: object)
         self.delegate?.isAdded(isIt: result)
     }
     
     func addRating(movieId: String, object: Any){
-        let result = ratingFactory.add(path: movieId, object: object)
+        let result = ratingDatabaseService.add(path: movieId, object: object)
         self.delegate?.isAdded(isIt: result)
     }
     
     
     /////////////Observe//////////////
     func observeComments(path:String){
-        commentFactory.observe(path: path){ comments in
+        commentDatabaseService.observe(path: path){ comments in
             self.delegate?.watchListOfComments(comments: comments as! [Comment])
         }
         
     }
     func observeRatings(path:String){
-        ratingFactory.observe(path: path) { ratings in
+        ratingDatabaseService.observe(path: path) { ratings in
             self.delegate?.watchListOfRatings(ratings: ratings as! [Rating])
         }
     }
     
     
     /////////////Remove Observe//////////////
-    func removeObserve(path:String){
-        baseFactory.removeObserveDatabase(path: path)
+    func removeObserveComments(path:String){
+        commentDatabaseService.removeObserveDatabase(path: path)
+    }
+    
+    func removeObserveRating(path:String){
+        ratingDatabaseService.removeObserveDatabase(path: path)
     }
     
     
     ////////////Get Objects/////////
     func getListOfMovies(path:String){
         var result = [Any]()
-        movieFactory.getListOfObject(path: path){ movies in
+        movieDatabaseService.getListOfObject(path: path){ movies in
             result = movies
             self.delegate?.didReceivedListOfMovies(movies: result as! [Movie])
         }
     }
     
     func getListOfCinemas(path:String){
-        cinemaFactory.getListOfObject(path: path) { (cinemas) in
+        cinemaDatabaseService.getListOfObject(path: path) { (cinemas) in
             self.delegate?.didReceivedListOfCinemas(cinemas: cinemas as! [Cinema])
         }
     }
     
     func getListOfGenre(path: String){
-        genreFactory.getListOfObject(path: path) { (genres) in
+        genreDatabaseService.getListOfObject(path: path) { (genres) in
             self.delegate?.didReceivedListOfGenres(genres: genres as! [Genre])
         }
     }

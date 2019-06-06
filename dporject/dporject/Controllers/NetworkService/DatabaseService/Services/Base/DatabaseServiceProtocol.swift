@@ -14,6 +14,7 @@ protocol DatabaseServiceProtocol {
     func add(path: String, object:Any)->Bool
     func delete(path:String)
     func observe(path:String, completion: @escaping ObjectsCompletionHandler)
+    func removeObserveDatabase(path: String)
     
     func getListOfObject(path: String, completion:@escaping ObjectsCompletionHandler)
 

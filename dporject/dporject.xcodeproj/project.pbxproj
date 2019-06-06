@@ -198,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6A73263522A9262300A34DC5 /* DatabaseServiceFactory.swift */,
-				6A0ED93E22A7BEA00011CDF0 /* DatabaseServices */,
+				6A0ED93E22A7BEA00011CDF0 /* Services */,
 			);
 			path = DatabaseService;
 			sourceTree = "<group>";
@@ -211,14 +211,17 @@
 			path = UserService;
 			sourceTree = "<group>";
 		};
-		6A0ED93E22A7BEA00011CDF0 /* DatabaseServices */ = {
+		6A0ED93E22A7BEA00011CDF0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6A08604422A66AC000B944E8 /* BaseDatabaseService.swift */,
-				6A08604622A670D700B944E8 /* DatabaseServiceProtocol.swift */,
-				6A73263722A9277E00A34DC5 /* Services */,
+				6A73263722A9277E00A34DC5 /* Base */,
+				6A08604822A6719600B944E8 /* CommentDatabaseService.swift */,
+				6A08604A22A6720700B944E8 /* RatingDatabaseService.swift */,
+				6A08604E22A67E0000B944E8 /* MovieDatabaseService.swift */,
+				6A0ED93A22A7B76C0011CDF0 /* CinemaDatabaseService.swift */,
+				6A09B2A522A7C10C006C4AEE /* GenreDatabaseService.swift */,
 			);
-			path = DatabaseServices;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		6A29D00E2287DC1900CF35EF /* View */ = {
@@ -272,16 +275,13 @@
 			path = StorageService;
 			sourceTree = "<group>";
 		};
-		6A73263722A9277E00A34DC5 /* Services */ = {
+		6A73263722A9277E00A34DC5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				6A08604822A6719600B944E8 /* CommentDatabaseService.swift */,
-				6A08604A22A6720700B944E8 /* RatingDatabaseService.swift */,
-				6A08604E22A67E0000B944E8 /* MovieDatabaseService.swift */,
-				6A0ED93A22A7B76C0011CDF0 /* CinemaDatabaseService.swift */,
-				6A09B2A522A7C10C006C4AEE /* GenreDatabaseService.swift */,
+				6A08604422A66AC000B944E8 /* BaseDatabaseService.swift */,
+				6A08604622A670D700B944E8 /* DatabaseServiceProtocol.swift */,
 			);
-			path = Services;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		6A7549BF228C148A00C0263E /* Movie */ = {
@@ -366,7 +366,7 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		6AB3C5DD2283F33300CE3AFE /* NetworkServiceControllers */ = {
+		6AB3C5DD2283F33300CE3AFE /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				6A46E1A222A538EA009FEC10 /* NetworkServiceFacade.swift */,
@@ -374,7 +374,7 @@
 				6A09B2A922A7DC86006C4AEE /* UserService */,
 				6A08604322A66A9000B944E8 /* DatabaseService */,
 			);
-			path = NetworkServiceControllers;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		6AB3C5E22284142F00CE3AFE /* Home */ = {
@@ -402,7 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				6A8AAF612297D58B007EE525 /* Others */,
-				6AB3C5DD2283F33300CE3AFE /* NetworkServiceControllers */,
+				6AB3C5DD2283F33300CE3AFE /* NetworkService */,
 				6AB3C5DC2283F31400CE3AFE /* ViewControllers */,
 			);
 			path = Controllers;
