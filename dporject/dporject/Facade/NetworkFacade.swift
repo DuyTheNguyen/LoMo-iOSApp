@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkFacade{
    
@@ -18,6 +19,8 @@ class NetworkFacade{
     private let genreFactory = GenreFactory()
     
     private let userService = UserService()
+    
+    private let storageService = StorageService()
 
     weak var delegate: NetworkFacadeDelegate?
     
@@ -77,7 +80,17 @@ class NetworkFacade{
     }
     /************************ End: Database *************************************/
     
+    
+    
+    
+    
     /************************ Begin: User Service *************************************/
+    func checkCurrentUserStatus(){
+        userService.authenticationListener { (user) in
+            self.delegate?.didReceiveUser1(user: user)
+        }
+    }
+    
     func signIn(email: String, password:String){
         userService.signIn(email: email, password: password) { (isUpdated, message) in
             self.delegate?.updateData1(isUpdated: isUpdated, message: message)
@@ -112,11 +125,26 @@ class NetworkFacade{
         }
     }
     
-    func updatePhoto(path: String){
-        userService.updatePhoto(value: path) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+    /************************ End: User Service *************************************/
+    
+    
+    
+    
+    /************************ Begin: Storage *************************************/
+    func uploadImage(folderName: String, imageFile: UIImage, fileName: String){
+        storageService.uploadImage(folderName: folderName, imageFile: imageFile, fileName: fileName) { (isUploaded, message) in
+            
+            if isUploaded{
+                //Update in user service
+                let url  = URL.init(string: message)
+                self.userService.updatePhoto(value: url!, completion: { (isUpdated, message) in
+                     self.delegate?.didUpload1(isUpdated: isUploaded, message: message)
+                })
+            }else{
+                self.delegate?.didUpload1(isUpdated: isUploaded, message: message)
+            }
         }
     }
-    /************************ End: User Service *************************************/
+    /************************ End: Storage *************************************/
 }
 

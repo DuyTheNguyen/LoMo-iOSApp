@@ -29,8 +29,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    private let userNetworkController = UserNetworkController()
-    private let dataStorageNetworkController = DataStorageNetworkController()
+    private let networkFacade = NetworkFacade()
     private let uIImagePickerController = UIImagePickerController()
    
     private var userServiceType: UserServiceType?
@@ -70,8 +69,7 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.tag = ViewTags.PROFILE_VIEW
         
-        userNetworkController.delegate = self
-        dataStorageNetworkController.delegate = self
+        networkFacade.delegate = self
         
         uIImagePickerController.delegate = self
         uIImagePickerController.allowsEditing = true
@@ -81,7 +79,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userNetworkController.authenticationListener()
+        networkFacade.checkCurrentUserStatus()
         signOutButton.buttonWithText(title: "Sign Out", iconName: Icons.SIGN_OUT)
         signOutButton.layer.cornerRadius = 15
     }
@@ -118,7 +116,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signOutButtonTapped(_ sender: Any) {
-         userNetworkController.userServiceWith(type: UserServiceType.SIGN_OUT, email: "", password: "")
+         networkFacade.signOut()
          handleControllerTransitionWith(identifier: Identifiers.SIGN_IN_CONTROLLER)
     }
     
@@ -129,9 +127,14 @@ class ProfileViewController: UIViewController {
 }
 
 //Create extension to conform Delegate
-extension ProfileViewController: UserNetworkControllerDelegate{
-    func didReceiveUser(user: User) {
+extension ProfileViewController: NetworkFacadeDelegate{
+    func didReceiveUser1(user: User) {
         self.currrentUser = user
+    }
+    
+    func didUpload1(isUpdated: Bool, message: String){
+        self.isUpdated = isUpdated
+        self.message = message
     }
 }
 
@@ -161,8 +164,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         if let selectedImage = selectedImageFromPicker{
             
             //Handle uploading
-            dataStorageNetworkController.uploadFile(folderName: "users/\(currrentUser.uid!)", type: "image/png", file: selectedImage, fileName: "avatar")
-            
+            networkFacade.uploadImage(folderName: "users/\(currrentUser.uid!)", imageFile: selectedImage, fileName: "avatar")
         }
         
         
@@ -178,9 +180,3 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
-extension ProfileViewController: DataStorageNetworkControllerDelegate{
-    func didUpload(isUpdated: Bool, message: String){
-        self.isUpdated = isUpdated
-        self.message = message
-    }
-}

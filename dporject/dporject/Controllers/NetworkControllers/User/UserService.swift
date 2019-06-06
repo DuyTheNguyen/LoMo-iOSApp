@@ -101,9 +101,9 @@ class UserService{
         }
     }
     
-    func updatePhoto(value: String, completion: @escaping CompletionHandler){
+    func updatePhoto(value: URL, completion: @escaping CompletionHandler){
         let changeRequest = currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = value
+        changeRequest?.photoURL = value
         changeRequest?.commitChanges { (error) in
             if let error = error{
                 print(error.localizedDescription)

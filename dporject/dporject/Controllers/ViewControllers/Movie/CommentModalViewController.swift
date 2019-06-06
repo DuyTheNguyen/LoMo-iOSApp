@@ -14,7 +14,6 @@ class CommentModalViewController: UIViewController {
     @IBOutlet weak var commentModal: UIView!
     
     @IBOutlet weak var commentModalImageView: UIImageView!
-    private let userAuthentiationNetworkController = UserNetworkController()
     private let networkFacade = NetworkFacade()
     
     private var currentUser: User!
@@ -25,14 +24,11 @@ class CommentModalViewController: UIViewController {
         super.viewDidLoad()
         commentModal.roundedCorner(corners: [.topRight, .topLeft, .bottomLeft, .bottomRight], radius: 20)
         
-        userAuthentiationNetworkController.delegate = self
-        userAuthentiationNetworkController.authenticationListener()
-        
-        
         commentTextView.delegate = self
         // Do any additional setup after loading the view.
         
-        networkFacade.delegate = self 
+        networkFacade.delegate = self
+        networkFacade.checkCurrentUserStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,13 +92,6 @@ class CommentModalViewController: UIViewController {
 
 
 //Create extension to conform Delegate
-extension CommentModalViewController: UserNetworkControllerDelegate{
-    func didReceiveUser(user: User) {
-        self.currentUser = user
-    }
-}
-
-
 extension CommentModalViewController: UITextViewDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         commentTextView.resignFirstResponder()
@@ -112,6 +101,9 @@ extension CommentModalViewController: UITextViewDelegate{
 extension CommentModalViewController: NetworkFacadeDelegate{
     func isAdded(isIt: Bool){
         self.isCommentAdded = isIt
+    }
+    func didReceiveUser1(user: User) {
+        self.currentUser = user
     }
 }
 
