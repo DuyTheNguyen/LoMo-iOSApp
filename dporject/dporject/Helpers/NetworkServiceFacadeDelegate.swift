@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol NetworkFacadeDelegate: class{
+protocol NetworkServiceFacadeDelegate: class{
      func didReceivedListOfMovies(movies : [Movie])
      func didReceivedListOfGenres(genres: [Genre])
      func didReceivedListOfCinemas(cinemas: [Cinema])
@@ -25,7 +25,7 @@ protocol NetworkFacadeDelegate: class{
 
 //Make methods of this delegate to be optional
 
-extension NetworkFacadeDelegate{
+extension NetworkServiceFacadeDelegate{
     func didReceivedListOfMovies(movies: [Movie]){}
     func didReceivedListOfGenres(genres: [Genre]){}
     func didReceivedListOfCinemas(cinemas: [Cinema]){}

@@ -19,7 +19,7 @@ class RatingModalViewController: UIViewController {
     fileprivate var currentUser: User!
     private var isRatingAdded: Bool = false
 
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,7 @@ class RatingModalViewController: UIViewController {
 
 //Create extension to conform Delegate
 
-extension RatingModalViewController: NetworkFacadeDelegate{
+extension RatingModalViewController: NetworkServiceFacadeDelegate{
     func didReceiveUser1(user: User){
         self.currentUser = user
     }

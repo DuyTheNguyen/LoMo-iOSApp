@@ -17,7 +17,7 @@ class MovieListViewController: UIViewController {
     var searchMovies = [Movie]()
     var isSearching = false
     
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -107,7 +107,7 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
 
 //Create extension to comform delegate
 
-extension MovieListViewController: NetworkFacadeDelegate{
+extension MovieListViewController: NetworkServiceFacadeDelegate{
     func didReceivedListOfMovies(movies: [Movie]) {
         self.listOfMovie = movies
     }

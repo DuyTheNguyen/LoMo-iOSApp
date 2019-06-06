@@ -10,7 +10,7 @@ import UIKit
 
 class UpdateModalViewController: UIViewController {
     
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
 
     @IBOutlet weak var contentTextField: UITextField!
@@ -124,7 +124,7 @@ extension UpdateModalViewController: UITextFieldDelegate{
     }
 }
 
-extension UpdateModalViewController:NetworkFacadeDelegate{
+extension UpdateModalViewController:NetworkServiceFacadeDelegate{
     func updateData1(isUpdated: Bool, message: String) {
         self.isUpdated = isUpdated
         self.message = message

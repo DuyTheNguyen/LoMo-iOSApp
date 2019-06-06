@@ -26,7 +26,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var cinemaLabel: UILabel!
     var actionButton: ActionButton!
 
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     fileprivate var modifiedListOfComments = [Comment](){
         didSet{
@@ -247,7 +247,7 @@ extension MovieViewController: DatabaseNetworkControllerDelegate{
     }
 }
 */
-extension MovieViewController: NetworkFacadeDelegate{
+extension MovieViewController: NetworkServiceFacadeDelegate{
     func watchListOfComments(comments: [Comment]) {
         self.originalListOfComment = comments
     }

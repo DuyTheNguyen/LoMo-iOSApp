@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NetworkFacade{
+class NetworkServiceFacade{
    
     private let baseFactory = BaseFactory()
     private let commentFactory = CommentFactory()
@@ -22,7 +22,7 @@ class NetworkFacade{
     
     private let storageService = StorageService()
 
-    weak var delegate: NetworkFacadeDelegate?
+    weak var delegate: NetworkServiceFacadeDelegate?
     
    
     /************************ Begin: Database *************************************/

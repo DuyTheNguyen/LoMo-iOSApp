@@ -14,7 +14,7 @@ class CommentModalViewController: UIViewController {
     @IBOutlet weak var commentModal: UIView!
     
     @IBOutlet weak var commentModalImageView: UIImageView!
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     private var currentUser: User!
     var selectedMovie: Movie!
@@ -98,7 +98,7 @@ extension CommentModalViewController: UITextViewDelegate{
     }
 }
 
-extension CommentModalViewController: NetworkFacadeDelegate{
+extension CommentModalViewController: NetworkServiceFacadeDelegate{
     func isAdded(isIt: Bool){
         self.isCommentAdded = isIt
     }

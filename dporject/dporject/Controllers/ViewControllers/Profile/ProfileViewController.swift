@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     private let uIImagePickerController = UIImagePickerController()
    
     private var userServiceType: UserServiceType?
@@ -127,7 +127,7 @@ class ProfileViewController: UIViewController {
 }
 
 //Create extension to conform Delegate
-extension ProfileViewController: NetworkFacadeDelegate{
+extension ProfileViewController: NetworkServiceFacadeDelegate{
     func didReceiveUser1(user: User) {
         self.currrentUser = user
     }

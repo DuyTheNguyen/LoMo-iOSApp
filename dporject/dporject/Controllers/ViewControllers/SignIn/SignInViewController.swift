@@ -14,7 +14,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
  
-    private let networkFacade = NetworkFacade()
+    private let networkFacade = NetworkServiceFacade()
     
     private var isSuccessful: Bool!
     private var alertType: AlertType!
@@ -91,7 +91,7 @@ class SignInViewController: UIViewController {
 }
 
 //Create extension to conform delegate
-extension SignInViewController: NetworkFacadeDelegate{
+extension SignInViewController: NetworkServiceFacadeDelegate{
     func updateData1(isUpdated: Bool, message: String) {
         self.isSuccessful = isUpdated
         self.message = message
