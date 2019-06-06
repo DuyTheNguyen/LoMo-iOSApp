@@ -80,10 +80,10 @@ class UserNetworkController{
                  self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_NAME)
             }
         case "photoURL":
-            let changeREquest = currentUser.createProfileChangeRequest()
-            changeREquest.photoURL = URL(string: withValue)
-            changeREquest.commitChanges { (error) in
-                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_IMAGE)
+            let changeRequest = currentUser.createProfileChangeRequest()
+            changeRequest.displayName = withValue
+            changeRequest.commitChanges { (error) in
+                self.callBack(error: error, successfulMessage: AlertMessages.SUCCESS_UPDATE_NAME)
             }
         default:
             print("Should not in default")

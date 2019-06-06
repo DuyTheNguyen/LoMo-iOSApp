@@ -12,6 +12,29 @@ import FirebaseAuth
 class UserService{
     typealias  CompletionHandler = (_ success:Bool,_ message:String) -> ()
     let authentication = Auth.auth()
+    let currentUser = Auth.auth().currentUser
+    
+    func authenticationListener(completion: @escaping (User) -> ()){
+        authentication.addStateDidChangeListener { (auth, user1) in
+            
+            guard let user = user1 else{
+                //TODO: handle logout
+                
+                return
+            }
+            guard let email = user.email else{
+                //TODO: cannot find email
+                // add photo URL
+                // add display Name
+                return
+            }
+            
+            
+            let passedUser = User(pUid: user.uid, pEmail: email, pPassword: "***********", pDisplayName: user.displayName, pPhotoURL: user.photoURL)
+            
+            completion(passedUser)
+        }
+    }
     
     func signIn(email: String, password:String, completion: @escaping CompletionHandler){
         authentication.signIn(withEmail: email, password: password) { (user, error) in
@@ -43,7 +66,51 @@ class UserService{
         }
     }
     
-    func update(){
-        
+    func updateEmail(value: String, completion: @escaping CompletionHandler){
+        currentUser?.updateEmail(to: value, completion: { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(false, error.localizedDescription)
+            }else{
+                completion(true, AlertMessages.SUCCESS_UPDATE_EMAIL)
+            }
+        })
+    }
+    
+    func updatePassword(value: String, completion: @escaping CompletionHandler){
+        currentUser?.updatePassword(to: value, completion: { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(false, error.localizedDescription)
+            }else{
+                completion(true, AlertMessages.SUCCESS_UPDATE_PASSWORD)
+            }
+        })
+    }
+    
+    func updateName(value: String, completion: @escaping CompletionHandler){
+        let changeRequest = currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = value
+        changeRequest?.commitChanges { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(false, error.localizedDescription)
+            }else{
+                completion(true, AlertMessages.SUCCESS_UPDATE_NAME)
+            }
+        }
+    }
+    
+    func updatePhoto(value: String, completion: @escaping CompletionHandler){
+        let changeRequest = currentUser?.createProfileChangeRequest()
+        changeRequest?.displayName = value
+        changeRequest?.commitChanges { (error) in
+            if let error = error{
+                print(error.localizedDescription)
+                completion(false, error.localizedDescription)
+            }else{
+                completion(true, AlertMessages.SUCCESS_UPDATE_IMAGE)
+            }
+        }
     }
 }

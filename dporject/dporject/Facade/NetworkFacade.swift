@@ -93,6 +93,30 @@ class NetworkFacade{
     func signOut(){
         userService.signOut()
     }
+    
+    func updateEmail(email: String){
+        userService.updateEmail(value: email) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
+    
+    func updatePassword(email: String){
+        userService.updateEmail(value: email) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
+    
+    func updateName(name: String){
+        userService.updateName(value: name) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
+    
+    func updatePhoto(path: String){
+        userService.updatePhoto(value: path) { (isUpdated, message) in
+            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+        }
+    }
     /************************ End: User Service *************************************/
 }
 
