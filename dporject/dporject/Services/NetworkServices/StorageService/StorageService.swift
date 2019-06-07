@@ -11,8 +11,8 @@ import UIKit
 import FirebaseStorage
 
 class StorageService{
-    let storage = Storage.storage().reference()
-    let meta = StorageMetadata()
+    private let storage = Storage.storage().reference()
+    private let meta = StorageMetadata()
     
    
     

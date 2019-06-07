@@ -92,8 +92,8 @@ class SignInViewController: UIViewController {
 
 //Create extension to conform delegate
 extension SignInViewController: NetworkServiceFacadeDelegate{
-    func updateData1(isUpdated: Bool, message: String) {
-        self.isSuccessful = isUpdated
+    func isUpdated(isSuccessful: Bool, message: String) {
+        self.isSuccessful = isSuccessful
         self.message = message
     }
 }

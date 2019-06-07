@@ -102,7 +102,7 @@ extension CommentModalViewController: NetworkServiceFacadeDelegate{
     func isAdded(isIt: Bool){
         self.isCommentAdded = isIt
     }
-    func didReceiveUser1(user: User) {
+    func didReceiveUser(user: User) {
         self.currentUser = user
     }
 }

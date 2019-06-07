@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MovieDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
+class MovieDatabaseService: BaseDatabaseService, DatabaseService{
     func observe(path: String, completion: @escaping ObjectsCompletionHandler) {
         
     }

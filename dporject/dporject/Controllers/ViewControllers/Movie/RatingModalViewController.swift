@@ -80,7 +80,7 @@ class RatingModalViewController: UIViewController {
 //Create extension to conform Delegate
 
 extension RatingModalViewController: NetworkServiceFacadeDelegate{
-    func didReceiveUser1(user: User){
+    func didReceiveUser(user: User){
         self.currentUser = user
     }
     

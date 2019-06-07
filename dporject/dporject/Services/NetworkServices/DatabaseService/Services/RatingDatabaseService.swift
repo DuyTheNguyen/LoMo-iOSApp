@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RatingDatabaseService:BaseDatabaseService, DatabaseServiceProtocol{
+class RatingDatabaseService:BaseDatabaseService, DatabaseService{
     
     func add(path: String, object: Any) -> Bool{
         let rating = object as! Rating

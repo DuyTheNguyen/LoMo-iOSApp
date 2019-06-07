@@ -128,12 +128,12 @@ class ProfileViewController: UIViewController {
 
 //Create extension to conform Delegate
 extension ProfileViewController: NetworkServiceFacadeDelegate{
-    func didReceiveUser1(user: User) {
+    func didReceiveUser(user: User) {
         self.currrentUser = user
     }
     
-    func didUpload1(isUpdated: Bool, message: String){
-        self.isUpdated = isUpdated
+    func isUploaded(isSuccessful: Bool, message: String){
+        self.isUpdated = isSuccessful
         self.message = message
     }
 }

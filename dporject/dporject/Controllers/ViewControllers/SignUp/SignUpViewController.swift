@@ -107,8 +107,8 @@ class SignUpViewController: UIViewController {
 
 //Create extension to comform delegate
 extension SignUpViewController: NetworkServiceFacadeDelegate{
-    func updateData1(isUpdated: Bool, message: String) {
-        self.isSuccessful = isUpdated
+    func isUpdated(isSuccessful: Bool, message: String) {
+        self.isSuccessful = isSuccessful
         self.message = message
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 class DatabaseServiceFactory{
-    func create(_ serviceType: DatabaseServiceType)->DatabaseServiceProtocol{
+    func get(_ serviceType: DatabaseServiceType)->DatabaseService{
         switch(serviceType){
         case .Comment:
             return CommentDatabaseService()

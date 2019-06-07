@@ -17,10 +17,10 @@ protocol NetworkServiceFacadeDelegate: class{
      func watchListOfRatings( ratings: [Rating])
      func isAdded(isIt: Bool)
     
-     func didReceiveUser1(user: User)
-     func updateData1(isUpdated: Bool, message: String)
+     func didReceiveUser(user: User)
+     func isUpdated(isSuccessful: Bool, message: String)
     
-     func didUpload1(isUpdated: Bool, message: String)
+     func isUploaded(isSuccessful: Bool, message: String)
 }
 
 //Make methods of this delegate to be optional
@@ -33,7 +33,8 @@ extension NetworkServiceFacadeDelegate{
     func watchListOfRatings( ratings: [Rating]){}
     func isAdded(isIt: Bool){}
     
-    func didReceiveUser1(user: User){}
-    func updateData1(isUpdated: Bool, message: String){}
-    func didUpload1(isUpdated: Bool, message: String){}
+    func didReceiveUser(user: User){}
+    func isUpdated(isSuccessful: Bool, message: String){}
+    
+    func isUploaded(isSuccessful: Bool, message: String){}
 }

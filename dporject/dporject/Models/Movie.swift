@@ -17,7 +17,7 @@ struct Movie: Decodable{
     let genre: String?
     let description: String?
     let director: String?
-    let cinemas: [String]?
+    var cinemas: [String]?
     
     init(id: String? = nil,
          name: String? = nil,

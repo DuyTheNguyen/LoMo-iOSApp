@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommentDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
+class CommentDatabaseService: BaseDatabaseService, DatabaseService{
   
    
     func add(path: String, object: Any) -> Bool{

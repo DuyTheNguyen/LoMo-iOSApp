@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GenreDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
+class GenreDatabaseService: BaseDatabaseService, DatabaseService{
     func add(path: String, object: Any) -> Bool {
         return false
     }

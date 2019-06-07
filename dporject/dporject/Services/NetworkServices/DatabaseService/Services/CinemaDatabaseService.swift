@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CinemaDatabaseService: BaseDatabaseService, DatabaseServiceProtocol{
+class CinemaDatabaseService: BaseDatabaseService, DatabaseService{
     func add(path: String, object: Any) -> Bool {
         //Not yet
         return false

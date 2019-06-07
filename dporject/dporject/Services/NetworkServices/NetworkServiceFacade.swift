@@ -15,20 +15,20 @@ class NetworkServiceFacade{
     private let userService = UserService()
     private let storageService = StorageService()
     
-    private let commentDatabaseService: DatabaseServiceProtocol
-    private let ratingDatabaseService: DatabaseServiceProtocol
-    private let movieDatabaseService: DatabaseServiceProtocol
-    private let cinemaDatabaseService: DatabaseServiceProtocol
-    private let genreDatabaseService: DatabaseServiceProtocol
+    private let commentDatabaseService: DatabaseService
+    private let ratingDatabaseService: DatabaseService
+    private let movieDatabaseService: DatabaseService
+    private let cinemaDatabaseService: DatabaseService
+    private let genreDatabaseService: DatabaseService
 
     weak var delegate: NetworkServiceFacadeDelegate?
     
     init(){
-        commentDatabaseService = databaseServiceFactory.create(.Comment)
-        ratingDatabaseService = databaseServiceFactory.create(.Rating)
-        movieDatabaseService = databaseServiceFactory.create(.Movie)
-        cinemaDatabaseService = databaseServiceFactory.create(.Cinema)
-        genreDatabaseService = databaseServiceFactory.create(.Genre)
+        commentDatabaseService = databaseServiceFactory.get(.Comment)
+        ratingDatabaseService = databaseServiceFactory.get(.Rating)
+        movieDatabaseService = databaseServiceFactory.get(.Movie)
+        cinemaDatabaseService = databaseServiceFactory.get(.Cinema)
+        genreDatabaseService = databaseServiceFactory.get(.Genre)
     }
    
     /************************ Begin: Database *************************************/
@@ -97,19 +97,19 @@ class NetworkServiceFacade{
     /************************ Begin: User Service *************************************/
     func checkCurrentUserStatus(){
         userService.authenticationListener { (user) in
-            self.delegate?.didReceiveUser1(user: user)
+            self.delegate?.didReceiveUser(user: user)
         }
     }
     
     func signIn(email: String, password:String){
         userService.signIn(email: email, password: password) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+            self.delegate?.isUpdated(isSuccessful: isUpdated, message: message)
         }
     }
     
     func signUp(email: String, password:String){
         userService.signUp(email: email, password: password) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+            self.delegate?.isUpdated(isSuccessful: isUpdated, message: message)
         }
     }
     
@@ -119,19 +119,19 @@ class NetworkServiceFacade{
     
     func updateEmail(email: String){
         userService.updateEmail(value: email) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+            self.delegate?.isUpdated(isSuccessful: isUpdated, message: message)
         }
     }
     
     func updatePassword(email: String){
         userService.updatePassword(value: email) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+            self.delegate?.isUpdated(isSuccessful: isUpdated, message: message)
         }
     }
     
     func updateName(name: String){
         userService.updateName(value: name) { (isUpdated, message) in
-            self.delegate?.updateData1(isUpdated: isUpdated, message: message)
+            self.delegate?.isUpdated(isSuccessful: isUpdated, message: message)
         }
     }
     
@@ -149,10 +149,10 @@ class NetworkServiceFacade{
                 //Update in user service
                 let url  = URL.init(string: message)
                 self.userService.updatePhoto(value: url!, completion: { (isUpdated, message) in
-                     self.delegate?.didUpload1(isUpdated: isUploaded, message: message)
+                     self.delegate?.isUploaded(isSuccessful: isUploaded, message: message)
                 })
             }else{
-                self.delegate?.didUpload1(isUpdated: isUploaded, message: message)
+                self.delegate?.isUploaded(isSuccessful: isUploaded, message: message)
             }
         }
     }

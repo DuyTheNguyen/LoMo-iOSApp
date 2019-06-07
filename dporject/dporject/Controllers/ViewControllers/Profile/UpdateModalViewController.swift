@@ -125,8 +125,8 @@ extension UpdateModalViewController: UITextFieldDelegate{
 }
 
 extension UpdateModalViewController:NetworkServiceFacadeDelegate{
-    func updateData1(isUpdated: Bool, message: String) {
-        self.isUpdated = isUpdated
+    func isUpdated(isSuccessful: Bool, message: String) {
+        self.isUpdated = isSuccessful
         self.message = message
     }
 }

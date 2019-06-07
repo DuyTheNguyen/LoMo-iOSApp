@@ -11,8 +11,8 @@ import FirebaseAuth
 
 class UserService{
     typealias  CompletionHandler = (_ success:Bool,_ message:String) -> ()
-    let authentication = Auth.auth()
-    let currentUser = Auth.auth().currentUser
+    private let authentication = Auth.auth()
+    private let currentUser = Auth.auth().currentUser
     
     func authenticationListener(completion: @escaping (User) -> ()){
         authentication.addStateDidChangeListener { (auth, user1) in
