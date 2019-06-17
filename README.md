@@ -1,1 +1,1 @@
-# CDDMA-DProject
+# LoMo-iOSApp
