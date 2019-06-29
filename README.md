@@ -7,7 +7,7 @@ This is an iOS movie database application where users are able to learn movie's 
 You're going to need:
 
 * **macOS**
-* **Xcode** -  Version 10.2.1 (10E1001)
+* **Xcode** -  Version 10.2.1 (10E1001) or above.
 
 
 ### Set Up
