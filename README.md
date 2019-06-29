@@ -2,7 +2,6 @@
 
 This is an iOS movie database application where users are able to learn movie's information, to give comments as well as to rate the specific movie. 
 ## Getting Started
-----------------------------------------------------
 ### Prerequisites
 
 You're going to need:
@@ -23,7 +22,6 @@ You're going to need:
 
 
 ## Built With
------------------------
 
 * [Xcode](https://developer.apple.com/xcode/) - Used to build the application.
 * [Swift](https://developer.apple.com/swift/) - The language used.
@@ -31,16 +29,13 @@ You're going to need:
 
 
 ## Author
---------------
 * **Duy The Nguyen** 
 
 ## License
-------------------
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Special Thanks
--------------------
 
 * [FlatIcon](https://www.flaticon.com/)
 
